@@ -7,14 +7,11 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'home/index.html')
 
-
 def agent_Faq(request):
     return render(request, 'home/agentFaq.html')
 
-
 def broker_Faq(request):
     return render(request, 'home/brokerFaq.html')
-
 
 def applynow(request):
     return render(request, 'home/applynow.html')
