@@ -21,3 +21,6 @@ def contactUs(request):
 
 def aboutUs(request):
     return render(request, 'home/aboutUs.html')
+
+def howit(request):
+    return render(request,'home/howitworks.html')

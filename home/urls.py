@@ -10,4 +10,5 @@ urlpatterns = [
     path('applynow', views.applynow, name='applynow'),
     path('contactus',views.contactUs,name='contactUs'),
     path('aboutUs',views.aboutUs, name='aboutUs'),
+    path('howitworks', views.howit,name="howitworks"),
 ]
