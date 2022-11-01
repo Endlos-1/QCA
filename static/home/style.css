@@ -805,7 +805,7 @@ input[type="submit"]:focus {
 }
 
 /* Since FF19 lowers the opacity of the placeholder by default */
-}
+
 
 :-ms-input-placeholder {
 	color: #999;
