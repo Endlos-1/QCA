@@ -23,4 +23,7 @@ def aboutUs(request):
     return render(request, 'home/aboutUs.html')
 
 def howit(request):
-    return render(request,'home/howitworks.html')
+    return render(request, 'home/howitworks.html')
+
+def whyadvance(request):
+    return render(request, 'home/whycommissionadvance.html')
