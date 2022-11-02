@@ -23,8 +23,8 @@
 <link rel="apple-touch-icon-precomposed" href="{% static 'home/icon/apple-touch-icon-158-precomposed.png' %}">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -238,7 +238,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     <!-- SERVICES IMAGEBOXS -->
                     <div class="row-services">
                         <div class="container" id="how">
-                            <div class="row" >
+                            <div class="row">
                                 <div class="col-md-12">
 
 
@@ -250,7 +250,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
                                     <div class="themesflat-headings style-1 clearfix text-center">
-                                        <h1 class="heading clearfix " style="color: #010196;font-size: 50px;">HOW IT WORKS</h1>
+                                        <h1 class="heading clearfix " style="color: #010196;font-size: 50px;">HOW IT
+                                            WORKS</h1>
                                         <div class="sep clearfix"></div>
                                         <div class="row-services">
                                             <div class="container">
@@ -432,9 +433,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                             </div><!-- /.container -->
                         </div>
                         <!-- END SERVICES IMAGEBOXS -->
-                        <div class="text-right"> 
+                        <div class="text-right">
                             <span class="text-right mr-3" style="weight:120px;color:black;">Learn More: </span>
-                            <button type="button" class="btn btn-primary mr-4"style="color:white">
+                            <button type="button" class="btn btn-primary mr-4" style="color:white">
                                 <a href="{%url 'home:agent_Faq'%}" style="color:white;">FAQ</a></button>
                         </div> <br>
                         <!-- FACTS -->
@@ -553,10 +554,10 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                         </div>
 
 
-                        
+
                         <!-- END FACTS 1 -->
                         <br>
-                       
+
 
                         <!-- ANALYSIS -->
                         <div class="row-services">
@@ -701,7 +702,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                                             .square-box:after {
                                                 content: "";
                                                 display: block;
-                                               
+
 
                                             }
 
@@ -742,7 +743,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
 
                                             <h3 class="heading text-justify">FEES, DUES, EDUCATION</h3>
 
-                                            <p class="desc text-justify">Realtor dues, continue education<br> conference attendance
+                                            <p class="desc text-justify">Realtor dues, continue education<br> conference
+                                                attendance
                                             </p>
                                         </div><!-- /.themesflat-icon-box -->
 
@@ -757,7 +759,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
 
                                             <h3 class="heading text-justify">MARKETING & ADVERTISING </h3>
 
-                                            <p class="desc text-justify">Property marketing, open houses, <br> stagging,billboards,
+                                            <p class="desc text-justify">Property marketing, open houses, <br>
+                                                stagging,billboards,
                                                 photography</p>
                                         </div><!-- /.themesflat-icon-box -->
                                     </div><!-- /.col-md-4 -->
@@ -770,7 +773,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                             </div><!-- /.container -->
                         </div>
                         <!-- END ANALYSIS -->
-                      
+
 
 
 
@@ -811,116 +814,119 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                                             data-smobi="40"></div>
 
 
-                                            
+
                                     </div><!-- /.col-md-12 -->
                                 </div><!-- /.row -->
                             </div><!-- /.container -->
                         </div>
                         <!-- END PROMOTION -->
-<br>
+                        <br>
 
 
 
-<style> 
-.brd{
-    border: solid;
-    border-color: #010196;
-}
+                        <style>
+                            .brd {
+                                border: solid;
+                                border-color: #010196;
+                            }
+                        </style>
 
-</style>
+                        <br>
+                        <section>
 
-<br>    
-<section>
-
-    <style>
-    /* Chrome, Safari, Edge, Opera */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    
-    /* Firefox */
-    input[type=number] {
-      -moz-appearance: textfield;
-    }
-    </style>
-    
-    <form class="row g-3 justify-content-center" method="POST" action="{% url 'home:contactUs' %}">
-    {% csrf_token %} 
-    <div class="container col-8 p-1" style="background-color:#010196">
-        <h6 class="text-white text-left">Confirm Amount Requested </h6>
-        </div>
-    <div class="container cnt col-8 p-4 brd" >
-     
-    
-     <div class="form-group row col-12 pt-1">
-        <label for="ValidationAmount" class="text-right col-sm-5 col-form-label">Amount Requested: </label>
-        <div class="col-sm-4 currency-wrap">
-        <span class="currency-code">$</span>
-        <input type="number" class="form-control" id="inputAmount" style="text-align:right;" min=4000 max=15000 required>
-        </div>
-    </div>
-    </div>
-    
-    <div class="container col-8 p-1 text-white" style="background-color:#010196">
-      <h6 class="text-white text-left">Contact Information</h6>
-    </div>
-    
-    <div class="container brd col-8 p-3 justify-content-center brd" >
-      <div class="form-row  mb-3">
-        <div class="col-12 row justify-content-center">
-          <label class="col-2 col-form-label" for="validationServer01">Email:</label>
-          <input type="email" class="form-control row col-4" id="validationServer01" placeholder="E-mail"
-            required>  
-        </div>
-      </div>
-      
-      <div class="text-center mt-3">
-        
-        <button class="btn mt-4 btn-primary" type="submit" style="background-color:#010196;">Continue</button>
-      </div>
-    
-    </div>
-    </form>
-    
-    </section>
-    <br>
-                        
-                              
-                          </div>
-                    </div><!-- /.page-content -->
-                </div><!-- /#inner-content -->
-            </div><!-- /#site-content -->
-        </div><!-- /#content-wrap -->
-    </div><!-- /#main-content -->
-    <div class="fixed-btn">
-        <p>Apply Now</p>
-      </div>
                             <style>
-                                .fixed-btn{
-      position: fixed;
-      bottom: 10%;
-      right: 3%;
-      background: #0FACF3;
-      width: 180px;
-      height: 45px;
-      line-height: 45px;
-      text-align: center;
-      border-radius: 3px;
-      box-shadow: 4px 4px 4px #0a78aa;
-      cursor: pointer;
+                                /* Chrome, Safari, Edge, Opera */
+                                input::-webkit-outer-spin-button,
+                                input::-webkit-inner-spin-button {
+                                    -webkit-appearance: none;
+                                    margin: 0;
+                                }
+
+                                /* Firefox */
+                                input[type=number] {
+                                    -moz-appearance: textfield;
+                                }
+                            </style>
+
+                            <form class="row g-3 justify-content-center" method="POST"
+                                action="{% url 'home:contactUs' %}">
+                                {% csrf_token %}
+                                <div class="container col-8 p-1" style="background-color:#010196">
+                                    <h6 class="text-white text-left">Confirm Amount Requested </h6>
+                                </div>
+                                <div class="container cnt col-8 p-4 brd">
+
+
+                                    <div class="form-group row col-12 pt-1">
+                                        <label for="ValidationAmount" class="text-right col-sm-5 col-form-label">Amount
+                                            Requested: </label>
+                                        <div class="col-sm-4 currency-wrap">
+                                            <span class="currency-code">$</span>
+                                            <input type="number" class="form-control" id="inputAmount"
+                                                style="text-align:right;" min=4000 max=15000 required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="container col-8 p-1 text-white" style="background-color:#010196">
+                                    <h6 class="text-white text-left">Contact Information</h6>
+                                </div>
+
+                                <div class="container brd col-8 p-3 justify-content-center brd">
+                                    <div class="form-row  mb-3">
+                                        <div class="col-12 row justify-content-center">
+                                            <label class="col-2 col-form-label" for="validationServer01">Email:</label>
+                                            <input type="email" class="form-control row col-4" id="validationServer01"
+                                                placeholder="E-mail" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center mt-3">
+
+                                        <button class="btn mt-4 btn-primary" type="submit"
+                                            style="background-color:#010196;">Continue</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </section>
+                        <br>
+
+
+                    </div>
+                </div><!-- /.page-content -->
+            </div><!-- /#inner-content -->
+        </div><!-- /#site-content -->
+    </div><!-- /#content-wrap -->
+</div><!-- /#main-content -->
+<div class="fixed-btn">
+    <p>Apply Now</p>
+</div>
+<style>
+    .fixed-btn {
+        position: fixed;
+        bottom: 10%;
+
+        background: #0FACF3;
+        width: 180px;
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        border-radius: 3px;
+        box-shadow: 4px 4px 4px #0a78aa;
+        cursor: pointer;
     }
-    
-    .fixed-btn p{
-      text-transform: uppercase;
-      font-family: arial;
-      font-weight: 900;
-      color: #fff;
+
+    .fixed-btn p {
+        text-transform: uppercase;
+        font-family: arial;
+        font-weight: 900;
+        color: #fff;
     }
-    
-    .fixed-btn:active{
-      box-shadow: 0  0;
+
+    .fixed-btn:active {
+        box-shadow: 0 0;
     }
-    </style>
-    {% endblock %}
+</style>
+{% endblock %}
