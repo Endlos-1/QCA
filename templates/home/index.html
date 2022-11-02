@@ -16,6 +16,7 @@
 
 <!-- Theme Style -->
 <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <!-- Favicon and Touch Icons  -->
 <link rel="shortcut icon" href="{% static 'home/icon/favicon.png' %}">
@@ -37,40 +38,6 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!-- Main Content -->
 
 
-<div class="fab-container">
-    <div class="button iconbutton">
-    <i class="fa-solid fa-plus"></i>
-    </div>
-    </div>
-
-    <style>
-        .fab-container{
-position:fixed;
-bottom:50px;
-right:80px;
-cursor:pointer;
-}
-
-.iconbutton{
-width:50px;
-height:50px;
-border-radius: 100%;
-background: #FF4F79;
-
-}
-.button{
-width:60px;
-height:60px;
-background:#A11692;
-}
-.iconbutton i{
-display:flex;
-align-items:center;
-justify-content:center;
-height: 100%;
-color:white;
-}
-    </style>
 <div id="main-content" class="site-main clearfix">
     <div id="content-wrap">
         <div id="site-content" class="site-content clearfix">
@@ -927,6 +894,33 @@ color:white;
             </div><!-- /#site-content -->
         </div><!-- /#content-wrap -->
     </div><!-- /#main-content -->
-
+    <div class="fixed-btn">
+        <p>Apply Now</p>
+      </div>
+                            <style>
+                                .fixed-btn{
+      position: fixed;
+      bottom: 10%;
+      right: 3%;
+      background: #0FACF3;
+      width: 180px;
+      height: 45px;
+      line-height: 45px;
+      text-align: center;
+      border-radius: 3px;
+      box-shadow: 4px 4px 4px #0a78aa;
+      cursor: pointer;
+    }
     
+    .fixed-btn p{
+      text-transform: uppercase;
+      font-family: arial;
+      font-weight: 900;
+      color: #fff;
+    }
+    
+    .fixed-btn:active{
+      box-shadow: 0  0;
+    }
+    </style>
     {% endblock %}
