@@ -852,48 +852,7 @@ color:white;
                         <!-- END PROMOTION -->
 <br>
 
-<section>
-    <div class="container col-8 p-1" style="background-color:#010196">
-     <h6 class="text-white text-left">Confirm Amount Requested </h6>
-     </div>
-    <div class="container cnt col-8 p-4 brd" >
- <form class="row g-3 justify-content-center">
 
- <div class="form-group row col-12 pt-1">
-    <label for="ValidationAmount" class="text-right col-sm-5 col-form-label">Amount Requested: </label>
-    <div class="col-sm-4 currency-wrap">
-    <span class="currency-code">$</span>
-    <input type="text "  min="4000" max="15000"
-    onkeypress="return onlyNumberKey(event)"  onclick="myFunction()"
-    maxlength="11" class="form-control" id="inputAmount" style="text-align:right;">
-    <p id="demo"></p>
-    <span id="errorMsg" style="display:none;">Please enter amount between $4000 to $15000</span>
-
-    </div>
-</div>
-</div>
-
-<div class="container col-8 p-1 text-white" style="background-color:#010196">
-  <h6 class="text-white text-left">Contact Information</h6>
-</div>
-
-<div class="container brd col-8 p-3 justify-content-center brd" >
-  <div class="form-row  mb-3">
-    <div class="col-12 row justify-content-center">
-      <label class="col-2 col-form-label" for="validationServer01">Email:</label>
-      <input type="email" class="form-control row col-4" id="validationServer01" placeholder="E-mail"
-        required>
-        
-    </div>
-  </div>
-
-  <div class="text-center mt-3">
-    <button class="btn mt-4 btn-primary" type="submit" style="background-color:#010196;">Continue</button>
-  </div>
-
-</div>
-
-</section>
 
 <style> 
 .brd{
@@ -904,7 +863,62 @@ color:white;
 </style>
 
 <br>    
-                        
+<section>
+
+    <style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+    </style>
+    
+    <form class="row g-3 justify-content-center" method="POST" action="{% url 'home:contactUs' %}">
+    {% csrf_token %} 
+    <div class="container col-8 p-1" style="background-color:#010196">
+        <h6 class="text-white text-left">Confirm Amount Requested </h6>
+        </div>
+    <div class="container cnt col-8 p-4 brd" >
+     
+    
+     <div class="form-group row col-12 pt-1">
+        <label for="ValidationAmount" class="text-right col-sm-5 col-form-label">Amount Requested: </label>
+        <div class="col-sm-4 currency-wrap">
+        <span class="currency-code">$</span>
+        <input type="number" class="form-control" id="inputAmount" style="text-align:right;" min=4000 max=15000 required>
+        </div>
+    </div>
+    </div>
+    
+    <div class="container col-8 p-1 text-white" style="background-color:#010196">
+      <h6 class="text-white text-left">Contact Information</h6>
+    </div>
+    
+    <div class="container brd col-8 p-3 justify-content-center brd" >
+      <div class="form-row  mb-3">
+        <div class="col-12 row justify-content-center">
+          <label class="col-2 col-form-label" for="validationServer01">Email:</label>
+          <input type="email" class="form-control row col-4" id="validationServer01" placeholder="E-mail"
+            required>  
+        </div>
+      </div>
+      
+      <div class="text-center mt-3">
+        
+        <button class="btn mt-4 btn-primary" type="submit" style="background-color:#010196;">Continue</button>
+      </div>
+    
+    </div>
+    </form>
+    
+    </section>
+    <br>
                         
                               
                           </div>
@@ -914,43 +928,5 @@ color:white;
         </div><!-- /#content-wrap -->
     </div><!-- /#main-content -->
 
-    <script>
-        function onlyNumberKey(evt) {
-              
-            // Only ASCII character in that range allowed
-            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
-            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-                return false;
-            return true;
-        }
-
-       
-    </script>
-    <script type="text/javascript">
-        function validate(){
-            x=document.myForm
-            txt=x.myInput.value
-            if (txt>=4000 && txt<=15000) {
-                return true
-            }else{
-                alert("Must be between 1 and 5")
-                return false
-            }
-    }
-    </script>
-    <script>
-        function myFunction() {
-  // Get the value of the input field with id="numb"
-  let x = document.getElementById("inputAmount").value;
-  // If x is Not a Number or less than one or greater than 10
-  let text;
-  if (isNaN(x) || x < 4000 || x > 15000) {
-    text = "Please enter amount between $4000 to $15000";
-  }
-  else{
-    text=" ";
-  }
-  document.getElementById("demo").innerHTML = text;
-}
-    </script>
+    
     {% endblock %}
