@@ -863,7 +863,12 @@ color:white;
     <label for="ValidationAmount" class="text-right col-sm-5 col-form-label">Amount Requested: </label>
     <div class="col-sm-4 currency-wrap">
     <span class="currency-code">$</span>
-    <input type="text" class="form-control" id="inputAmount" style="text-align:right;">
+    <input type="text "  min="4000" max="15000"
+    onkeypress="return onlyNumberKey(event)"  onclick="myFunction()"
+    maxlength="11" class="form-control" id="inputAmount" style="text-align:right;">
+    <p id="demo"></p>
+    <span id="errorMsg" style="display:none;">Please enter amount between $4000 to $15000</span>
+
     </div>
 </div>
 </div>
@@ -909,5 +914,43 @@ color:white;
         </div><!-- /#content-wrap -->
     </div><!-- /#main-content -->
 
-    
+    <script>
+        function onlyNumberKey(evt) {
+              
+            // Only ASCII character in that range allowed
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                return false;
+            return true;
+        }
+
+       
+    </script>
+    <script type="text/javascript">
+        function validate(){
+            x=document.myForm
+            txt=x.myInput.value
+            if (txt>=4000 && txt<=15000) {
+                return true
+            }else{
+                alert("Must be between 1 and 5")
+                return false
+            }
+    }
+    </script>
+    <script>
+        function myFunction() {
+  // Get the value of the input field with id="numb"
+  let x = document.getElementById("inputAmount").value;
+  // If x is Not a Number or less than one or greater than 10
+  let text;
+  if (isNaN(x) || x < 4000 || x > 15000) {
+    text = "Please enter amount between $4000 to $15000";
+  }
+  else{
+    text=" ";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+    </script>
     {% endblock %}

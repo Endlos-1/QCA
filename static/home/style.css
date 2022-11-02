@@ -3615,7 +3615,7 @@ body.page #main-content {
 	position: absolute;
 	left: 0;
 	top: 99%;
-	width: 258px;
+	width: 290px;
 	-webkit-transform: translateY(-5px);
 	transform: translateY(-5px);
 	filter: alpha(opacity=0);
