@@ -51,7 +51,8 @@
                         <div class="themesflat-spacer clearfix" data-desktop="32" data-mobi="40" data-smobi="40"></div>
 
                         <div class="themesflat-contact-form style-1">
-                            <form action="./includes/contact/contact-process.php" method="post" class="contact-form wpcf7-form">
+                            <form action="{% url 'home:thanks' %}" method="post" class="contact-form wpcf7-form">
+                                {% csrf_token %}
                                 <span class="wpcf7-form-control-wrap your-name">
                                     <input type="text" tabindex="1" id="name" name="name" value="" class="wpcf7-form-control" onkeyup="enableSubmit()" placeholder="YOUR NAME*" required>
                                 </span>

@@ -27,3 +27,6 @@ def howit(request):
 
 def whyadvance(request):
     return render(request, 'home/whycommissionadvance.html')
+
+def thanks(request):
+    return render(request, 'home/thankyou.html')
