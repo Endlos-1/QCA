@@ -28,8 +28,39 @@
 {% endblock %}
 
 {% block body %}
+<div class="fixed-btn">
+  <p>Apply Now</p>
+</div>
+<style>
+  .fixed-btn {
+      position: fixed;
+      bottom: 10%;
+
+      background: #00ccff;
+      width: 180px;
+      height: 45px;
+      right: 2.5%;
+      line-height: 45px;
+      text-align: center;
+      border-radius: 3px;
+      box-shadow: 4px 4px 4px #0a78aa;
+      cursor: pointer;
+  }
+
+  .fixed-btn p {
+      text-transform: uppercase;
+      font-family: arial;
+      font-weight: 900;
+      color: #fff;
+  }
+
+  .fixed-btn:active {
+      box-shadow: 0 0;
+  }
+</style>
+
 <section>
-  <div class="container" style="padding-top: 160px;">
+  <div class="container" style="padding-top: 160px; font-family: Montserrat; font-size: 15px;">
     <p class="sub-heading clearfix text-justify " style="color:black">
       <h2 class="heading clearfix">BROKER FREQUENTLY ASKED QUESTIONS<br></h2></p>
     <p align="left" style="color:black"> <b>Why does the broker review and sign the advance agreement?</b><BR>
