@@ -4,7 +4,7 @@ from .import views
 app_name = 'accounts'
 
 urlpatterns = [
-    path("register", views.register, name="register"),
-    path("signin", views.signin, name="signin"),
-    path("signout", views.signout, name="signout"),
+    path("register", views.RegisterView.as_view(), name="register"),
+    path("signin", views.LoginView.as_view(), name="signin"),
+    path("signout", views.LogoutView.as_view(), name="signout"),
 ]

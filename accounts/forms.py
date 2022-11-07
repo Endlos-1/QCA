@@ -1,81 +1,103 @@
 from django import forms
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.core.exceptions import ValidationError
-from django.forms.fields import EmailField
-from django.forms.forms import Form
+from django.contrib.auth import authenticate
+from django.contrib.auth.forms import UserCreationForm
+
+from .models import User
 
 
-class SignUpForm(UserCreationForm):
-    fname = forms.CharField(label='First name', min_length=4, max_length=150)
-    lname = forms.CharField(label='Last name', min_length=4, max_length=150)
-    email = forms.EmailField(label='Email')
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
+class UserLoginForm(forms.Form):
+    email = forms.EmailField()
+    # username = UsernameField(widget=forms.TextInput(attrs={'autofocus': True}))
+    password = forms.CharField(
+        label="Password",
+        strip=False,
+        widget=forms.PasswordInput,
+    )
 
-    def init(self,*args , **kwargs):
-        super().init(*args , **kwargs)
-        self.fields["fname"].widget.attrs.update({
-            'placeholder':'First name',})
-        self.fields["lname"].widget.attrs.update({
-            'placeholder':'Last name',})
-        self.fields["email"].widget.attrs.update({
-            'placeholder':'email',})
-        self.fields["password1"].widget.attrs.update({
-            'placeholder':'password',})
-        self.fields["password2"].widget.attrs.update({
-            'placeholder':'confirm password',})
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = None
+        self.fields['email'].widget.attrs.update(
+            {'placeholder': 'Enter Email'})
+        self.fields['password'].widget.attrs.update(
+            {'placeholder': 'Enter Password'})
+
+    def clean(self, *args, **kwargs):
+        email = self.cleaned_data.get("email")
+        password = self.cleaned_data.get("password")
+
+        if email and password:
+            self.user = authenticate(email=email, password=password)
+
+            if self.user is None:
+                raise forms.ValidationError("User Does Not Exist.")
+            if not self.user.check_password(password):
+                raise forms.ValidationError("Password Does not Match.")
+            if not self.user.is_active:
+                raise forms.ValidationError("User is not Active.")
+
+        return super(UserLoginForm, self).clean(*args, **kwargs)
+
+    def get_user(self):
+        return self.user
+
+
+class UserRegistrationForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['first_name'].icon = '<span class="input-field-icon"><i class="fas fa-envelope"></i></span>'
+        self.fields['first_name'].widget.attrs.update(
+            {'placeholder': 'Enter First Name'})
+        self.fields['last_name'].widget.attrs.update(
+            {'placeholder': 'Enter Last Name'})
+        self.fields['email'].widget.attrs.update({'placeholder': 'Email'})
+        # self.fields['username'].widget.attrs.update(
+        #     {'placeholder': 'Username'})
+        self.fields['password1'].widget.attrs.update(
+            {'placeholder': 'Enter password'})
+        self.fields['password2'].widget.attrs.update(
+            {'placeholder': 'Again password'})
+        # self.fields['email'].widget.attrs['placeholder'] = self.fields['email'].label or 'email@address.nl'
+
     class Meta:
-        model= User
-        fields=['fname', 'lname', 'email','password1','password2']
+        model = User
+        fields = (
+                  "first_name",
+                  "last_name",
+                  "email",
+                  "password1",
+                  "password2")
+
+        # widgets = {
+        #     'password1': forms.TextInput(attrs={'placeholder': 'Password'}),
+        #     'password2': forms.TextInput(attrs={'placeholder': 'Repeat your password'}),
+        # }
 
     def clean_email(self):
-        email = self.cleaned_data.get("email")
-        new = User.objects.filter(email=email)
-        if User.objects.filter(email=email).exists() or new.count():
-            raise forms.ValidationError("Email already exist")
+        email = self.cleaned_data['email']
+        if not email:
+            raise forms.ValidationError('Enter valid email')
         return email
 
-    def clean_password2(self):
-        print("pass")
-        password1 = self.cleaned_data['password1']
-        password2 = self.cleaned_data['password2']
-
-        if password1 and password2 and password1 != password2:
-            raise ValidationError("Password didn't match")
-        return password2
-
     def save(self, commit=True):
-        user = User.objects.create_user(
-            self.cleaned_data['email'],
-            self.cleaned_data['password1']
-        )
+        user = super(UserCreationForm, self).save(commit=False)
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        user.username = self.cleaned_data['first_name']
+        user.email = self.cleaned_data['email']
+        if commit:
+            user.save()
         return user
 
-class LoginForm(AuthenticationForm):
-    def init(self,*args , **kwargs):
-        super().init(*args , **kwargs)
-        self.fields["email"].widget.attrs.update({
-            'required':'',
-            'name':'email',
-            'id':'email',
-            'type':'text',
-            'class':'form-input',
-            'placeholder':'email',
-            'maxlenght':'30',
-            'minlenght':'6'
-        })
 
-        self.fields["password"].widget.attrs.update({
-            'required': '',
-            'name': 'password',
-            'id': 'password',
-            'type': 'text',
-            'class': 'form-input',
-            'placeholder': 'password',
-            'maxlenght': '100',
-            'minlenght': '6'
-        })
+class ProfileUpdateForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["first_name"].widget.attrs.update(
+            {'placeholder': 'Enter first name'})
+        self.fields["last_name"].widget.attrs.update(
+            {'placeholder': 'Enter last name'})
+
     class Meta:
-        model= User
-        fields=['email', 'password']
+        model = User
+        fields = ["first_name", "last_name"]

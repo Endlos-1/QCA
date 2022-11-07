@@ -1,48 +1,86 @@
-from django.contrib.auth import login, logout
+from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.shortcuts import render,redirect
-from .forms import SignUpForm, LoginForm
+from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import render, redirect, get_object_or_404
+# Create your views here.
+from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.generic import CreateView, FormView, RedirectView, ListView, DetailView, UpdateView
 
-def register(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            # log in  user
-            return redirect("home:index")
-    else:
-        form = SignUpForm()
-    return render(request, 'accounts/Register.html', {'form': form})
+from .models import User
+from .forms import UserRegistrationForm, UserLoginForm, ProfileUpdateForm
 
-def signin(request):
-    if request.method == 'POST':
-        form = LoginForm(data=request.POST)
-        # login
-        if form.is_valid():
-            user = form.get_user()
-            print('user')
-            email = form.cleaned_data.get("email")
-            # send_mail_after_registration(email)
-            print(user)
-            login(request, user)
-            return redirect("home:index")
-    else:
-        form = LoginForm()
-    return render(request,'accounts/login.html',{'form':form})
 
-# def send_mail_after_registration(email):
-#     subject = "You Account has been Successfully created"
-#     message = f"Welocme to ENDLOS"
-#     email_from = settings.EMAIL_HOST_USER
-#     recipient_list = [email]
-#     # send_mail(subject, message, email_from, recipient_list)
+class RegisterView(CreateView):
+    model = User
+    form_class = UserRegistrationForm
+    template_name = 'accounts/Register.html'
+    success_url = '/signin'
 
-def signout(request):
-    if request.method == 'POST':
-        logout(request)
-        return render(request,'home/index.html')
-    else:
-        form = AuthenticationForm()
-    return render(request,'accounts/login.html',{'form':form})
+    extra_context = {
+        'title': 'Register'
+    }
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return HttpResponseRedirect(self.get_success_url())
+        return super().dispatch(self.request, *args, **kwargs)
+
+    def get_success_url(self):
+        return self.success_url
+
+    def post(self, request, *args, **kwargs):
+
+        user_form = self.form_class(data=request.POST)
+
+        if user_form.is_valid():
+            user = user_form.save(commit=False)
+            password = user_form.cleaned_data.get("password1")
+            user.set_password(password)
+            user.save()
+            return redirect('accounts:signin')
+        else:
+            return render(request, 'accounts/Register.html', {'form': user_form})
+
+
+class LoginView(FormView):
+    """
+        Provides the ability to login as a user with an email and password
+    """
+    success_url = '/'
+    form_class = UserLoginForm
+    template_name = 'accounts/login.html'
+
+    extra_context = {
+        'title': 'Login'
+    }
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return HttpResponseRedirect(self.get_success_url())
+        return super().dispatch(self.request, *args, **kwargs)
+
+    def get_form_class(self):
+        return self.form_class
+
+    def form_valid(self, form):
+        auth.login(self.request, form.get_user())
+
+        return HttpResponseRedirect(self.get_success_url())
+        # return super(Login, self).form_valid(form)
+
+    def form_invalid(self, form):
+        """If the form is invalid, render the invalid form."""
+        return self.render_to_response(self.get_context_data(form=form))
+
+
+class LogoutView(RedirectView):
+    """
+    Provides users the ability to logout
+    """
+    url = '/signin'
+
+    def get(self, request, *args, **kwargs):
+        auth.logout(request)
+        messages.success(request, 'You are now logged out')
+        return super(LogoutView, self).get(request, *args, **kwargs)
