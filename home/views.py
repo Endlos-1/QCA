@@ -17,6 +17,13 @@ def applynow(request):
     return render(request, 'home/applynow.html')
 
 def contactUs(request):
+    if request.method=="POST":
+        name=request.POST['name']
+        phone=request.POST['phone']
+        subject=request.POST['subject']
+        message=request.POST['message']
+        print(name,phone,subject,message)
+
     return render(request, 'home/contactUs.html')
 
 def aboutUs(request):
