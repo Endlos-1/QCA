@@ -526,16 +526,27 @@
               </select>
             </div>
 
-            <div class="form-row ml-4 mb-3" style="margin-right:20px;">
-              <div class="col-5 row justify-content">
-                <label class=" col-sm-5 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
-                  style="font-size: 15px; ">Seller
-                  name:</label>
-                <input type="text" class="form-control  row col-6" id="validationServer01" placeholder="Seller name"
-                  required>
+            <style>
+              /* Chrome, Safari, Edge, Opera */
+              input::-webkit-outer-spin-button,
+              input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+              }
+
+              /* Firefox */
+              input[type=number] {
+                -moz-appearance: textfield;
+              }
+            </style>
+            <div class="row mb-3" style="font-size:15px;">
+              <label class=" col-sm-4 ml-3 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
+                style="font-size: 15px; text-align: right; ">How many transactions have you completed<br> in the past 12 months?:</label>
+              <div class="col-sm-4">
+                <span class="currency-code">$</span>
+                <input type="number" class="form-control  row col-6" id="validationServer01" min=1 max=10 required>
               </div>
             </div>
-
 
             <div class="form-row ml-4 mb-3" style="margin-right:20px;">
               <div class="col-5 row justify-content">
