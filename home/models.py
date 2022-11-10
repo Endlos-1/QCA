@@ -41,3 +41,10 @@ class AgentBankDetails(models.Model):
     Agent_City = models.CharField(max_length=15)
     Agent_State = USStateField(blank=True)
     Agent_Zip = USZipCodeField(blank=True)
+
+
+class ContactUs(models.Model):
+    Name=models.CharField(max_length=30)
+    Phone=models.CharField(max_length=10)
+    Subject=models.CharField(max_length=40)
+    Message=models.TextField()

@@ -1,6 +1,7 @@
 from re import template
 from django.shortcuts import render
 from home.models import AmountRequest
+from home.models import ContactUs
 
 # Create your views here.
 
@@ -32,7 +33,9 @@ def contactUs(request):
         subject=request.POST['subject']
         message=request.POST['message']
         print(name,phone,subject,message)
-
+        print("This is contact us post")
+        ins = ContactUs(Name=name,Phone=phone,Subject=subject,Message=message)
+        ins.save()
     return render(request, 'home/contactUs.html')
 
 def aboutUs(request):
