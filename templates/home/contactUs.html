@@ -82,7 +82,7 @@
                         <div class="themesflat-spacer clearfix" data-desktop="32" data-mobi="40" data-smobi="40"></div>
 
                         <div class="themesflat-contact-form style-1">
-                            <form action="{% url 'home:thanks' %}" method="post" class="contact-form wpcf7-form">
+                            <form action="{% url 'home:thanks' %}" method="POST" class="contact-form wpcf7-form">
                                 {% csrf_token %}
                                 <span class="wpcf7-form-control-wrap your-name">
                                     <input type="text" tabindex="1" id="name" name="name" value="" class="wpcf7-form-control" onkeyup="enableSubmit()" placeholder="YOUR NAME*" required>
@@ -95,7 +95,7 @@
                                     <input type="text" tabindex="3" id="subject" name="subject" value="" class="wpcf7-form-control" onkeyup="enableSubmit()" placeholder="SUBJECT*" required>
                                 </span>
                                 <span class="wpcf7-form-control-wrap your-message">
-                                    <textarea name="message" tabindex="4" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" onkeyup="enableSubmit()" placeholder="YOUR MESSAGE*" required></textarea>
+                                    <textarea name="message" tabindex="4" id="message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" onkeyup="enableSubmit()" placeholder="YOUR MESSAGE*" required></textarea>
                                 </span>
                                 <div class="wrap-submit" style="text-align: center;">
                                     <button type="submit" value="submit" class="submit wpcf7-form-control wpcf7-submit" id="submit" name="submit" disabled>CALL ME BACK

@@ -2,6 +2,7 @@ from re import template
 from django.shortcuts import render
 from home.models import AmountRequest
 from home.models import ContactUs
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -15,6 +16,7 @@ def agent_Faq(request):
 def broker_Faq(request):
     return render(request, 'home/brokerFaq.html')
 
+@login_required(login_url='accounts:signin')
 def applynow(request):
     if request.method=="POST":
         amount =request.POST['amount']
@@ -27,15 +29,6 @@ def applynow(request):
 
 
 def contactUs(request):
-    if request.method=="POST":
-        name=request.POST['name']
-        phone=request.POST['phone']
-        subject=request.POST['subject']
-        message=request.POST['message']
-        print(name,phone,subject,message)
-        print("This is contact us post")
-        ins = ContactUs(Name=name,Phone=phone,Subject=subject,Message=message)
-        ins.save()
     return render(request, 'home/contactUs.html')
 
 def aboutUs(request):
@@ -48,4 +41,13 @@ def whyadvance(request):
     return render(request, 'home/whycommissionadvance.html')
 
 def thanks(request):
+    if request.method=="POST":
+        name=request.POST['name']
+        phone=request.POST['phone']
+        subject=request.POST['subject']
+        message=request.POST['message']
+        print(name,phone,subject,message)
+        print("This is contact us post")
+        ins = ContactUs(Name=name,Phone=phone,Subject=subject,Message=message)
+        ins.save()
     return render(request, 'home/thankyou.html')
