@@ -1,5 +1,6 @@
 from re import template
 from django.shortcuts import render
+from home.models import AmountRequest
 
 # Create your views here.
 
@@ -14,7 +15,15 @@ def broker_Faq(request):
     return render(request, 'home/brokerFaq.html')
 
 def applynow(request):
+    if request.method=="POST":
+        amount =request.POST['amount']
+        email=request.POST['email']
+        print(amount,email)
+        print("This  is Post")
+        ins = AmountRequest(amount=amount,mail=email)
+        ins.save()
     return render(request, 'home/applynow.html')
+
 
 def contactUs(request):
     if request.method=="POST":

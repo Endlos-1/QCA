@@ -833,47 +833,48 @@
                                 }
                             </style>
 
+
                             <form class="row g-3 justify-content-center" method="POST"
-                                action="{% url 'home:contactUs' %}">
-                                {% csrf_token %}
-                                <div class="container col-8 p-1" style="background-color:#003399; padding-left: 134px;" >
-                                    <h6 class="text-white text-left">Confirm Amount Requested </h6>
+                            action="{% url 'home:applynow' %}">
+                            {% csrf_token %}
+                            <div class="container col-8 p-1" style="background-color:#003399">
+                                <h6 class="text-white text-left">Confirm Amount Requested </h6>
+                            </div>
+                            <div class="container cnt col-8 p-4 brd">
+
+
+                                <div class="form-group row col-12 pt-1">
+                                    <label for="ValidationAmount" class="text-right col-sm-5 col-form-label">Amount
+                                        Requested: </label>
+                                    <div class="col-sm-4 currency-wrap">
+                                        <span class="currency-code">$</span>
+                                        <input type="number" class="form-control" name="amount" id="amount"
+                                            style="text-align:right;" min=4000 max=15000 required>
+                                    </div>
                                 </div>
-                                <div class="container cnt col-8 p-4 brd">
+                            </div>
 
+                            <div class="container col-8 p-1 text-white" style="background-color:#003399">
+                                <h6 class="text-white text-left">Contact Information</h6>
+                            </div>
 
-                                    <div class="form-group row col-12 pt-1">
-                                        <label for="ValidationAmount" class="text-right col-sm-5 col-form-label">Amount
-                                            Requested: </label>
-                                        <div class="col-sm-4 currency-wrap">
-                                            <span class="currency-code">$</span>
-                                            <input type="number" class="form-control" id="inputAmount"
-                                                style="text-align:right;" min=4000 max=15000 required>
-                                        </div>
+                            <div class="container brd col-8 p-3 justify-content-center brd">
+                                <div class="form-row  mb-3">
+                                    <div class="col-12 row justify-content-center">
+                                        <label class="col-2 col-form-label" for="validationServer01">Email:</label>
+                                        <input type="email" class="form-control row col-4" id="email" name ="email"
+                                            placeholder="E-mail" required>
                                     </div>
                                 </div>
 
-                                <div class="container col-8 p-1 text-white" style="background-color:#003399">
-                                    <h6 class="text-white text-left">Contact Information</h6>
+                                <div class="text-center mt-3">
+
+                                    <button class="btn mt-4 btn-primary" type="submit"
+                                        style="background-color:#00ccff;">Continue</button>
                                 </div>
 
-                                <div class="container brd col-8 p-3 justify-content-center brd">
-                                    <div class="form-row  mb-3">
-                                        <div class="col-12 row justify-content-center">
-                                            <label class="col-2 col-form-label" for="validationServer01">Email:</label>
-                                            <input type="email" class="form-control row col-4" id="validationServer01"
-                                                placeholder="E-mail" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="text-center mt-3">
-
-                                        <button class="btn mt-4 btn-primary" type="submit"
-                                            style="background-color:#00ccff;">Continue</button>
-                                    </div>
-
-                                </div>
-                            </form>
+                            </div>
+                        </form>
 
                         </section>
                         <br>
