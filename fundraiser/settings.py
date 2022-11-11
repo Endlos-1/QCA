@@ -35,7 +35,6 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    "blogsite",
     "django.contrib.admin",
     "clearcache",
     "django.contrib.auth",
