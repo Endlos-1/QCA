@@ -90,7 +90,7 @@
       width: 150px;
     }
   </style>
-
+<!--Form 1 Basic details-->
 
   <section>
     <div class="container col-8 p-1" style="background-color:#343a40">
@@ -282,7 +282,7 @@
           </form>
 
           <div class="text-center mt-3">
-            <button class="btn mt-4 btn-primary" type="submit" style="background-color:#23a1d3;">CONTINUE</button>
+            <button class="btn mt-4 btn-primary" onclick="showForm1()" type="submit" style="background-color:#23a1d3;">CONTINUE</button>
           </div>
 
         </div>
@@ -292,6 +292,8 @@
   </section>
   <br>
   <br>
+  
+  
   <!--Sales form section-->
 
 
@@ -305,7 +307,7 @@
       </div>
       <br>
 
-      <form class="row g-3 justify-content-center">
+      <form class="row g-3 justify-content-center" method="POST"  id="showForm1">
         <div class="container p-3 my-3  justify-content-center ">
           <form>
 
@@ -882,6 +884,7 @@
 
 
   <br>
+  <!--Bank information Form-->
   <section>
     <div class="container col-8 p-1" style="background-color:#343a40">
       <h5 class="text-white text-left">Bank Information </h5>
@@ -1086,37 +1089,117 @@
 
 
   </section>
-<br>
+  <br>
+<!--Documents upload form-->
+  <section>
+    <div class="container col-8 p-1" style="background-color:#343a40">
+      <h5 class="text-white text-left">DO YOU WANT TO SPEED UP YOUR APPLICATION ? UPLOAD THE FOLLOWING: </h5>
+    </div>
+    <div class="container cnt col-8 p-4 brd">
+      <form class="row g-3 justify-content-center">
+        <div class="container p-3 my-3  justify-content-center ">
 
-<section>
-  <div class="container col-8 p-1" style="background-color:#343a40">
-    <h5 class="text-white text-left">DO YOU WANT TO SPEED UP YOUR APPLICATION ? UPLOAD THE FOLLOWING: </h5>
-  </div>
-  <div class="container cnt col-8 p-4 brd">
-    <form class="row g-3 justify-content-center">
-      <div class="container p-3 my-3  justify-content-center ">
-       
+          <div class="form-row ml-3 mb-3" style="margin-right:-16px; ">
+            <div class="col-5 row justify-content" style="padding-right: 0px;">
+              <label class=" col-sm-8 mb-3 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
+                style="font-size: 15px; padding-right: 87px; color:black;"><b>1. Purchase Agreement (RPA)</b></label>
+
+              <form>
+                <br>
+                <input type="file" class="col-md-6" id="myFile" name="filename" style="font-size: 15px;">
+              </form>
+            </div>
+            <div class="col-5 row justify-content">
+              <label class=" col-sm-12 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
+                style="font-size: 15px; color: black;"><b>2. Broker of Record and Escrow Contact Information</b>
+                :</label>
+              <form>
+                <br>
+                <input type="file" class="col-md-12" id="myFile" name="filename"
+                  style="font-size: 15px;padding-left: 45px;">
+              </form>
+            </div>
+
+          </div>
+
+          <!--Statement ADdress portion-->
+          <!-- city code -->
+        </div>
+      </form>
 
 
+      <form class="row g-3 justify-content-center">
+        <div class="container p-3 my-3  justify-content-center ">
 
-        <!--Statement ADdress portion-->
-        <!-- city code -->
+          <div class="form-row ml-3 mb-3" style="margin-right:-16px; ">
+            <div class="col-5 row justify-content" style="padding-right: 0px;">
+              <label class=" col-sm-8 mb-3 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
+                style="font-size: 15px; padding-right: 87px; color:black;"><b>1. Purchase Agreement (RPA)</b></label>
 
+              <form>
+                <br>
+                <input type="file" class="col-md-6" id="myFile" name="filename" style="font-size: 15px;">
+              </form>
+            </div>
+            <div class="col-5 row justify-content">
+              <label class=" col-sm-12 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
+                style="font-size: 15px; color: black;"><b>2. Broker of Record and Escrow Contact Information</b>
+                :</label>
+              <form>
+                <br>
+                <input type="file" class="col-md-12" id="myFile" name="filename"
+                  style="font-size: 15px;padding-left: 45px;">
+              </form>
+            </div>
+
+          </div>
+
+          <!--Statement ADdress portion-->
+          <!-- city code -->
+        </div>
+      </form>
+
+
+      <form class="row g-3 justify-content-center">
+        <div class="container p-3 my-3  justify-content-center ">
+
+          <div class="form-row ml-3 mb-3" style="margin-right:-16px; ">
+            <div class="col-5 row justify-content" style="padding-right: 0px;">
+              <label class=" col-sm-8 mb-3 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
+                style="font-size: 15px; padding-right: 87px; color:black;"><b>1. Purchase Agreement (RPA)</b></label>
+
+              <form>
+                <br>
+                <input type="file" class="col-md-6" id="myFile" name="filename" style="font-size: 15px;">
+              </form>
+            </div>
+            <div class="col-5 row justify-content">
+              <label class=" col-sm-12 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
+                style="font-size: 15px; color: black;"><b>2. Broker of Record and Escrow Contact Information</b>
+                :</label>
+              <form>
+                <br>
+                <input type="file" class="col-md-12" id="myFile" name="filename"
+                  style="font-size: 15px;padding-left: 45px;">
+              </form>
+            </div>
+
+          </div>
+
+          <!--Statement ADdress portion-->
+          <!-- city code -->
+        </div>
+      </form>
+
+
+      <button class="btn mt-4 btn-primary" type="submit" style="background-color:rgb(76, 236, 76);"><b>SEND
+          APPLICATION</b></button>
+      <br>
+    </div>
 
     </form>
 
-
-
-
-  </div>
-  <h6 class="text-left " style="font-size: 17px;"><b>STATEMENT ADDRESS</b></h6><BR>
-  
-  <button class="btn mt-4 btn-primary" type="submit" style="background-color:#23a1d3;">PREVIOUS PAGE</button>
-  <button class="btn mt-4 btn-primary" type="submit" style="background-color:#23a1d3;">COMPLETE APPLICATION</button>
-  <br>
-
-
-</section>
+  </section>
 
 
 
@@ -1179,6 +1262,12 @@
         autoclose: true,
       })
     })
+  </script>
+
+  <script>
+    function showForm2() {
+  document.getElementById("showForm1").style.display = "block";
+}
   </script>
 </body>
 
