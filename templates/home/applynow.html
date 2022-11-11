@@ -90,21 +90,22 @@
       width: 150px;
     }
   </style>
-<!--Form 1 Basic details-->
+  <!--Form 1 Basic details-->
 
   <section>
     <div class="container col-8 p-1" style="background-color:#343a40">
       <h5 class="text-white text-left">Contact Information </h5>
     </div>
     <div class="container cnt col-8 p-4 brd">
-      <form class="row g-3 justify-content-center">
+      <form class="row g-3 justify-content-center" method="POST" action="{% url 'home:applynow' %}" >
+        {% csrf_token %}
         <div class="row form-row col-12 justify-content-center">
 
           <div class="row col-11 justify-content">
             <label class="col-from-label col-5 mb-0" for="validationServer01"
               style="padding-bottom: 0%; font-size: 15px; margin-left: -10px;">Are you the
               Broker of record of your coampany ?</label>
-            <select id="inputState" class="form-control col-3">
+            <select id="form1Record" class="form-control col-3">
               <option selected></option>
               <option style="font-size: 15px;">Yes</option>
               <option style="font-size: 15px;">No</option>
@@ -127,7 +128,7 @@
                   commission
                   advance comapnies ?</label>
                 <div class="form-check row col-1">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="DoyouNo" value="option1"
                     checked>
                   <label class="form-check-label" for="exampleRadios1"
                     style="color: black; font-size:15px ;padding-left: 20px;">
@@ -135,7 +136,7 @@
                   </label>
                 </div>
                 <div class="form-check row col-1" style="padding-left:50px">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="DoyouYes" value="option2">
                   <label class="form-check-label" for="exampleRadios2"
                     style="color: black; font-size: 15px; padding-left: 20px; ">
                     Yes
@@ -164,8 +165,6 @@
             </div>
 
             <!-- address  -->
-
-
             <div class="row mb-3" style="font-size:15px;">
               <label class=" col-sm-2 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
                 style="font-size: 15px; ">Home
@@ -175,16 +174,7 @@
                   required>
               </div>
             </div>
-
-
-
-
-
             <!-- city code -->
-
-
-
-
             <div class="form-row mb-4 ">
               <div class="col-1" style="margin-left:85px;">
                 <label class=" col-sm-2 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
@@ -282,18 +272,19 @@
           </form>
 
           <div class="text-center mt-3">
-            <button class="btn mt-4 btn-primary" onclick="showForm1()" type="submit" style="background-color:#23a1d3;">CONTINUE</button>
+            <button class="btn mt-4 btn-primary" onclick="showForm1()" type="submit"
+              style="background-color:#23a1d3;">CONTINUE</button>
           </div>
 
         </div>
-
+      </form>
     </div>
 
   </section>
   <br>
   <br>
-  
-  
+
+
   <!--Sales form section-->
 
 
@@ -307,7 +298,7 @@
       </div>
       <br>
 
-      <form class="row g-3 justify-content-center" method="POST"  id="showForm1">
+      <form class="row g-3 justify-content-center" method="POST" id="showForm1">
         <div class="container p-3 my-3  justify-content-center ">
           <form>
 
@@ -1090,7 +1081,7 @@
 
   </section>
   <br>
-<!--Documents upload form-->
+  <!--Documents upload form-->
   <section>
     <div class="container col-8 p-1" style="background-color:#343a40">
       <h5 class="text-white text-left">DO YOU WANT TO SPEED UP YOUR APPLICATION ? UPLOAD THE FOLLOWING: </h5>
@@ -1266,8 +1257,8 @@
 
   <script>
     function showForm2() {
-  document.getElementById("showForm1").style.display = "block";
-}
+      document.getElementById("showForm1").style.display = "block";
+    }
   </script>
 </body>
 

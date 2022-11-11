@@ -48,3 +48,9 @@ class ContactUs(models.Model):
     Phone=models.CharField(max_length=10)
     Subject=models.CharField(max_length=40)
     Message=models.TextField()
+
+
+class BasicForm1Record(models.Model):
+    BrokerRecordOfCompany=models.CharField(max_length=5)
+    OpenAdvanceswihOther=models.BooleanField(default=False)
+    
