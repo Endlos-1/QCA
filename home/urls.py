@@ -1,10 +1,12 @@
 from django.urls import path
-
+from django.contrib import admin
+from django.urls import path
 from . import views
 app_name = 'home'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('admin/', admin.site.urls),
     path('agent', views.agent_Faq, name='agent_Faq'),
     path('broker', views.broker_Faq, name='broker_Faq'),
     path('applynow', views.applynow, name='applynow'),
