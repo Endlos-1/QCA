@@ -27,7 +27,6 @@ def applynow(request):
         ins.save()
     return render(request, 'home/applynow.html')
 
-
 def contactUs(request):
     return render(request, 'home/contactUs.html')
 

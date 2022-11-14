@@ -37,7 +37,7 @@ class Property(models.Model):
 class AgentBankDetails(models.Model):
     Agent_ID = models.ForeignKey(User, on_delete=models.CASCADE)
     Agent_Bank_Name = models.CharField(max_length=15)
-    Agent_address = models.CharField(max_length=50)
+    Agent_type = models.CharField(max_length=50)
     Agent_City = models.CharField(max_length=15)
     Agent_State = USStateField(blank=True)
     Agent_Zip = USZipCodeField(blank=True)
@@ -50,7 +50,41 @@ class ContactUs(models.Model):
     Message=models.TextField()
 
 
-class BasicForm1Record(models.Model):
+class SalesInformation_AgentDetail(models.Model):
+    Net_Commission = models.IntegerField()
+    Selling_or_Listing=models.BooleanField(default=True)
+    Transaction_completein_12months=models.IntegerField()
+    Pedning_Transaction=models.IntegerField()
+    Non_pending_Transaction=models.IntegerField()
+
+
+class RemainingFormRecords(models.Model):
     BrokerRecordOfCompany=models.CharField(max_length=5)
     OpenAdvanceswihOther=models.BooleanField(default=False)
+
+
+class ClosingCompanyDetails(models.Model):
+    Closing_Company=models.CharField(max_length=20)
+    Escrow=models.CharField(max_length=20)
+    ClosingCompany_address = models.CharField(max_length=50)
+    ClosingCompany_city = models.CharField(max_length=50)
+    ClosingCompany_State = USStateField(blank=True)
+    ClosingCompany_Zip = USZipCodeField(blank=True)
+    ClosingCompany_Cell_Phone = models.CharField(max_length=15)
+    ClosingCompany_Contact=models.CharField(max_length=20)
+    ClosingCompany_Email = models.EmailField(max_length=254)
+   
+class Broker(models.Model):
+    Broker_CompanyName=models.CharField(max_length=30)
+    Broker_address = models.CharField(max_length=50)
+    Broker_City = models.CharField(max_length=15)
+    Broker_State = USStateField(blank=True)
+    Broker_Zip = USZipCodeField(blank=True)
+    Company_Cell_Phone = models.CharField(max_length=15)
+    BrokerFirst_Name = models.CharField(max_length=15)
+    Broker_Last_Name = models.CharField(max_length=15)
+    Broker_Email = models.EmailField(max_length=254)
+   
+   
+
     
