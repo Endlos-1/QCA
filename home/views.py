@@ -1,6 +1,6 @@
 from re import template
 from django.shortcuts import render
-from home.models import AmountRequest
+from home.models import AmountRequest,RemainingFormRecords
 from home.models import ContactUs
 from django.contrib.auth.decorators import login_required
 
@@ -25,6 +25,12 @@ def applynow(request):
         print("This  is Post")
         ins = AmountRequest(amount=amount,mail=email)
         ins.save()
+
+    if request.method=="POST" and 'ContactButton' in request.POST:
+       BrokerRecordOfCompany=request.POST['BrokerRecordOfCompany']
+       print(BrokerRecordOfCompany)
+       ins=RemainingFormRecords(BrokerRecordOfCompany=BrokerRecordOfCompany)
+       ins.save()
     return render(request, 'home/applynow.html')
 
 def contactUs(request):

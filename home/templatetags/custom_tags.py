@@ -6,3 +6,4 @@ register = template.Library()
 @register.simple_tag
 def anchor(url_name, section_id):
     return reverse(url_name) + '#' + section_id
+

@@ -1,4 +1,5 @@
 {% extends "home/base.html" %}
+{% load custom_tags %}
 {% load static %}
 
 {% block h %}
@@ -97,7 +98,7 @@
       <h5 class="text-white text-left">Contact Information </h5>
     </div>
     <div class="container cnt col-8 p-4 brd">
-      <form class="row g-3 justify-content-center" method="POST" action="{% url 'home:applynow' %}">
+      <form class="row g-3 justify-content-center" method="POST" action="{% anchor 'home:applynow' 'SalesInfoForm' %}">
         {% csrf_token %}
         <div class="row form-row col-12 justify-content-center">
 
@@ -105,7 +106,7 @@
             <label class="col-from-label col-5 mb-0" for="validationServer01"
               style="padding-bottom: 0%; font-size: 15px; margin-left: -10px;">Are you the
               Broker of record of your coampany ?</label>
-            <select id="form1Record" class="form-control col-3">
+            <select id="BrokerRecordOfCompany" class="form-control col-3" name="BrokerRecordOfCompany">
               <option selected></option>
               <option style="font-size: 15px;">Yes</option>
               <option style="font-size: 15px;">No</option>
@@ -260,8 +261,7 @@
                   style="font-size: 15px; ">Cell
                   Phone:</label>
                 <div class="col-sm-8">
-                  <input type="number" class="form-control  row col-6" id="BasicPhone" placeholder="Phone number" min=1
-                    max=10 required>
+                  <input type="number" class="form-control  row col-6" id="BasicPhone" placeholder="Phone number" required>
                 </div>
               </div>
 
@@ -269,8 +269,8 @@
           </form>
 
           <div class="text-center mt-3">
-            <button class="btn mt-4 btn-primary" onclick="showForm1()" type="submit"
-              style="background-color:#23a1d3;">CONTINUE</button>
+            <button class="btn mt-4 btn-primary" type="submit" id="ContactButton"
+              style="background-color:#23a1d3;" ><a href="{%anchor 'home:applynow' 'SalesInfoForm'%}" style="color: White;">CONTINUE</a></button>
           </div>
 
         </div>
@@ -289,7 +289,7 @@
     <div class="container col-8 p-1" style="background-color:#343a40">
       <h5 class="text-white text-left">Sale Information </h5>
     </div>
-    <div class="container cnt col-8 p-4 brd">
+    <div class="container cnt col-8 p-4 brd" id="SalesInfoForm">
       <div>
         <h6 class="text-left " style="font-size: 17px;"><b>PROPERTY DETAILS</b></h6>
       </div>
@@ -439,11 +439,13 @@
                 </div>
               </div>
 
+              
+
               <div class="row mb-3" style="font-size:15px;">
                 <label class=" col-sm-2 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
                   style="font-size: 15px; ">Closing Date:</label>
                 <div>
-                  <input class="form-control col-md-8" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
+                  <input class="form-control col-md-12" id="date" name="date" placeholder="MM/DD/YYY" type="date" />
                 </div>
                 <label class="col-from-label col-2 ml-4 mb-0" for="validationServer01"
                   style="padding-bottom: 0%; font-size: 15px; margin-left: -10px;">Is this a short sale ?</label>
@@ -1217,89 +1219,8 @@
         // js velidations
 
   </script>
-  <script>
-    $(document).ready(function () {
-      var date_input = $('input[name="date"]'); //our date input has the name "date"
-      var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-      var options = {
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
-  </script>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-  <!-- Include Date Range Picker -->
-  <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 
-  <script>
-    $(document).ready(function () {
-      var date_input = $('input[name="date"]'); //our date input has the name "date"
-      var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-      date_input.datepicker({
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      })
-    })
-  </script>
-
-  <script>
-    function showForm2() {
-      document.getElementById("showForm1").style.display = "block";
-    }
-  </script>
-
-  <script>
-    function phonenumber(inputtxt) {
-      var phoneno = /^\d{10}$/;
-      if (inputtxt.value.match(phoneno)) {
-        return true;
-      }
-      else {
-        alert("Not a valid Phone Number");
-        return false;
-      }
-    }
-
-    var phone_input = document.getElementById("myform_phone");
-
-phone_input.addEventListener('input', () => {
-  phone_input.setCustomValidity('');
-  phone_input.checkValidity();
-});
-
-phone_input.addEventListener('invalid', () => {
-  if(phone_input.value === '') {
-    phone_input.setCustomValidity('Enter phone number!');
-  } else {
-    phone_input.setCustomValidity('Enter phone number in this format: 123-456-7890');
-  }
-});
-
-function validateForm() {
-        return checkPhone();
-    }
-    function checkPhone() {
-        var phone = document.forms["myForm"]["phone"].value;
-        var phoneNum = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/; 
-            if(phone.value.match(phoneNum)) {
-                return true;
-            }
-            else {
-                document.getElementById("phone").className = document.getElementById("phone").className + " error";
-                return false;
-            }
-        }
-
-  </script>
 </body>
 
 </html>

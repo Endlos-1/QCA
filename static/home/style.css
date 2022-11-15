@@ -2772,7 +2772,7 @@ body.page #main-content {
 }
 
 #site-header.is-small #main-nav>ul>li>a {
-	line-height: 74px;
+	line-height: 105px;
 }
 
 /* Header Styles */
@@ -6195,6 +6195,10 @@ body.page #main-content {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+  }
+
+  .logoutbutton{
+	text-decoration: none;
   }
 
  
