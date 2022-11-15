@@ -18,7 +18,7 @@ def broker_Faq(request):
 
 @login_required(login_url='accounts:signin')
 def applynow(request):
-    if request.method=="POST":
+    if request.method=="POST" and 'HomeFormButton' in request.POST:
         amount =request.POST['amount']
         email=request.POST['email']
         print(amount,email)
@@ -28,8 +28,9 @@ def applynow(request):
 
     if request.method=="POST" and 'ContactButton' in request.POST:
        BrokerRecordOfCompany=request.POST['BrokerRecordOfCompany']
+       OpenAdvanceswihOther=request.POST['OpenAdvanceswihOther']
        print(BrokerRecordOfCompany)
-       ins=RemainingFormRecords(BrokerRecordOfCompany=BrokerRecordOfCompany)
+       ins=RemainingFormRecords(BrokerRecordOfCompany=BrokerRecordOfCompany, OpenAdvanceswihOther=OpenAdvanceswihOther)
        ins.save()
     return render(request, 'home/applynow.html')
 

@@ -98,7 +98,7 @@
       <h5 class="text-white text-left">Contact Information </h5>
     </div>
     <div class="container cnt col-8 p-4 brd">
-      <form class="row g-3 justify-content-center" method="POST" action="{% anchor 'home:applynow' 'SalesInfoForm' %}">
+      <form class="row g-3 justify-content-center" method="POST" action="{% url 'home:applynow'%}">
         {% csrf_token %}
         <div class="row form-row col-12 justify-content-center">
 
@@ -118,8 +118,6 @@
 
         <div class="container p-3 my-3  justify-content-center ">
           <form>
-
-
             <br>
             <div class="form-row  mb-3">
               <div class="col-10 row justify-content">
@@ -129,7 +127,7 @@
                   commission
                   advance comapnies ?</label>
                 <div class="form-check row col-1">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="DoyouNo" value="option1"
+                  <input class="form-check-input" type="radio" name="OpenAdvanceswihOther" id="OpenAdvanceswihOther" 
                     checked>
                   <label class="form-check-label" for="exampleRadios1"
                     style="color: black; font-size:15px ;padding-left: 20px;">
@@ -270,7 +268,7 @@
 
           <div class="text-center mt-3">
             <button class="btn mt-4 btn-primary" type="submit" id="ContactButton"
-              style="background-color:#23a1d3;" ><a href="{%anchor 'home:applynow' 'SalesInfoForm'%}" style="color: White;">CONTINUE</a></button>
+              style="background-color:#23a1d3;" >CONTINUE</button>
           </div>
 
         </div>
