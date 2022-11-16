@@ -1,6 +1,6 @@
 from re import template
 from django.shortcuts import render
-from home.models import AmountRequest,RemainingFormRecords,Agent,Property
+from home.models import AmountRequest,RemainingFormRecords,Agent,Property,Broker
 from home.models import ContactUs
 from django.contrib.auth.decorators import login_required
 
@@ -96,4 +96,27 @@ def BrokerInfoForm(request):
 
 
 def DcoumentUpload(request):
+    if request.method=="POST":
+        Broker_CompanyName=request.POST['Broker_CompanyName']
+        Broker_address=request.POST['Broker_address']
+        Broker_City=request.POST['Broker_City']
+        Broker_State=request.POST['Broker_State']
+        Broker_Zip=request.POST['Broker_Zip']
+        Company_Cell_Phone=request.POST['Company_Cell_Phone']
+        BrokerFirst_Name=request.POST['BrokerFirst_Name']
+        Broker_Last_Name=request.POST['Broker_Last_Name']
+        Broker_Email=request.POST['Broker_Email']
+        
+        print(Broker_CompanyName,Broker_address,Broker_Zip,Company_Cell_Phone,BrokerFirst_Name,Broker_Email)
+
+        ins=Broker(Broker_CompanyName=Broker_CompanyName,
+        Broker_address=Broker_address,
+        Broker_City=Broker_City,
+        Broker_State=Broker_State,
+        Broker_Zip=Broker_Zip,
+        Company_Cell_Phone=Company_Cell_Phone,
+        BrokerFirst_Name=BrokerFirst_Name,
+        Broker_Last_Name=Broker_Last_Name,
+        Broker_Email=Broker_Email)
+        ins.save()
     return render(request,'home/DocumentUpload.html')
