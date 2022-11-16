@@ -55,7 +55,7 @@ def whyadvance(request):
     return render(request, 'home/whycommissionadvance.html')
 
 def thanks(request):
-    if request.method=="POST":
+    if request.method=="POST" :
         name=request.POST['name']
         phone=request.POST['phone']
         subject=request.POST['subject']
@@ -72,8 +72,24 @@ def SalesInfoForm(request):
 
 def BrokerInfoForm(request):
     if request.method=="POST":
-        Property_Address =request.POST['Property_Address']
-        print(Property_Address)
-        ins=Property(Property_Address=Property_Address)
+        Property_Addres=request.POST['Property_Addres']
+        Property_City=request.POST['Property_City'] 
+        Property_State=request.POST['Property_State']
+        Property_Zip=request.POST['Property_Zip']
+        Property_Seller_Name=request.POST['Property_Seller_Name']
+        Property_Buyer_Name =request.POST['Property_Buyer_Name']
+        Property_Final_Price =request.POST['Property_Final_Price']
+        Property_Closing_Date =request.POST['Property_Closing_Date']
+        
+        print(Property_Addres,Property_City)
+        ins=Property(Property_Address=Property_Addres,
+            Property_City=Property_City,
+            Property_State=Property_State,
+            Property_Zip=Property_Zip,
+            Property_Seller_Name=Property_Seller_Name,
+            Property_Final_Price=Property_Final_Price,
+            Property_Closing_Date=Property_Closing_Date,
+            Property_Buyer_Name=Property_Buyer_Name,
+           )
         ins.save()
     return render(request,'home/BrokerInfoForm.html')

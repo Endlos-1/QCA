@@ -31,7 +31,7 @@ class Property(models.Model):
     Property_Buyer_Name = models.CharField(max_length=15)
     Property_Final_Price = models.IntegerField()
     Property_Closing_Date = models.DateField(default=now)
-    Poperty_Short_Sale = models.BooleanField(default=True)
+    Poperty_Short_Sale = models.BooleanField(default=False)
 
 
 class AgentBankDetails(models.Model):
