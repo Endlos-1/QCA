@@ -16,5 +16,6 @@ urlpatterns = [
     path('whycommissionadvance',views.whyadvance, name="whyadvance"),
     path('thankyou', views.thanks, name="thanks"),
     path('salesform',views.SalesInfoForm,name="SalesInfoForm"),
-    path('brokerinfo',views.BrokerInfoForm,name="BrokerInfoForm")
+    path('brokerinfo',views.BrokerInfoForm,name="BrokerInfoForm"),
+    path('document',views.DcoumentUpload,name='DocumentUpload')
 ]

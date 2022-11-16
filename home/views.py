@@ -80,8 +80,8 @@ def BrokerInfoForm(request):
         Property_Buyer_Name =request.POST['Property_Buyer_Name']
         Property_Final_Price =request.POST['Property_Final_Price']
         Property_Closing_Date =request.POST['Property_Closing_Date']
-        
-        print(Property_Addres,Property_City)
+        Property_Short_Sale=request.POST['Property_Short_Sale']
+        print(Property_Addres,Property_City,Property_Short_Sale)
         ins=Property(Property_Address=Property_Addres,
             Property_City=Property_City,
             Property_State=Property_State,
@@ -93,3 +93,7 @@ def BrokerInfoForm(request):
            )
         ins.save()
     return render(request,'home/BrokerInfoForm.html')
+
+
+def DcoumentUpload(request):
+    return render(request,'home/DocumentUpload.html')
