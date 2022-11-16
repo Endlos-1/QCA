@@ -1,6 +1,6 @@
 from re import template
 from django.shortcuts import render
-from home.models import AmountRequest,RemainingFormRecords,Agent
+from home.models import AmountRequest,RemainingFormRecords,Agent,Property
 from home.models import ContactUs
 from django.contrib.auth.decorators import login_required
 
@@ -65,3 +65,15 @@ def thanks(request):
         ins = ContactUs(Name=name,Phone=phone,Subject=subject,Message=message)
         ins.save()
     return render(request, 'home/thankyou.html')
+
+
+def SalesInfoForm(request):
+    return render(request, 'home/SalesInfoForm.html')
+
+def BrokerInfoForm(request):
+    if request.method=="POST":
+        Property_Address =request.POST['Property_Address']
+        print(Property_Address)
+        ins=Property(Property_Address=Property_Address)
+        ins.save()
+    return render(request,'home/BrokerInfoForm.html')
