@@ -59,8 +59,23 @@
 
 <body>
 
-
   <style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+  <style>
+
+
+
     .form-container {
       display: flex;
 
@@ -100,7 +115,7 @@
       <h5 class="text-white text-left">Contact Information </h5>
     </div>
     <div class="container cnt col-8 p-4 brd">
-      <form class="row g-3 justify-content-center" method="POST" action="{% url 'home:applynow'%}">
+      <form class="row g-3 justify-content-center" method="POST" action="{% url 'home:SalesInfoForm'%}">
         {% csrf_token %}
         <div class="row form-row col-12 justify-content-center">
 
@@ -119,7 +134,7 @@
         <br>
 
         <div class="container p-3 my-3  justify-content-center ">
-          <form>
+          
             <br>
             <div class="form-row  mb-3">
               <div class="col-10 row justify-content">
@@ -152,13 +167,13 @@
                 <label class=" col-sm-5 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
                   style="font-size: 15px; ">First
                   name:</label>
-                <input type="text" class="form-control  row col-6" id=" Agent_First_Name" placeholder="First name" required>
+                <input type="text" class="form-control  row col-6" id=" Agent_First_Name" name="Agent_First_Name" placeholder="First name" required>
               </div>
               <div class="col-5 row justify-content">
                 <label class=" col-sm-5 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
                   style="font-size: 15px; ">Last
                   name:</label>
-                <input type="text" class="form-control row col-6" id=" Agent_Last_Name" placeholder="Last name" required>
+                <input type="text" class="form-control row col-6" id=" Agent_Last_Name" name="Agent_Last_Name" placeholder="Last name" required>
               </div>
 
             </div>
@@ -169,7 +184,7 @@
                 style="font-size: 15px; ">Home
                 Address:</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control  row col-6" id="BasicAddress" placeholder="Address" required>
+                <input type="text" class="form-control  row col-6" id="Agent_Home_address" name="Agent_Home_address" placeholder="Address" required>
               </div>
             </div>
             <!-- city code -->
@@ -179,7 +194,7 @@
                   style="font-size: 15px; text-align: right;">City:</label>
               </div>
               <div class="col-md-2">
-                <input type="text" class="form-control" id="Agent_City" placeholder="City" required>
+                <input type="text" class="form-control" id="Agent_City" name="Agent_City" placeholder="City" required>
               </div>
 
 
@@ -187,7 +202,7 @@
               <div class="col-4 row  justify-content-center" style="font-size: 15px;">
                 <label class="col-4 col-form-label" for="validationServer01" style="font-size: 15px; ">State: </label>
 
-                <select class="col-8" style="height:45px" id="  Agent_State">
+                <select class="col-8" style="height:45px" id="  Agent_State" name="Agent_State">
                   <option> Choose</option>
                   <option value="AL">Alabama</option>
                   <option value="AK">Alaska</option>
@@ -247,7 +262,7 @@
                 <label class="col-4 col-form-label" for="validationServer01"
                   style="font-size: 15px; margin-left: 20px; ">Zip Code: </label>
                 <div class="col-sm-6">
-                  <input type="number" class="form-control" id="Agent_Zip" placeholder="Zip Code" required>
+                  <input type="number" class="form-control" id="Agent_Zip" name="Agent_Zip" placeholder="Zip Code" required>
                 </div>
               </div>
             </div>
@@ -258,12 +273,12 @@
                   style="font-size: 15px; ">Cell
                   Phone:</label>
                 <div class="col-sm-8">
-                  <input type="number" class="form-control  row col-6" id="Agent_Cell_Phone" placeholder="Phone number" required>
+                  <input type="number" class="form-control  row col-6" id="Agent_Cell_Phone" name="Agent_Cell_Phone" placeholder="Phone number" required>
                 </div>
               </div>
 
 
-          </form>
+          
 
           <div class="text-center mt-3">
             <button class="btn mt-4 btn-primary" type="submit" id="ContactButton"
@@ -279,147 +294,11 @@
   <br>
 
 
-  <!--Sales form section-->
-
-
-  <br>
-
-
-
-  <br>
-
-  <!--Broker Information Form-->
- 
-
-  <br>
-  <!--Bank information Form-->
-  
-  <!--Documents upload form-->
-  <section>
-    <div class="container col-8 p-1" style="background-color:#343a40">
-      <h5 class="text-white text-left">DO YOU WANT TO SPEED UP YOUR APPLICATION ? UPLOAD THE FOLLOWING: </h5>
-    </div>
-    <div class="container cnt col-8 p-4 brd">
-      <form class="row g-3 justify-content-center">
-        <div class="container p-3 my-3  justify-content-center ">
-
-          <div class="form-row ml-3 mb-3" style="margin-right:-16px; ">
-            <div class="col-5 row justify-content" style="padding-right: 0px;">
-              <label class=" col-sm-8 mb-3 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
-                style="font-size: 15px; padding-right: 87px; color:black;"><b>1. Purchase Agreement (RPA)</b></label>
-
-              <form>
-                <br>
-                <input type="file" class="col-md-6" id="myFile" name="filename" style="font-size: 15px;">
-              </form>
-            </div>
-            <div class="col-5 row justify-content">
-              <label class=" col-sm-12 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
-                style="font-size: 15px; color: black;"><b>2. Broker of Record and Escrow Contact Information</b>
-                :</label>
-              <form>
-                <br>
-                <input type="file" class="col-md-12" id="myFile" name="filename"
-                  style="font-size: 15px;padding-left: 45px;">
-              </form>
-            </div>
-
-          </div>
-
-          <!--Statement ADdress portion-->
-          <!-- city code -->
-        </div>
-      </form>
-
-
-      <form class="row g-3 justify-content-center">
-        <div class="container p-3 my-3  justify-content-center ">
-
-          <div class="form-row ml-3 mb-3" style="margin-right:-16px; ">
-            <div class="col-5 row justify-content" style="padding-right: 0px;">
-              <label class=" col-sm-8 mb-3 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
-                style="font-size: 15px; padding-right: 87px; color:black;"><b>1. Purchase Agreement (RPA)</b></label>
-
-              <form>
-                <br>
-                <input type="file" class="col-md-6" id="myFile" name="filename" style="font-size: 15px;">
-              </form>
-            </div>
-            <div class="col-5 row justify-content">
-              <label class=" col-sm-12 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
-                style="font-size: 15px; color: black;"><b>2. Broker of Record and Escrow Contact Information</b>
-                :</label>
-              <form>
-                <br>
-                <input type="file" class="col-md-12" id="myFile" name="filename"
-                  style="font-size: 15px;padding-left: 45px;">
-              </form>
-            </div>
-
-          </div>
-
-          <!--Statement ADdress portion-->
-          <!-- city code -->
-        </div>
-      </form>
-
-
-      <form class="row g-3 justify-content-center">
-        <div class="container p-3 my-3  justify-content-center ">
-
-          <div class="form-row ml-3 mb-3" style="margin-right:-16px; ">
-            <div class="col-5 row justify-content" style="padding-right: 0px;">
-              <label class=" col-sm-8 mb-3 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
-                style="font-size: 15px; padding-right: 87px; color:black;"><b>1. Purchase Agreement (RPA)</b></label>
-
-              <form>
-                <br>
-                <input type="file" class="col-md-6" id="myFile" name="filename" style="font-size: 15px;">
-              </form>
-            </div>
-            <div class="col-5 row justify-content">
-              <label class=" col-sm-12 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
-                style="font-size: 15px; color: black;"><b>2. Broker of Record and Escrow Contact Information</b>
-                :</label>
-              <form>
-                <br>
-                <input type="file" class="col-md-12" id="myFile" name="filename"
-                  style="font-size: 15px;padding-left: 45px;">
-              </form>
-            </div>
-
-          </div>
-
-          <!--Statement ADdress portion-->
-          <!-- city code -->
-        </div>
-      </form>
-
-
-      <button class="btn mt-4 btn-primary" type="submit" style="background-color:rgb(76, 236, 76);"><b>SEND
-          APPLICATION</b></button>
-      <br>
-    </div>
-
-    </form>
-
-  </section>
-
-
-
-  <!-- <form class="row g-3 justify-content-center">
-    <div class="col-md-4">
-      <label for="validationServer01">Amount</label>
-      <input type="number" class="form-control" id="inputAmount">
-    </div> -->
-
-
 
 
 
   <br><br>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

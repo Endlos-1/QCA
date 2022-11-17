@@ -28,12 +28,62 @@
 {% endblock %}
 
 {% block body %}
-<section>
-    <div class="container col-8 p-1" style="background-color:#343a40">
-        <h5 class="text-white text-left">Bank Information </h5>
+
+
+<style>
+
+input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+              -moz-appearance: textfield;
+            }
+          
+
+    .form-container {
+      display: flex;
+  
+    }
+  
+    .currency-wrap {
+      position: relative;
+    }
+  
+    .currency-code {
+      position: absolute;
+      left: 20px;
+      top: 6px;
+    }
+  
+    .text-currency {
+      padding: 10px 20px;
+      border: solid 1px #ccc;
+      border-radius: 5px;
+    }
+  
+    .brd {
+      border: solid;
+      border-color: #343a40;
+    }
+  
+  
+    label {
+      display: inline-block;
+      width: 150px;
+    }
+  </style>
+  
+
+<section style="padding-top: 160px;">
+    <div class="container col-8 p-1" style="background-color:#343a40; text-align:center">
+        <h6 class="text-white text-left">Bank Information </h6>
     </div>
     <div class="container cnt col-8 p-4 brd">
-        <form class="row g-3 justify-content-center" method="POST" action="">
+        <form class="row g-3 justify-content-center" method="POST" action="{% url 'home:DocumentUpload' %}">
             <div class="container p-3 my-3  justify-content-center ">
 
 
@@ -98,10 +148,10 @@
 
 
             </div>
-            <h6 class="text-left " style="font-size: 17px;"><b>STATEMENT ADDRESS</b></h6><BR>
+            <h6 class="text-left col-12" style="font-size: 17px;"><b>STATEMENT ADDRESS</b></h6><BR>
 
 
-            <div class="form-row  mb-3 " style="padding-left:46px;">
+            <div class="form-row col-12 mb-3 " style="padding-left:24px;">
                 <div class="col-8 row justify-content" style="padding-right: 88px;">
                     <label class="col-8 col-form-label" for="validationServer01"
                         style="font-size: 15px; padding-right: 0px;">My
@@ -116,19 +166,19 @@
             </div>
             <br>
 
-            <div class="row mb-3" style="font-size:15px; ">
+            <div class="row col-md-12 mb-3" style="font-size:15px; ">
                 <label class=" col-sm-2 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
-                    style="font-size: 15px; padding-right: 59px; text-align: right;">
+                    style="font-size: 15px; padding-right: 30px; text-align: right;">
                     Statement Address:</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control  row col-6" id="validationServer01" placeholder="Address"
+                    <input type="text" class="form-control  row col-8" id="validationServer01" placeholder="Address"
                         required>
                 </div>
             </div>
 
 
 
-            <div class="form-row mb-4 ">
+            <div class="form-row ml-3 col-md-12 mb-4 ">
                 <div class="col-1" style="margin-left:85px;">
                     <label class=" col-sm-2 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
                         style="font-size: 15px; text-align: right;">City:</label>
@@ -213,7 +263,7 @@
 
             </div>
 
-            <hr>
+            
             <div class="themesflat-headings style-1 clearfix text-justify padding-left-32" class="container"
                 style=" color: black; margin-left: 80px; padding-right: 194px;">
 
