@@ -1,7 +1,7 @@
 from re import template
 from django.shortcuts import render
 from home.models import AmountRequest,RemainingFormRecords,Agent,Property,Broker
-from home.models import ContactUs,SalesInformation_AgentDetail
+from home.models import ContactUs,SalesInformation_AgentDetail,ClosingCompanyDetails
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -65,7 +65,7 @@ def SalesInfoForm(request):
        Agent_Zip=request.POST['Agent_Zip']
        Agent_Cell_Phone=request.POST['Agent_Cell_Phone']
 
-       print(BrokerRecordOfCompany)
+       print(BrokerRecordOfCompany,OpenAdvanceswihOther, Agent_First_Name,Agent_Last_Name,Agent_City,Agent_State,Agent_Home_address,Agent_Zip,Agent_Cell_Phone)
        
        ins=RemainingFormRecords(BrokerRecordOfCompany=BrokerRecordOfCompany, OpenAdvanceswihOther=OpenAdvanceswihOther)
        ins=Agent( Agent_First_Name= Agent_First_Name, 
@@ -90,13 +90,27 @@ def BrokerInfoForm(request):
         Property_Final_Price =request.POST['Property_Final_Price']
         Property_Closing_Date =request.POST['Property_Closing_Date']
         Property_Short_Sale=request.POST['Property_Short_Sale']
+
         Net_Commission=request.POST['Net_Commission']
         Selling_or_Listing=request.POST['Selling_or_Listing']
         Transaction_completein_12months=request.POST['Transaction_completein_12months']
         Pedning_Transaction=request.POST['Pedning_Transaction']
         Non_pending_Transaction=request.POST['Non_pending_Transaction']
+
+        Closing_Company=request.POST['Closing_Company']
+        Escrow=request.POST['Escrow']
+        ClosingCompany_address=request.POST['ClosingCompany_address']
+        ClosingCompany_city=request.POST['ClosingCompany_city']
+        ClosingCompany_State=request.POST['ClosingCompany_State']
+        ClosingCompany_Zip=request.POST['ClosingCompany_Zip']
+        ClosingCompany_Cell_Phone=request.POST['ClosingCompany_Cell_Phone']
+        ClosingCompany_Contact=request.POST['ClosingCompany_Contact']
+        ClosingCompany_Email=request.POST['ClosingCompany_Email']
+
         
-        print(Property_Addres,Property_City,Property_Short_Sale)
+        print(Property_Addres,Property_City,Property_State,Property_Zip,Property_Seller_Name,Property_Buyer_Name,Property_Final_Price,Property_Closing_Date ,Property_Short_Sale,)
+        print(Net_Commission,Selling_or_Listing,Transaction_completein_12months,Pedning_Transaction,Non_pending_Transaction)
+        print( Closing_Company,Escrow,ClosingCompany_address,ClosingCompany_city,ClosingCompany_State,ClosingCompany_Zip,ClosingCompany_Cell_Phone,ClosingCompany_Contact,ClosingCompany_Email)
 
         ins=Property(Property_Address=Property_Addres,
             Property_City=Property_City,
@@ -112,8 +126,21 @@ def BrokerInfoForm(request):
             Transaction_completein_12months= Transaction_completein_12months,
             Pedning_Transaction=Pedning_Transaction,
             Non_pending_Transaction=Non_pending_Transaction)   
-        ins1.save()
-        ins.save()
+
+
+        ins2=ClosingCompanyDetails(Closing_Company= Closing_Company,
+        Escrow=Escrow,ClosingCompany_address=ClosingCompany_address,
+        ClosingCompany_city=ClosingCompany_city,
+        ClosingCompany_State=ClosingCompany_State,
+        ClosingCompany_Zip=ClosingCompany_Zip,
+        ClosingCompany_Cell_Phone=ClosingCompany_Cell_Phone,
+        ClosingCompany_Contact=ClosingCompany_Contact,
+        ClosingCompany_Email=ClosingCompany_Email
+        )
+
+        #ins2.save()
+       # ins1.save()
+        #ins.save()
     return render(request,'home/BrokerInfoForm.html')
 
 def BankInfo(request):
@@ -139,12 +166,21 @@ def BankInfo(request):
         BrokerFirst_Name=BrokerFirst_Name,
         Broker_Last_Name=Broker_Last_Name,
         Broker_Email=Broker_Email)
-        ins.save()
+        #ins.save()
     return render(request, 'home/BankInfo.html')
 
 
 def DcoumentUpload(request):
-    
+    if request.method=="POST":
+        Agent_Bank_Name=request.POST['Agent_Bank_Name']
+        Agent_Statement_Address=request.POST['Agent_Statement_Address']
+        Account_Holder_Name=request.POST['Account_Holder_Name']
+        Agent_Account_type=request.POST['Agent_Account_type']
+        Agent_Statement_City=request.POST['Agent_Statement_City']
+        Agent_Statement_State=request.POST['Agent_Statement_State']
+        Routing=request.POST['Routing']
+        Account_number=request.POST['Account_number']
+        Agent_Statement_Zip =request.POST['Agent_Statement_Zip']
     return render(request,'home/DocumentUpload.html')
 
 def ThankYouApplication(request):

@@ -37,10 +37,14 @@ class Property(models.Model):
 class AgentBankDetails(models.Model):
     Agent_ID = models.ForeignKey(User, on_delete=models.CASCADE)
     Agent_Bank_Name = models.CharField(max_length=15)
-    Agent_type = models.CharField(max_length=50)
-    Agent_City = models.CharField(max_length=15)
-    Agent_State = USStateField(blank=True)
-    Agent_Zip = USZipCodeField(blank=True)
+    Agent_Statement_Address = models.CharField(max_length=15)
+    Account_number=models.IntegerField()
+    Routing=models.CharField(max_length=15)
+    Account_Holder_Name=models.CharField(max_length=50)
+    Agent_Account_type = models.CharField(max_length=50)
+    Agent_Statement_City = models.CharField(max_length=15)
+    Agent_Statement_State = USStateField(blank=True)
+    Agent_Statement_Zip = USZipCodeField(blank=True)
 
 
 class ContactUs(models.Model):
