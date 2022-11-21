@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from curses.ascii import NUL
 from django.db import models
 from accounts.models import User
