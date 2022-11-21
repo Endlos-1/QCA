@@ -1,7 +1,10 @@
+from django.conf import settings
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.mail import send_mail
+from django.contrib import messages
 # Create your views here.
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -28,6 +31,8 @@ class RegisterView(CreateView):
 
     def get_success_url(self):
         return self.success_url
+    
+        
 
     def post(self, request, *args, **kwargs):
 
@@ -35,9 +40,15 @@ class RegisterView(CreateView):
 
         if user_form.is_valid():
             user = user_form.save(commit=False)
+            email = user_form.cleaned_data.get("email")
             password = user_form.cleaned_data.get("password1")
             user.set_password(password)
             user.save()
+            subject = "You Account has been Successfully created"
+            message = f"Welocme to ENDLOS"
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [email]
+            send_mail(subject, message, email_from, recipient_list)
             return redirect('accounts:signin')
         else:
             return render(request, 'accounts/Register.html', {'form': user_form})

@@ -1,3 +1,5 @@
+from asyncio.windows_events import NULL
+from curses.ascii import NUL
 from django.db import models
 from accounts.models import User
 from localflavor.us.models import USStateField
@@ -33,19 +35,17 @@ class Property(models.Model):
     Property_Closing_Date = models.DateField(default=now)
     Poperty_Short_Sale = models.CharField(max_length=15)
 
-
 class AgentBankDetails(models.Model):
-    Agent_ID = models.ForeignKey(User, on_delete=models.CASCADE)
-    Agent_Bank_Name = models.CharField(max_length=15)
-    Agent_Statement_Address = models.CharField(max_length=15)
-    Account_number=models.IntegerField()
-    Routing=models.CharField(max_length=15)
-    Account_Holder_Name=models.CharField(max_length=50)
-    Agent_Account_type = models.CharField(max_length=50)
-    Agent_Statement_City = models.CharField(max_length=15)
+    Agent_ID = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    Agent_Bank_Name = models.CharField(max_length=15,null=True)
+    Agent_Statement_Address = models.CharField(max_length=15,null=True)
+    Account_number=models.IntegerField(null=True)
+    Routing=models.CharField(max_length=15,null=True)
+    Account_Holder_Name=models.CharField(max_length=50,null=True)
+    Agent_Account_type = models.CharField(max_length=50,null=True)
+    Agent_Statement_City = models.CharField(max_length=15,null=True)
     Agent_Statement_State = USStateField(blank=True)
     Agent_Statement_Zip = USZipCodeField(blank=True)
-
 
 class ContactUs(models.Model):
     Name=models.CharField(max_length=30)
@@ -53,14 +53,12 @@ class ContactUs(models.Model):
     Subject=models.CharField(max_length=40)
     Message=models.TextField()
 
-
 class SalesInformation_AgentDetail(models.Model):
     Net_Commission = models.IntegerField()
     Selling_or_Listing=models.BooleanField(default=True)
     Transaction_completein_12months=models.IntegerField()
     Pedning_Transaction=models.IntegerField()
     Non_pending_Transaction=models.IntegerField()
-
 
 class RemainingFormRecords(models.Model):
     BrokerRecordOfCompany=models.CharField(max_length=5)

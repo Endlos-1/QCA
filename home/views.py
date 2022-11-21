@@ -1,6 +1,6 @@
 from re import template
 from django.shortcuts import render
-from home.models import AmountRequest,RemainingFormRecords,Agent,Property,Broker
+from home.models import AmountRequest,RemainingFormRecords,Agent,Property,Broker,AgentBankDetails
 from home.models import ContactUs,SalesInformation_AgentDetail,ClosingCompanyDetails
 from django.contrib.auth.decorators import login_required
 
@@ -138,9 +138,9 @@ def BrokerInfoForm(request):
         ClosingCompany_Email=ClosingCompany_Email
         )
 
-        #ins2.save()
-       # ins1.save()
-        #ins.save()
+        ins2.save()
+        ins1.save()
+        ins.save()
     return render(request,'home/BrokerInfoForm.html')
 
 def BankInfo(request):
@@ -166,11 +166,12 @@ def BankInfo(request):
         BrokerFirst_Name=BrokerFirst_Name,
         Broker_Last_Name=Broker_Last_Name,
         Broker_Email=Broker_Email)
-        #ins.save()
+
+        ins.save()
     return render(request, 'home/BankInfo.html')
 
 
-def DcoumentUpload(request):
+def DocumentUpload(request):
     if request.method=="POST":
         Agent_Bank_Name=request.POST['Agent_Bank_Name']
         Agent_Statement_Address=request.POST['Agent_Statement_Address']
@@ -181,6 +182,21 @@ def DcoumentUpload(request):
         Routing=request.POST['Routing']
         Account_number=request.POST['Account_number']
         Agent_Statement_Zip =request.POST['Agent_Statement_Zip']
+
+        print(Agent_Bank_Name, Agent_Statement_Address, Account_Holder_Name, Agent_Account_type,Agent_Statement_City,
+        Agent_Statement_State,Routing,Account_number,Agent_Statement_Zip)
+
+        ins=AgentBankDetails(Agent_Bank_Name=Agent_Bank_Name,
+        Agent_Statement_Address=Agent_Statement_Address,
+        Account_Holder_Name=Account_Holder_Name,
+        Agent_Account_type=Agent_Account_type,
+        Agent_Statement_City=Agent_Statement_City,
+        Agent_Statement_State=Agent_Statement_State,
+        Routing=Routing,
+        Account_number=Account_number,
+        Agent_Statement_Zip=Agent_Statement_Zip)
+
+        ins.save()
     return render(request,'home/DocumentUpload.html')
 
 def ThankYouApplication(request):
