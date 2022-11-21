@@ -85,6 +85,9 @@ class Broker(models.Model):
     BrokerFirst_Name = models.CharField(max_length=15)
     Broker_Last_Name = models.CharField(max_length=15)
     Broker_Email = models.EmailField(max_length=254)
+
+class Documents(models.Model):
+    purchase_greement = models.FileField(upload_to='documents/')
    
    
 

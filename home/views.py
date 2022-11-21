@@ -1,7 +1,8 @@
 from re import template
-from django.shortcuts import render
+from accounts.models import User
+from django.shortcuts import render,redirect
 from home.models import AmountRequest,RemainingFormRecords,Agent,Property,Broker,AgentBankDetails
-from home.models import ContactUs,SalesInformation_AgentDetail,ClosingCompanyDetails
+from home.models import ContactUs,SalesInformation_AgentDetail,ClosingCompanyDetails,Documents
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -16,17 +17,23 @@ def agent_Faq(request):
 def broker_Faq(request):
     return render(request, 'home/brokerFaq.html')
 
-@login_required(login_url='accounts:signin')
 def applynow(request):
-    if request.method=="POST" and 'HomeFormButton' in request.POST:
+    if request.method=="POST" and 'HomeFormButton':
         amount =request.POST['amount']
-        email=request.POST['email']
+        email = request.POST['email']
+        mail = email
+        if User.objects.filter(email=mail).exists() and request.user.is_authenticated:
+            return redirect('home:applynow')
+        elif User.objects.filter(email=mail).exists():
+            return redirect('accounts:signin')
+        else:
+            return redirect('accounts:register')
+
         print(amount,email)
         print("This  is Post")
         ins = AmountRequest(amount=amount,mail=email)
         ins.save()
     return render(request, 'home/applynow.html')
-
     
 def contactUs(request):
     return render(request, 'home/contactUs.html')
@@ -200,4 +207,9 @@ def DocumentUpload(request):
     return render(request,'home/DocumentUpload.html')
 
 def ThankYouApplication(request):
+    if request.method=="POST":
+        purchase_greement=request.POST['purchase_greement']
+        print(purchase_greement)
+        ins=Documents(purchase_greement=purchase_greement)
+        ins.save()
     return render(request, 'home/ThanksApplication.html')

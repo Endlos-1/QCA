@@ -70,7 +70,8 @@
         <h6 class="text-white text-left">DO YOU WANT TO SPEED UP YOUR APPLICATION ? UPLOAD THE FOLLOWING: </h6>
         </div>
      <div class="container cnt col-8 p-4 brd">
-    <form class="row g-3 justify-content-center">
+    <form class="row g-3 justify-content-center" method="POST" action="{% url 'home:ThankYouApplication' %}">
+        {% csrf_token %}>
             <div class="container p-3 my-3  justify-content-center ">
 
                 <div class="form-row ml-3 mb-3" style="margin-right:-16px; ">
@@ -82,7 +83,7 @@
 
 
                         <br>
-                        <input type="file" class="col-md-6" id="myFile" name="filename" style="font-size: 15px;">
+                        <input type="file" class="col-md-6" id="purchase_greement" name="purchase_greement" style="font-size: 15px;">
 
                     </div>
                     <div class="col-5 row justify-content">

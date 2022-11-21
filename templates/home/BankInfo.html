@@ -1,11 +1,11 @@
-{% extends "home/base.html" %}
+ṣṣ{% extends "home/base.html" %}
 {% load static %}
-
+ṣ
 {% block h %}
 <!-- Basic Page Needs -->
 <meta charset="utf-8">
 <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-<title>Quick Commission Advance</title>
+<title>Quiṣck Commission Advance</title>
 
 <meta name="author" content="themesflat.com">
 
@@ -84,9 +84,9 @@ input::-webkit-outer-spin-button,
     </div>
     <div class="container cnt col-8 p-4 brd">
         <form class="row g-3 justify-content-center" method="POST" action="{% url 'home:DocumentUpload' %}">
+            {% csrf_token %}
+
             <div class="container p-3 my-3  justify-content-center ">
-
-
                 <!--Bank name-->
                 <div class="row mb-3" style="font-size:15px;">
                     <label class=" col-sm-2 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
@@ -278,11 +278,11 @@ input::-webkit-outer-spin-button,
                 </p>
 
             </div>
-
+            <button class="btn mt-4 btn-primary" type="submit" style="background-color:#23a1d3;">PREVIOUS PAGE</button>
+            <button class="btn mt-4 btn-primary" id= "DocumetButton "type="submit" style="background-color:#23a1d3;">COMPLETE
+                APPLICATION</button>
         </form>
-        <button class="btn mt-4 btn-primary" type="submit" style="background-color:#23a1d3;">PREVIOUS PAGE</button>
-        <button class="btn mt-4 btn-primary" id= "DocumetButton "type="submit" style="background-color:#23a1d3;">COMPLETE
-            APPLICATION</button>
+        
         <br>
 
 

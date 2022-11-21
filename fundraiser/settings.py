@@ -147,8 +147,8 @@ EMAIL_HOST_USER = "no.response213@gmail.com"
 EMAIL_HOST_PASSWORD = "mbuxwckpnzjccvsw"
 
 
-
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # EMAIL_HOST = 'smtp.sendgrid.net'
 # EMAIL_HOST_USER = 'apikey'  # this is exactly the value 'apikey'
