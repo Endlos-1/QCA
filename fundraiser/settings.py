@@ -28,7 +28,7 @@ SECRET_KEY = "django-insecure-lue9gn2h92o7i$zt7gppj-w$c--4m6q98lkbxv0d!!c!r=87yh
 DEBUG = True
 
 ALLOWED_HOSTS = [
-	'167.99.150.196', '127.0.0.1','www.quickcommissionadvance.com','quickcommissionadvance.com'
+    '167.99.150.196', '127.0.0.1', 'www.quickcommissionadvance.com', 'quickcommissionadvance.com'
 ]
 
 
@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "crispy_forms",
     "accounts",
     "home",
+    "widget_tweaks",
+
 ]
 
 MIDDLEWARE = [
@@ -155,4 +157,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
 # EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-
