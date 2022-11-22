@@ -55,7 +55,7 @@ class ContactUs(models.Model):
 
 class SalesInformation_AgentDetail(models.Model):
     Net_Commission = models.IntegerField()
-    Selling_or_Listing=models.BooleanField(default=True)
+    Selling_or_Listing=models.CharField(max_length=15)
     Transaction_completein_12months=models.IntegerField()
     Pedning_Transaction=models.IntegerField()
     Non_pending_Transaction=models.IntegerField()

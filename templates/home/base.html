@@ -55,8 +55,8 @@
                         <div id="top-bar-inner" class="themesflat-container">
                             <div class="top-bar-inner-wrap">
                                 <div class="top-bar-content">
-                                    <span class="address content"><a href="#">5500 County Road 73, Robstown, Texas
-                                            78380</a></span>
+                                    <span class="address content"><a href="#">7550 IH-10, San Antonio, Texas
+                                            78229</a></span>
                                     <span class="phone content"><a href="#">Phone +1 (361) 318-6474 </a></span>
                                 </div><!-- /.top-bar-content -->
 
@@ -102,7 +102,9 @@
                                                 data-retina="{%static 'home/img/imagebox/Header_logo.jpg' %}"
                                                 data-width="250" data-height="60"></a>-->
 
-                                            <a href="{% url 'home:index' %}" ><img src="{% static 'home/img/gallery/finalLogo.jpg' %} " width="600" height="50"></a>
+                                        <a href="{% url 'home:index' %}"><img
+                                                src="{% static 'home/img/gallery/finalLogo.jpg' %} " width="600"
+                                                height="50"></a>
                                     </div>
                                 </div>
                                 {% comment %} <div id="site-logo" class="clearfix">
@@ -163,7 +165,8 @@
                                             <!--                                    </ul>-->
                                             <!--                                </li>-->
 
-                                        <li class="menu-item menu-item-has-children"><a   class="logoutbutton"   href="#">FAQ</a>
+                                        <li class="menu-item menu-item-has-children"><a class="logoutbutton"
+                                                href="#">FAQ</a>
                                             <ul class="sub-menu" style="width: 290px;">
                                                 <li class="menu-item"><a href="{%url 'home:agent_Faq'%}">AGENT</a></li>
                                                 <li class="menu-item"><a href="{% url 'home:broker_Faq' %}">BROKER</a>
@@ -200,10 +203,11 @@
 
                                     {% if user.is_authenticated %}
                                     <li class="menu-item menu-item-has-children"><a
-                                        href="{%url 'home:contactUs'%}">WELCOME, {{user.username}}</a></li>
-                                   
+                                            href="{%url 'home:contactUs'%}">WELCOME, {{user.username}}</a></li>
+
                                     <li class="nav-item">
-                                        <form method="POST" action="{% url 'accounts:signout' %}" style="padding-top: 40px;">
+                                        <form method="POST" action="{% url 'accounts:signout' %}"
+                                            style="padding-top: 40px;">
                                             {% csrf_token %}
                                             <button class="nav-link" type="submit">Logout</button>
                                         </form>
@@ -335,7 +339,7 @@
                             <!--                        </div>&lt;!&ndash; /#header-search &ndash;&gt;-->
                         </div>
                     </div><!-- /#site-header-inner -->
-            </div><!-- /.wrap-themesflat-container -->
+           <!-- /.wrap-themesflat-container -->
             </header><!-- /#site-header -->
         </div><!-- #site-header-wrap -->
 
@@ -369,19 +373,20 @@
                                 <li class="address clearfix">
                                     <div class="inner">
                                         <i class=" finance-icon-map"></i>
-                                        <span class="text">5500 County Road 73, Robstown, Texas 78380</span>
+                                        <span class="text">7550 IH-10, San Antonio, Texas 78229</span>
                                     </div>
                                 </li>
                                 <li class="email clearfix">
                                     <div class="inner">
-                                        <i class=" finance-icon-Email02"></i>
-                                        <span class="text">SUPPORT@QCA.com</span>
+                                        <i class="finance-icon-Email02"></i>
+                                        <span class="text "><a href="mailto:info@quickcommissionadvance.com"
+                                                style="color:#b1b1b1;text-transform: lowercase; ">info@quickcommissionadvance.com</a></span>
                                     </div>
                                 </li>
                                 <li class="phone clearfix">
                                     <div class="inner">
                                         <i class=" finance-icon-Phone"></i>
-                                        <span class="text">+1 (361) 318-6474 / 8:00 AM - 6:00 PM</span>
+                                        <span class="text"> +1 (877) 520-1529 / +1 (877) 520-1838 (Fax) / 8:00 AM - 6:00 PM</span>
                                     </div>
                                 </li>
                             </ul>
@@ -406,10 +411,6 @@
                                 <a href="">COMMISSION ADVANCE</a>
                                 <a href="">CASH ADVANCE</a>
                                 <a href="">STABALIZE INCOME</a>
-
-
-
-
                             </div>
                         </div><!-- /.widget_tag_cloud -->
                     </div><!-- /.span_1_of_4 -->
@@ -424,9 +425,9 @@
             <div id="bottom-bar-inner" class="themesflat-container">
                 <div class="bottom-bar-inner-wrap">
                     <div class="bottom-bar-content">
-                        <div id="copyright" class="padding-left-9">
-                            &copy; COPYRIGHT QUICK COMMISSION ADVANCE LLC, DESIGN BY CONNOR, CHASE, &<a
-                                href="https://endlos.tech/">@ENDLOS</a>.
+                        <div id="copyright" class="padding-left-0">
+                            &copy; COPYRIGHT QUICK COMMISSION ADVANCE LLC, DESIGN BY CONNOR, CHASE, & <a
+                                href="https://endlos.tech/">@ENDLOS.</a>
 
                         </div><!-- /#copyright -->
                     </div><!-- /.bottom-bar-content -->
