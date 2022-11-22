@@ -152,7 +152,7 @@
                   </label>
                 </div>
                 <div class="form-check row col-1" style="padding-left:50px">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="DoyouYes" value="option2">
+                  <input class="form-check-input" type="radio" name="OpenAdvanceswihOther" id="DoyouYes" value="option2">
                   <label class="form-check-label" for="exampleRadios2"
                     style="color: black; font-size: 15px; padding-left: 20px; ">
                     Yes
@@ -204,7 +204,7 @@
 
                 <select class="col-8" style="height:45px" id="  Agent_State" name="Agent_State">
                   <option> Choose</option>
-                  <option> Choose</option>
+                  
                         
                   <option value="AZ">Arizona</option>
                   <option value="CA">California</option>
@@ -221,7 +221,7 @@
                 <label class="col-4 col-form-label" for="validationServer01"
                   style="font-size: 15px; margin-left: 20px; ">Zip Code: </label>
                 <div class="col-sm-6">
-                  <input type="number" class="form-control" id="Agent_Zip" name="Agent_Zip" placeholder="Zip Code" required>
+                  <input type="number" class="form-control" id="Agent_Zip" name="Agent_Zip" placeholder="Zip Code" pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$" required>
                 </div>
               </div>
             </div>
