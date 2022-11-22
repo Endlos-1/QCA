@@ -48,14 +48,14 @@ def whyadvance(request):
     return render(request, 'home/whycommissionadvance.html')
 
 def thanks(request):
-    if request.method=="POST" :
-        name=request.POST['name']
-        phone=request.POST['phone']
-        subject=request.POST['subject']
-        message=request.POST['message']
-        print(name,phone,subject,message)
+    if request.method=="POST":
+        Name=request.POST['Name']
+        Phone=request.POST['Phone']
+        Subject=request.POST['Subject']
+        Message=request.POST['Message']
+        print(Name,Phone,Subject,Message)
         print("This is contact us post")
-        ins = ContactUs(Name=name,Phone=phone,Subject=subject,Message=message)
+        ins = ContactUs(Name=Name,Phone=Phone,Subject=Subject,Message=Message)
         ins.save()
     return render(request, 'home/thankyou.html')
 

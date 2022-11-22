@@ -1,4 +1,6 @@
+{% load static %}
 
+{% block h %}
 <html>
 
 <head>
@@ -30,7 +32,9 @@
     <link href="../../static/home/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
     </head>
+    {% endblock  %}
 
+    {% block body  %}
  <body>
 
 
@@ -246,6 +250,8 @@
                                                 <th>Title City</th>
                                                 <th>Title State</th>
                                                 <th>Title ZIP Code</th>
+
+                                                <th>Broker Commission In %</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -305,6 +311,7 @@
                                                 <td>System Architect</td>
                                                 <td>Edinburgh</td>
                                                 <td>61</td>
+                                                
                                             </tr>
                                             <tr>
                                                 <td>Tiger Nixon</td>
@@ -361,7 +368,8 @@
                                                 <td>Tiger Nixon</td>
                                                 <td>System Architect</td>
                                                 <td>Edinburgh</td>
-                                                <td>61</td>
+                                                <td>61  {{user.username}}</td>
+                                                <td><form><input type="text"></form></td>
                                             </tr>
                                             <tr>
                                                 <td>Tiger Nixon</td>
@@ -496,4 +504,5 @@
 
     </body>
 </html>
+{% endblock  %}
 

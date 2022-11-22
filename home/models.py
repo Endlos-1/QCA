@@ -1,5 +1,6 @@
 from curses.ascii import NUL
 from django.db import models
+from django import forms
 from accounts.models import User
 from localflavor.us.models import USStateField
 from localflavor.us.models import USZipCodeField
@@ -86,7 +87,7 @@ class Broker(models.Model):
     Broker_Last_Name = models.CharField(max_length=15)
     Broker_Email = models.EmailField(max_length=254)
 
-class Documents(models.Model):
+class Documents(forms.Form):
     purchase_greement = models.FileField(upload_to='documents/')
    
    
