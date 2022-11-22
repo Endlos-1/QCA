@@ -17,6 +17,7 @@ def agent_Faq(request):
 def broker_Faq(request):
     return render(request, 'home/brokerFaq.html')
 
+@login_required(login_url='accounts:signin')
 def applynow(request):
     if request.method=="POST" and 'HomeFormButton':
         amount =request.POST['amount']
