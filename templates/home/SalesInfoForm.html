@@ -151,14 +151,16 @@
             <label class=" col-sm-5 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
               style="font-size: 15px; ">Seller
               name:</label>
-            <input type="text" class="form-control  row col-6" id="Property_Seller_Name" name="Property_Seller_Name" placeholder="Seller name"
+            <input type="text" onkeypress="return (event.charCode > 64 && 
+            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  class="form-control  row col-6" id="Property_Seller_Name" name="Property_Seller_Name" placeholder="Seller name"
               required>
           </div>
           <div class="col-5 row justify-content">
             <label class=" col-sm-5 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
               style="font-size: 15px; ">Buyer
               name:</label>
-            <input type="text" class="form-control row col-6" id="Property_Buyer_Name" name="Property_Buyer_Name" placeholder="Buyer name" required>
+            <input type="text"onkeypress="return (event.charCode > 64 && 
+            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  class="form-control row col-6" id="Property_Buyer_Name" name="Property_Buyer_Name" placeholder="Buyer name" required>
           </div>
 
         </div>
@@ -299,13 +301,15 @@
           <label class=" col-sm-5 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
             style="font-size: 15px; padding-right: 50px; ">Closing
             Company:</label>
-          <input type="text" class="form-control  row col-6" id="Closing_Company" name="Closing_Company" required>
+          <input type="text"onkeypress="return (event.charCode > 64 && 
+          event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  class="form-control  row col-6" id="Closing_Company" name="Closing_Company" required>
         </div>
         <div class="col-5 row justify-content">
           <label class=" col-sm-5 col-form-label col-form-label-sm" for="validationServer01 colFormLabelSm"
             style="font-size: 15px; ">Escrow #
             :</label>
-          <input type="text" class="form-control row col-6" id="Escrow" name="Escrow">
+          <input type="text" onkeypress="return (event.charCode > 64 && 
+          event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control row col-6" id="Escrow" name="Escrow">
         </div>
           </div>
 
@@ -328,7 +332,8 @@
             style="font-size: 15px; text-align: right;">City:</label>
         </div>
         <div class="col-md-2">
-          <input type="text" class="form-control" id="ClosingCompany_city" name="ClosingCompany_city" placeholder="City" required>
+          <input type="text" onkeypress="return (event.charCode > 64 && 
+          event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control" id="ClosingCompany_city" name="ClosingCompany_city" placeholder="City" required>
         </div>
 
 

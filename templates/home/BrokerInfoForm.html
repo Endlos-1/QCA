@@ -102,7 +102,8 @@
                         style="font-size: 15px; ">Company Name:
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control  row col-6" id="Broker_CompanyName" name="Broker_CompanyName"
+                        <input type="text" onkeypress="return (event.charCode > 64 && 
+                        event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  class="form-control  row col-6" id="Broker_CompanyName" name="Broker_CompanyName"
                             placeholder="Company Name" required>
                     </div>
                 </div>
@@ -127,7 +128,8 @@
                             style="font-size: 15px; text-align: right;">City:</label>
                     </div>
                     <div class="col-md-2">
-                        <input type="text" class="form-control" id="Broker_City" name="Broker_City" placeholder="City" required>
+                        <input type="text" onkeypress="return (event.charCode > 64 && 
+                        event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  class="form-control" id="Broker_City" name="Broker_City" placeholder="City" required>
                     </div>
 
 
@@ -181,7 +183,8 @@
                                 for="validationServer01 colFormLabelSm"
                                 style="font-size: 15px;  padding-right: 50px;">Broker First
                                 name:</label>
-                            <input type="text" class="form-control  row col-6" id="BrokerFirst_Name" name="BrokerFirst_Name"
+                            <input type="text" onkeypress="return (event.charCode > 64 && 
+                            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  class="form-control  row col-6" id="BrokerFirst_Name" name="BrokerFirst_Name"
                                 placeholder="First name" required>
                         </div>
                         <div class="col-5 row justify-content ml-4">
@@ -189,8 +192,9 @@
                                 for="validationServer01 colFormLabelSm"
                                 style="font-size: 15px; padding-right: 50px;">Broker Last
                                 name:</label>
-                            <input type="text" class="form-control row col-6" id="Broker_Last_Name" name="Broker_Last_Name"
-                                placeholder="First name" required>
+                            <input type="text" onkeypress="return (event.charCode > 64 && 
+                            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  class="form-control row col-6" id="Broker_Last_Name" name="Broker_Last_Name"
+                                placeholder="Last name" required>
                         </div>
                     </div>
 

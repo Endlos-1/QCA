@@ -93,7 +93,8 @@ input::-webkit-outer-spin-button,
                         style="font-size: 15px; padding-left: 50px;">Bank Name:
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control  row col-6" id="Agent_Bank_Name" name="Agent_Bank_Name" required>
+                        <input type="text" onkeypress="return (event.charCode > 64 && 
+                        event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  class="form-control  row col-6" id="Agent_Bank_Name" name="Agent_Bank_Name" required>
                     </div>
                 </div>
 
@@ -104,7 +105,8 @@ input::-webkit-outer-spin-button,
                             for="validationServer01 colFormLabelSm"
                             style="font-size: 15px;  padding-right: 50px; text-align: right;">Name of Account <br>
                             holder:</label>
-                        <input type="text" class="form-control  row col-6" id="Account_Holder_Name" name="Account_Holder_Name"
+                        <input type="text" onkeypress="return (event.charCode > 64 && 
+                        event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  class="form-control  row col-6" id="Account_Holder_Name" name="Account_Holder_Name"
                             placeholder="First name" required>
                     </div>
                     <div class="col-5 row justify-content ml-4">
@@ -122,8 +124,9 @@ input::-webkit-outer-spin-button,
                         <label class=" col-sm-5 col-form-label col-form-label-sm"
                             for="validationServer01 colFormLabelSm"
                             style="font-size: 15px;  padding-right: 50px; text-align: right;">Routing #:</label>
-                        <input type="text" class="form-control  row col-6" id="Routing" name="Routing"
-                            placeholder="First name" required>
+                        <input type="text" onkeypress="return (event.charCode > 64 && 
+                        event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  class="form-control  row col-6" id="Routing" name="Routing"
+                            required>
                     </div>
                     <div class="col-5 row justify-content ml-4">
                         <label class=" col-sm-5 col-form-label col-form-label-sm" for="myform_phone"
@@ -171,7 +174,8 @@ input::-webkit-outer-spin-button,
                         style="font-size: 15px; text-align: right;">City:</label>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" class="form-control" id="Agent_Statement_City" name="Agent_Statement_City" placeholder="City" required>
+                    <input type="text" onkeypress="return (event.charCode > 64 && 
+                    event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  class="form-control" id="Agent_Statement_City" name="Agent_Statement_City" placeholder="City" required>
                 </div>
 
 
