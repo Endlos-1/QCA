@@ -111,7 +111,8 @@
               style="font-size: 15px; text-align: right;">City:</label>
           </div>
           <div class="col-md-2">
-            <input type="text" class="form-control" name="Property_City" id="Property_City" placeholder="City" required>
+            <input type="text" class="form-control"onkeypress="return (event.charCode > 64 && 
+            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  name="Property_City" id="Property_City" placeholder="City" required>
           </div>
 
 
