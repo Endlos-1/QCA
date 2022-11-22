@@ -39,7 +39,7 @@
       {% comment %} {{ form}} {% endcomment %}
       {% for field in form %}
       <div class="row">
-        <div class="col-sm-3  text-right font-size">
+        <div class="col-sm-3  text-right font-size" style="padding-top: 10px;">
           <label for="{{ field.id_for_label }}">
            <b>{{ field.label }}{% if field.field.required %}*{% endif %}</b>
           </label>
