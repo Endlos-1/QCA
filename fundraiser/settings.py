@@ -28,7 +28,7 @@ SECRET_KEY = "django-insecure-lue9gn2h92o7i$zt7gppj-w$c--4m6q98lkbxv0d!!c!r=87yh
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '167.99.150.196', '127.0.0.1', 'www.quickcommissionadvance.com', 'quickcommissionadvance.com'
+    '146.190.44.40', '127.0.0.1', 'www.quickcommissionadvance.com', 'quickcommissionadvance.com'
 ]
 
 
@@ -73,6 +73,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                
             ],
         },
     },
