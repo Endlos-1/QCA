@@ -31,7 +31,6 @@ ALLOWED_HOSTS = [
     '146.190.44.40', '127.0.0.1', 'www.quickcommissionadvance.com', 'quickcommissionadvance.com'
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
