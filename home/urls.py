@@ -16,12 +16,11 @@ urlpatterns = [
     path('aboutUs', views.aboutUs, name='aboutUs'),
     path('howitworks', views.howit, name="howitworks"),
     path('whycommissionadvance', views.whyadvance, name="whyadvance"),
-    path('thankyou', views.thanks, name="thanks"),
     path('salesform', views.SalesInfoForm, name="SalesInfoForm"),
-    path('brokerinfo', views.BrokerInfoForm, name="BrokerInfoForm"),
-    path('document', views.DocumentUpload, name='DocumentUpload'),
-    path('bankinfo', views.BankInfo, name="BankInfo"),
-    path('thankapp', views.ThankYouApplication, name="ThankYouApplication")
+    path('bankinfo', views.BrokerInfoForm, name="BankInfo"),
+    path('thankyou', views.thanks, name="thanks")
+    
+    
 ]
 
 if settings.DEBUG:

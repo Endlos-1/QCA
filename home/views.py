@@ -17,25 +17,32 @@ def agent_Faq(request):
 def broker_Faq(request):
     return render(request, 'home/brokerFaq.html')
 
+
 @login_required(login_url='accounts:signin')
 def applynow(request):
     if request.method=="POST" and 'HomeFormButton':
         amount =request.POST['amount']
         email = request.POST['email']
         mail = email
-        if User.objects.filter(email=mail).exists() and request.user.is_authenticated:
+        amount=amount.replace('$', '')
+        amount=amount.replace(',', '')
+        amount=int(amount)
+        
+        
+        """if User.objects.filter(email=mail).exists() and request.user.is_authenticated:
             return redirect('home:applynow')
         elif User.objects.filter(email=mail).exists():
             return redirect('accounts:signin')
         else:
-            return redirect('accounts:register')
-
+            return redirect('accounts:register')"""
         print(amount,email)
         print("This  is Post")
         ins = AmountRequest(amount=amount,mail=email)
         ins.save()
+      
     return render(request, 'home/applynow.html')
-    
+
+
 def contactUs(request):
     return render(request, 'home/contactUs.html')
 
@@ -151,7 +158,7 @@ def BrokerInfoForm(request):
         ins.save()
     return render(request,'home/BrokerInfoForm.html')
 
-def BankInfo(request):
+"""def BankInfo(request):
     if request.method=="POST":
         Broker_CompanyName=request.POST['Broker_CompanyName']
         Broker_address=request.POST['Broker_address']
@@ -213,4 +220,4 @@ def ThankYouApplication(request):
         print(purchase_greement)
         ins=Documents(purchase_greement=purchase_greement)
         ins.save()
-    return render(request, 'home/ThanksApplication.html')
+    return render(request, 'home/ThanksApplication.html')"""
