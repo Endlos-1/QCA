@@ -59,6 +59,7 @@ class LoginView(FormView):
         Provides the ability to login as a user with an email and password
     """
     success_url = '/'
+    request_url = '/applynow'
     form_class = UserLoginForm
     template_name = 'accounts/login.html'
 

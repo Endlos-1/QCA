@@ -311,6 +311,24 @@
            c =  a.slice(0, -1);
            $("#Agent_Zip").val(c);
           }
+
+       
+      });
+      $('#Agent_Cell_Phone').keyup(function () {
+        let a = $("#Agent_Cell_Phone").val();
+        if(a.length == 12) {
+          $('#Agent_Cell_Phone').css("border", "2px solid green");
+          } else {
+            $('#Agent_Cell_Phone').css("border", "2px solid red");
+          }
+      });
+      $('#Agent_Zip').keyup(function () {
+        let a = $("#Agent_Zip").val();
+        if(a.length == 5 || a.length == 10) {
+            $('#Agent_Zip').css("border", "2px solid green");
+          } else {
+            $('#Agent_Zip').css("border", "2px solid red");
+          }
       });
 
     // $('input[type="text"]').focus(function () {

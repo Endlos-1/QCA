@@ -18,7 +18,11 @@ urlpatterns = [
     path('whycommissionadvance', views.whyadvance, name="whyadvance"),
     path('salesform', views.SalesInfoForm, name="SalesInfoForm"),
     path('bankinfo', views.BrokerInfoForm, name="BankInfo"),
-    path('thankyou', views.thanks, name="thanks")
+    path('brokerinfo', views.BrokerInfoForm, name="BrokerInfoForm"),
+    path('document', views.DocumentUpload, name='DocumentUpload'),
+    path('bankinfo', views.BankInfo, name="BankInfo"),
+    path('thankyou', views.thanks, name="thanks"),
+    path('thankapp', views.ThankYouApplication, name="ThankYouApplication")
     
     
 ]

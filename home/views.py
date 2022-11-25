@@ -28,13 +28,13 @@ def applynow(request):
         amount=amount.replace(',', '')
         amount=int(amount)
         
-        
-        """if User.objects.filter(email=mail).exists() and request.user.is_authenticated:
+    
+        if User.objects.filter(email=mail).exists() and request.user.is_authenticated:
             return redirect('home:applynow')
         elif User.objects.filter(email=mail).exists():
-            return redirect('accounts:signin')
+            return redirect('accounts:signin?next={{request.home:applynow}}')
         else:
-            return redirect('accounts:register')"""
+            return redirect('accounts:register')
         print(amount,email)
         print("This  is Post")
         ins = AmountRequest(amount=amount,mail=email)
@@ -96,38 +96,38 @@ def SalesInfoForm(request):
 
 def BrokerInfoForm(request):
     if request.method=="POST":
-        Property_Addres=request.POST['Property_Addres']
-        Property_City=request.POST['Property_City'] 
-        Property_State=request.POST['Property_State']
-        Property_Zip=request.POST['Property_Zip']
-        Property_Seller_Name=request.POST['Property_Seller_Name']
-        Property_Buyer_Name =request.POST['Property_Buyer_Name']
-        Property_Final_Price =request.POST['Property_Final_Price']
-        Property_Closing_Date =request.POST['Property_Closing_Date']
-        Property_Short_Sale=request.POST['Property_Short_Sale']
+        Property_Address=request.POST.get('Property_Address')
+        Property_City=request.POST.get('Property_City') 
+        Property_State=request.POST.get('Property_State')
+        Property_Zip=request.POST.get('Property_Zip')
+        Property_Seller_Name=request.POST.get('Property_Seller_Name')
+        Property_Buyer_Name =request.POST.get('Property_Buyer_Name')
+        Property_Final_Price =request.POST.get('Property_Final_Price')
+        Property_Closing_Date =request.POST.get('Property_Closing_Date')
+        Property_Short_Sale=request.POST.get('Property_Short_Sale')
 
-        Net_Commission=request.POST['Net_Commission']
-        Selling_or_Listing=request.POST['Selling_or_Listing']
-        Transaction_completein_12months=request.POST['Transaction_completein_12months']
-        Pedning_Transaction=request.POST['Pedning_Transaction']
-        Non_pending_Transaction=request.POST['Non_pending_Transaction']
+        Net_Commission=request.POST.get('Net_Commission')
+        Selling_or_Listing=request.POST.get('Selling_or_Listing')
+        Transaction_completein_12months=request.POST.get('Transaction_completein_12months')
+        Pedning_Transaction=request.POST.get('Pedning_Transaction')
+        Non_pending_Transaction=request.POST.get('Non_pending_Transaction')
 
-        Closing_Company=request.POST['Closing_Company']
-        Escrow=request.POST['Escrow']
-        ClosingCompany_address=request.POST['ClosingCompany_address']
-        ClosingCompany_city=request.POST['ClosingCompany_city']
-        ClosingCompany_State=request.POST['ClosingCompany_State']
-        ClosingCompany_Zip=request.POST['ClosingCompany_Zip']
-        ClosingCompany_Cell_Phone=request.POST['ClosingCompany_Cell_Phone']
-        ClosingCompany_Contact=request.POST['ClosingCompany_Contact']
-        ClosingCompany_Email=request.POST['ClosingCompany_Email']
+        Closing_Company=request.POST.get('Closing_Company')
+        Escrow=request.POST.get('Escrow')
+        ClosingCompany_address=request.POST.get('ClosingCompany_address')
+        ClosingCompany_city=request.POST.get('ClosingCompany_city')
+        ClosingCompany_State=request.POST.get('ClosingCompany_State')
+        ClosingCompany_Zip=request.POST.get('ClosingCompany_Zip')
+        ClosingCompany_Cell_Phone=request.POST.get('ClosingCompany_Cell_Phone')
+        ClosingCompany_Contact=request.POST.get('ClosingCompany_Contact')
+        ClosingCompany_Email=request.POST.get('ClosingCompany_Email')
 
         
-        print(Property_Addres,Property_City,Property_State,Property_Zip,Property_Seller_Name,Property_Buyer_Name,Property_Final_Price,Property_Closing_Date ,Property_Short_Sale,)
+        print(Property_Address,Property_City,Property_State,Property_Zip,Property_Seller_Name,Property_Buyer_Name,Property_Final_Price,Property_Closing_Date ,Property_Short_Sale,)
         print(Net_Commission,Selling_or_Listing,Transaction_completein_12months,Pedning_Transaction,Non_pending_Transaction)
         print( Closing_Company,Escrow,ClosingCompany_address,ClosingCompany_city,ClosingCompany_State,ClosingCompany_Zip,ClosingCompany_Cell_Phone,ClosingCompany_Contact,ClosingCompany_Email)
 
-        ins=Property(Property_Address=Property_Addres,
+        ins=Property(Property_Address=Property_Address,
             Property_City=Property_City,
             Property_State=Property_State,
             Property_Zip=Property_Zip,
@@ -158,7 +158,7 @@ def BrokerInfoForm(request):
         ins.save()
     return render(request,'home/BrokerInfoForm.html')
 
-"""def BankInfo(request):
+def BankInfo(request):
     if request.method=="POST":
         Broker_CompanyName=request.POST['Broker_CompanyName']
         Broker_address=request.POST['Broker_address']
@@ -216,8 +216,5 @@ def DocumentUpload(request):
 
 def ThankYouApplication(request):
     if request.method=="POST":
-        purchase_greement=request.POST['purchase_greement']
-        print(purchase_greement)
-        ins=Documents(purchase_greement=purchase_greement)
-        ins.save()
-    return render(request, 'home/ThanksApplication.html')"""
+        
+        return render(request, 'home/ThanksApplication.html')

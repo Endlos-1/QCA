@@ -88,7 +88,7 @@ class Broker(models.Model):
     Broker_Email = models.EmailField(max_length=254)
 
 class Documents(forms.Form):
-    purchase_greement = models.FileField(upload_to='documents/')
+    purchase_agreement = models.FileField(upload_to='documents/')
    
    
 
