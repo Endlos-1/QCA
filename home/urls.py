@@ -20,7 +20,7 @@ urlpatterns = [
     path('bankinfo', views.BrokerInfoForm, name="BankInfo"),
     path('brokerinfo', views.BrokerInfoForm, name="BrokerInfoForm"),
     path('document', views.DocumentUpload, name='DocumentUpload'),
-    path('bankinfo', views.BankInfo, name="BankInfo"),
+    path('bankinfo', views.BankInformation, name="BankInformation"),
     path('thankyou', views.thanks, name="thanks"),
     path('thankapp', views.ThankYouApplication, name="ThankYouApplication")
     

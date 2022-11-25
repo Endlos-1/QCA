@@ -158,7 +158,7 @@ def BrokerInfoForm(request):
         ins.save()
     return render(request,'home/BrokerInfoForm.html')
 
-def BankInfo(request):
+def BankInformation(request):
     if request.method=="POST":
         Broker_CompanyName=request.POST['Broker_CompanyName']
         Broker_address=request.POST['Broker_address']
