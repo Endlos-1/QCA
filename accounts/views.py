@@ -30,7 +30,10 @@ class RegisterView(CreateView):
         return super().dispatch(self.request, *args, **kwargs)
 
     def get_success_url(self):
-        return self.success_url
+        if "next" in self.request.POST:
+            return self.request.POST["next"]
+        else:
+            return self.success_url 
     
         
 
@@ -71,6 +74,12 @@ class LoginView(FormView):
         if self.request.user.is_authenticated:
             return HttpResponseRedirect(self.get_success_url())
         return super().dispatch(self.request, *args, **kwargs)
+    
+    def get_success_url(self):
+        if "next" in self.request.POST:
+            return self.request.POST["next"]
+        else:
+            return self.success_url 
 
     def get_form_class(self):
         return self.form_class

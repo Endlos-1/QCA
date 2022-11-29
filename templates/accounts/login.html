@@ -54,6 +54,11 @@
       <div class="row ">
         <div class="col-sm-10">
           <div class="text-center">
+
+            {% if request.GET.next %}
+  <input type="hidden" name="next" value="{{request.GET.next}}" />
+  {% endif %}
+  
             <button class="btn btn-primary" style="background-color: #0099CC; width: 130px;"
               type="submit">Login</button> 
             <p><span><a href="{% url 'accounts:password_reset' %}">Forgot Password

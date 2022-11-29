@@ -53,6 +53,11 @@
       <div class="row ">
         <div class="col-sm-10">
           <div class="text-center mt-3">
+
+            {% if request.GET.next %}
+  <input type="hidden" name="next" value="{{request.GET.next}}" />
+  {% endif %}
+  
             <button class="btn btn-primary"  style="background-color: #0099CC; width: 130px;" type="submit">Register </button>
             <p class="text-center">If you already have an account, <b><a href="{% url 'accounts:signin' %}">login</a></b>
               instead.</p>

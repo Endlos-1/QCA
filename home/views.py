@@ -4,6 +4,9 @@ from django.shortcuts import render,redirect
 from home.models import AmountRequest,RemainingFormRecords,Agent,Property,Broker,AgentBankDetails
 from home.models import ContactUs,SalesInformation_AgentDetail,ClosingCompanyDetails,Documents
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from django.http import HttpResponse
+import json
 
 # Create your views here.
 
@@ -20,27 +23,50 @@ def broker_Faq(request):
 
 @login_required(login_url='accounts:signin')
 def applynow(request):
-    if request.method=="POST" and 'HomeFormButton':
-        amount =request.POST['amount']
-        email = request.POST['email']
+    if request.method == "POST" and 'HomeFormButton':
+        amount = request.POST.get('name')
+        email = request.POST.get('email')
         mail = email
-        amount=amount.replace('$', '')
-        amount=amount.replace(',', '')
-        amount=int(amount)
-        
-    
+
         if User.objects.filter(email=mail).exists() and request.user.is_authenticated:
             return redirect('home:applynow')
         elif User.objects.filter(email=mail).exists():
-            return redirect('accounts:signin?next={{request.home:applynow}}')
+            return redirect('/signin?next=/applynow')
         else:
-            return redirect('accounts:register')
-        print(amount,email)
+            return redirect('/register?next=/applynow')
+
+        print(amount, email)
         print("This  is Post")
-        ins = AmountRequest(amount=amount,mail=email)
+        ins = AmountRequest(amount=amount, mail=email)
         ins.save()
-      
-    return render(request, 'home/applynow.html')
+
+    if request.method=='POST':
+       BrokerRecordOfCompany=request.POST['BrokerRecordOfCompany']
+       OpenAdvanceswihOther=request.POST['OpenAdvanceswihOther']
+       Agent_First_Name=request.POST['Agent_First_Name']
+       Agent_Last_Name=request.POST['Agent_Last_Name']
+       Agent_Home_address=request.POST['Agent_Home_address']
+       Agent_City=request.POST['Agent_City']
+       Agent_State=request.POST['Agent_State']
+       Agent_Zip=request.POST['Agent_Zip']
+       Agent_Cell_Phone=request.POST['Agent_Cell_Phone']
+       ins=Agent(Agent_Zip=Agent_Zip)
+       ins.save()
+       data = {'Agent_Zip':Agent_Zip , 
+       'BrokerRecordOfCompany':BrokerRecordOfCompany,
+       'OpenAdvanceswihOther':OpenAdvanceswihOther,
+       'Agent_First_Name':Agent_First_Name,
+       'Agent_Last_Name':Agent_Last_Name,
+       'Agent_Home_address':Agent_Home_address,
+       'Agent_City':Agent_City,
+       'Agent_State':Agent_State,
+       'Agent_Cell_Phone':Agent_Cell_Phone
+       }
+       print(data)
+       return JsonResponse(data, safe=False)
+    else:
+        return render(request,'home/applynow.html' )
+    
 
 
 def contactUs(request):
@@ -67,25 +93,7 @@ def thanks(request):
         ins.save()
     return render(request, 'home/thankyou.html')
 
-
-
-def SalesInfoForm(request):
-   """ if request.is_ajax and request.method == "POST":
-        # get the form data
-        form = Agent(request.POST)
-        # save the data and after fetch the object in instance
-        if form.is_valid():
-            instance = form.save()
-            # serialize in new friend object in json
-            ser_instance = serializers.serialize('json', [ instance, ])
-            # send to client side.
-            return JsonResponse({"instance": ser_instance}, status=200)
-        else:
-            # some form errors occured.
-            return JsonResponse({"error": form.errors}, status=400)
-  """
-   return render(request, 'home/SalesInfoForm.html')
-
+   
 def BrokerInfoForm(request):
     if request.method=="POST":
         Property_Address=request.POST.get('Property_Address')
