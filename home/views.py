@@ -20,52 +20,76 @@ def agent_Faq(request):
 def broker_Faq(request):
     return render(request, 'home/brokerFaq.html')
 
-
-@login_required(login_url='accounts:signin')
 def applynow(request):
-    if request.method == "POST" and 'HomeFormButton':
-        amount = request.POST.get('name')
+    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+    if request.method== "POST":
+        amount =request.POST.get('amount')
         email = request.POST.get('email')
-        mail = email
+        amount=amount.replace('$', '')
+        amount= int(amount.replace(',', ''))
 
-        if User.objects.filter(email=mail).exists() and request.user.is_authenticated:
-            return redirect('home:applynow')
-        elif User.objects.filter(email=mail).exists():
-            return redirect('/signin?next=/applynow')
-        else:
-            return redirect('/register?next=/applynow')
-
-        print(amount, email)
-        print("This  is Post")
-        ins = AmountRequest(amount=amount, mail=email)
+        ins = AmountRequest(amount=amount,mail=email)
         ins.save()
+        thisdict = "DONE"
+    # print(amount + email)
+    else:
+        thisdict ="ERROR"
+    # return HttpResponse(thisdict)
 
     if request.method=='POST':
-       BrokerRecordOfCompany=request.POST['BrokerRecordOfCompany']
-       OpenAdvanceswihOther=request.POST['OpenAdvanceswihOther']
-       Agent_First_Name=request.POST['Agent_First_Name']
-       Agent_Last_Name=request.POST['Agent_Last_Name']
-       Agent_Home_address=request.POST['Agent_Home_address']
-       Agent_City=request.POST['Agent_City']
-       Agent_State=request.POST['Agent_State']
-       Agent_Zip=request.POST['Agent_Zip']
-       Agent_Cell_Phone=request.POST['Agent_Cell_Phone']
-       ins=Agent(Agent_Zip=Agent_Zip)
-       ins.save()
-       data = {'Agent_Zip':Agent_Zip , 
-       'BrokerRecordOfCompany':BrokerRecordOfCompany,
-       'OpenAdvanceswihOther':OpenAdvanceswihOther,
-       'Agent_First_Name':Agent_First_Name,
-       'Agent_Last_Name':Agent_Last_Name,
-       'Agent_Home_address':Agent_Home_address,
-       'Agent_City':Agent_City,
-       'Agent_State':Agent_State,
-       'Agent_Cell_Phone':Agent_Cell_Phone
-       }
-       print(data)
-       return JsonResponse(data, safe=False)
-    else:
-        return render(request,'home/applynow.html' )
+        BrokerRecordOfCompany=request.POST['BrokerRecordOfCompany']
+        OpenAdvanceswihOther=request.POST['OpenAdvanceswihOther']
+        ins=RemainingFormRecords(BrokerRecordOfCompany=BrokerRecordOfCompany, OpenAdvanceswihOther=OpenAdvanceswihOther)
+        ins.save()
+        return render(request, 'home/applynow.html')
+    return render(request, 'home/applynow.html')
+
+
+# @login_required(login_url='accounts:signin')
+# def applynow(request):
+#     if request.method == "POST" and 'HomeFormButton':
+#         amount = request.POST.get('name')
+#         email = request.POST.get('email')
+#         mail = email
+#         print(amount, email)
+#         print("This  is Post")
+#         ins = AmountRequest(amount=amount, mail=email)
+#         ins.save()
+#         if User.objects.filter(email=mail).exists() and request.user.is_authenticated:
+#             return redirect('home:applynow')
+#         elif User.objects.filter(email=mail).exists():
+#             return redirect('/signin?next=/applynow')
+#         else:
+#             return redirect('/register?next=/applynow')
+
+        
+
+    # if request.method=='POST':
+    #    BrokerRecordOfCompany=request.POST['BrokerRecordOfCompany']
+    #    OpenAdvanceswihOther=request.POST['OpenAdvanceswihOther']
+    #    Agent_First_Name=request.POST['Agent_First_Name']
+    #    Agent_Last_Name=request.POST['Agent_Last_Name']
+    #    Agent_Home_address=request.POST['Agent_Home_address']
+    #    Agent_City=request.POST['Agent_City']
+    #    Agent_State=request.POST['Agent_State']
+    #    Agent_Zip=request.POST['Agent_Zip']
+    #    Agent_Cell_Phone=request.POST['Agent_Cell_Phone']
+    #    ins=Agent(Agent_Zip=Agent_Zip)
+    #    ins.save()
+    #    data = {'Agent_Zip':Agent_Zip , 
+    #    'BrokerRecordOfCompany':BrokerRecordOfCompany,
+    #    'OpenAdvanceswihOther':OpenAdvanceswihOther,
+    #    'Agent_First_Name':Agent_First_Name,
+    #    'Agent_Last_Name':Agent_Last_Name,
+    #    'Agent_Home_address':Agent_Home_address,
+    #    'Agent_City':Agent_City,
+    #    'Agent_State':Agent_State,
+    #    'Agent_Cell_Phone':Agent_Cell_Phone
+    #    }
+    #    print(data)
+    #    return JsonResponse(data, safe=False)
+    # else:
+    #     return render(request,'home/applynow.html' )
     
 
 
