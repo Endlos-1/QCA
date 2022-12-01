@@ -9,10 +9,10 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, FormView, RedirectView, ListView, DetailView, UpdateView
-
+from home.models import AmountRequest
 from .models import User
 from .forms import UserRegistrationForm, UserLoginForm, ProfileUpdateForm
-
+from django.shortcuts import render,redirect
 
 class RegisterView(CreateView):
     model = User
@@ -86,9 +86,11 @@ class LoginView(FormView):
 
     def form_valid(self, form):
         auth.login(self.request, form.get_user())
+        
 
         return HttpResponseRedirect(self.get_success_url())
         # return super(Login, self).form_valid(form)
+       
 
     def form_invalid(self, form):
         """If the form is invalid, render the invalid form."""

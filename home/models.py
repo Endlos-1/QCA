@@ -11,7 +11,7 @@ from django.utils.timezone import now
 class AmountRequest(models.Model):
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
     mail = models.EmailField()
-    amount = models.IntegerField()
+    amount = models.CharField(max_length=5)
 
 class Agent(models.Model):
     Agent_ID = models.AutoField(primary_key=True)
@@ -62,7 +62,7 @@ class SalesInformation_AgentDetail(models.Model):
 
 class RemainingFormRecords(models.Model):
     BrokerRecordOfCompany=models.CharField(max_length=5)
-    OpenAdvanceswihOther=models.BooleanField(default=False)
+    OpenAdvanceswihOther=models.CharField( max_length=5 )
 
 
 class ClosingCompanyDetails(models.Model):

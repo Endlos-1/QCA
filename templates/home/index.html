@@ -1026,13 +1026,15 @@
             $.ajax({
                 url: "{% url 'home:applynow' %}",
                 type: "POST",
-                data: $("#AmountForm").serialize(),
+                //data: $("#AmountForm").serialize(),
+                data:{amount,email,csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()},
                 // contentType: false,
                 // cache: false,
                 // processData: false,
                 success: function (data) {
                     // alert(data);
                     // var output = jQuery.parseJSON(data);
+                    window.location.href="{% url 'home:applynow' %}"
                     if(data == 'DONE') {
                         $('#successmsg').show();
                         $('#successmsg').html("Wll Done, New Join...");

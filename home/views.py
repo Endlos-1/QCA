@@ -25,23 +25,38 @@ def applynow(request):
     if request.method== "POST":
         amount =request.POST.get('amount')
         email = request.POST.get('email')
-        amount=amount.replace('$', '')
-        amount= int(amount.replace(',', ''))
-
+        #amount=amount.replace('$', '')
+       # amount= int(amount.replace('$', '   '))
         ins = AmountRequest(amount=amount,mail=email)
         ins.save()
-        thisdict = "DONE"
-    # print(amount + email)
-    else:
-        thisdict ="ERROR"
-    # return HttpResponse(thisdict)
+        print(amount )
 
-    if request.method=='POST':
-        BrokerRecordOfCompany=request.POST['BrokerRecordOfCompany']
-        OpenAdvanceswihOther=request.POST['OpenAdvanceswihOther']
-        ins=RemainingFormRecords(BrokerRecordOfCompany=BrokerRecordOfCompany, OpenAdvanceswihOther=OpenAdvanceswihOther)
+        # #form2 data
+        # BrokerRecordOfCompany=request.POST['BrokerRecordOfCompany']
+        # OpenAdvanceswihOther=request.POST['OpenAdvanceswihOther']
+        # Property_Address=request.POST.get('Property_Address')
+        # Property_City=request.POST.get('Property_City') 
+        # Property_State=request.POST.get('Property_State')
+        # Property_Zip=request.POST.get('Property_Zip')
+        # Property_Seller_Name=request.POST.get('Property_Seller_Name')
+        # Property_Buyer_Name =request.POST.get('Property_Buyer_Name')
+        # Property_Final_Price =request.POST.get('Property_Final_Price')
+        # Property_Closing_Date =request.POST.get('Property_Closing_Date')
+        # Property_Short_Sale=request.POST.get('Property_Short_Sale')
+
+        # ins=RemainingFormRecords(BrokerRecordOfCompany=BrokerRecordOfCompany, OpenAdvanceswihOther=OpenAdvanceswihOther)
+        # ins1=Property(Property_Address=Property_Address,
+        #     Property_City=Property_City,
+        #     Property_State=Property_State,
+        #     Property_Zip=Property_Zip,
+        #     Property_Seller_Name=Property_Seller_Name,
+        #     Property_Final_Price=Property_Final_Price,
+        #     Property_Closing_Date=Property_Closing_Date,
+        #     Property_Buyer_Name=Property_Buyer_Name
+        #    )
         ins.save()
-        return render(request, 'home/applynow.html')
+        # ins1.save()
+        # return render(request, 'home/applynow.html')
     return render(request, 'home/applynow.html')
 
 
@@ -147,19 +162,10 @@ def BrokerInfoForm(request):
         ClosingCompany_Email=request.POST.get('ClosingCompany_Email')
 
         
-        print(Property_Address,Property_City,Property_State,Property_Zip,Property_Seller_Name,Property_Buyer_Name,Property_Final_Price,Property_Closing_Date ,Property_Short_Sale,)
         print(Net_Commission,Selling_or_Listing,Transaction_completein_12months,Pedning_Transaction,Non_pending_Transaction)
         print( Closing_Company,Escrow,ClosingCompany_address,ClosingCompany_city,ClosingCompany_State,ClosingCompany_Zip,ClosingCompany_Cell_Phone,ClosingCompany_Contact,ClosingCompany_Email)
 
-        ins=Property(Property_Address=Property_Address,
-            Property_City=Property_City,
-            Property_State=Property_State,
-            Property_Zip=Property_Zip,
-            Property_Seller_Name=Property_Seller_Name,
-            Property_Final_Price=Property_Final_Price,
-            Property_Closing_Date=Property_Closing_Date,
-            Property_Buyer_Name=Property_Buyer_Name
-           )
+       
         ins1=SalesInformation_AgentDetail(Net_Commission=Net_Commission,
             Selling_or_Listing=Selling_or_Listing,
             Transaction_completein_12months= Transaction_completein_12months,

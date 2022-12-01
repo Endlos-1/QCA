@@ -58,6 +58,7 @@ class UserRegistrationForm(UserCreationForm):
         self.fields['password2'].widget.attrs.update(
             {'placeholder': 'Again password'})
         # self.fields['email'].widget.attrs['placeholder'] = self.fields['email'].label or 'email@address.nl'
+        
 
     class Meta:
         model = User

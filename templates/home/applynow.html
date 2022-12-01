@@ -146,45 +146,9 @@
       {% csrf_token %}
       <div class="container">
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-6 colSix">
-              <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Are you the
-                Broker of record of your coampany ?</b></label>
-            </div>
-            <div class="col-md-3">
-              <select id="BrokerRecordOfCompany"  style="font-size: 14px;" name="BrokerRecordOfCompany">
-                <option selected></option>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
-            </div>
-            <div class="col-md-3"></div>
-          </div>
-        </div>
-      </div>
+      
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-6 colSix">
-              <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Do you currently
-                have any open advances with other
-                commission
-                advance comapnies ?</b></label>
-            </div>
-            <div class="col-md-3">
-              <select id="BrokerRecordOfCompany"  style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
-                <option selected></option>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
-            </div>
-            <div class="col-md-3"></div>
-          </div>
-        </div>
-      </div>
+    
 
       <div class="row">
         <div class="col-md-6">
@@ -349,7 +313,7 @@
                 advance comapnies ?</b></label>
             </div>
             <div class="col-md-3" style="padding-top: 10px;">
-              <select id="BrokerRecordOfCompany"  style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
+              <select id=" "  style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
                 <option selected></option>
                 <option>Yes</option>
                 <option>No</option>
@@ -484,7 +448,7 @@
               <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Is This A Short Sale?:</b></label>
             </div>
             <div class="col-md-3">
-              <select id="BrokerRecordOfCompany"  style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
+              <select id=""  style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
                 <option selected></option>
                 <option>Yes</option>
                 <option>No</option>
@@ -523,7 +487,7 @@
               <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Are You The Listing Or Selling Agent?:</b></label>
             </div>
             <div class="col-md-3">
-              <select id="BrokerRecordOfCompany"  style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
+              <select id=" "  style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
                 <option selected></option>
                 <option>Listing</option>
                 <option>Selling</option>
@@ -968,7 +932,7 @@
           <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>I agree to the Privacy Policy:</b></label>
         </div>
         <div class="col-md-4">
-          <select id="BrokerRecordOfCompany"  style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
+          <select id=" "  style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
             <option selected></option>
             <option>Yes</option>
             <option>No</option>
@@ -1136,7 +1100,16 @@
 
 $("#SalesInformationForm").on('submit', (function (e) {
         var BrokerRecordOfCompany = $('#BrokerRecordOfCompany').val();
-        var emaiOpenAdvanceswihOther = $('#OpenAdvanceswihOther').val();
+        var OpenAdvanceswihOther = $('#OpenAdvanceswihOther').val();
+        var Property_Address=$('#Property_Address').val();
+        var Property_City=$('#Property_City').val();
+        var Property_State=$('#Property_State').val();
+        var Property_Zip=$('# Property_Zip').val();
+        var Property_Seller_Name=$('#Property_Seller_Name').val();
+        var Property_Buyer_Name=$('#Property_Buyer_Name').val();
+        var Property_Final_Price=$('#Property_Final_Price').val();
+        var Property_Closing_Date=$('#Property_Closing_Date').val();
+        var Poperty_Short_Sale=$('#Poperty_Short_Sale').val();
             e.preventDefault();
             $.ajax({
                 url: "{% url 'home:applynow' %}",
@@ -1151,7 +1124,7 @@ $("#SalesInformationForm").on('submit', (function (e) {
                     if(data == 'DONE') {
                         $('#successmsg').show();
                         $('#successmsg').html("Wll Done, New Join...");
-                        $("#successmsg").fadeOut(3000,setTimeout(function(){ location.reload(); }, 1000));
+                        
                     }
                 }
             });
