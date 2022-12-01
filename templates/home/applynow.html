@@ -19,6 +19,7 @@
 <!-- Favicon and Touch Icons  -->
 <link rel="shortcut icon" href="{% static 'home/icon/favicon.png' %}">
 <link rel="apple-touch-icon-precomposed" href="{% static 'home/icon/apple-touch-icon-158-precomposed.png' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -141,7 +142,7 @@
     <h5 class="text-white text-left" style="padding-top: 5px;">Contact Information </h5>
   </div>
   <div class="container cnt col-8 p-4 brd">
-    <form class="g-3 justify-content-center" method="POST" >
+    <form class="g-3 justify-content-center" method="POST" id="ContactInformationForm">
       {% csrf_token %}
       <div class="container">
 
@@ -315,7 +316,7 @@
     <h5 class="text-white text-left" style="padding-top: 5px;">SALE INFORMATION</h5>
   </div>
   <div class="container cnt col-8 p-4 brd">
-    <form class="g-3 justify-content-center" method="POST" action="#">
+    <form class="g-3 justify-content-center" method="POST" action="#" id="SalesInformationForm">
       {% csrf_token %}
       <div class="container">
 
@@ -1074,63 +1075,88 @@
 
  
 <script type="text/javascript">
-  document.getElementById("BasicForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  //var url = '/'
-  Agent_First_Name = document.getElementById("Agent_First_Name").value
-  Agent_Last_Name = document.getElementById("Agent_Last_Name").value  
- // Agent_Email = document.getElementById("Agent_Email").value  
-  Agent_Cell_Phone = document.getElementById("Agent_Cell_Phone").value  
-  Agent_Home_address = document.getElementById("Agent_Home_address").value  
-  Agent_City = document.getElementById("Agent_City").value  
-  Agent_State = document.getElementById("Agent_State").value  
-  Agent_Zip = document.getElementById("Agent_Zip").value  
-  BrokerRecordOfCompany=document.getElementById("BrokerRecordOfCompany").value
-  OpenAdvanceswihOther=document.getElementById("OpenAdvanceswihOther").value
-  const formData = new FormData();
+//   document.getElementById("BasicForm").addEventListener("submit", function(e){
+//   e.preventDefault();
+//   //var url = '/'
+//   Agent_First_Name = document.getElementById("Agent_First_Name").value
+//   Agent_Last_Name = document.getElementById("Agent_Last_Name").value  
+//  // Agent_Email = document.getElementById("Agent_Email").value  
+//   Agent_Cell_Phone = document.getElementById("Agent_Cell_Phone").value  
+//   Agent_Home_address = document.getElementById("Agent_Home_address").value  
+//   Agent_City = document.getElementById("Agent_City").value  
+//   Agent_State = document.getElementById("Agent_State").value  
+//   Agent_Zip = document.getElementById("Agent_Zip").value  
+//   BrokerRecordOfCompany=document.getElementById("BrokerRecordOfCompany").value
+//   OpenAdvanceswihOther=document.getElementById("OpenAdvanceswihOther").value
+//   const formData = new FormData();
 
-//console.log(name);
-formData.append('Agent_First_Name', Agent_First_Name);
-formData.append('Agent_Last_Name', Agent_Last_Name);
-//formData.append('Agent_Email', Agent_Email);
-formData.append('Agent_Cell_Phone', Agent_Cell_Phone);
-formData.append('Agent_Home_address', Agent_Home_address);
-formData.append('Agent_City', Agent_City);
-formData.append('Agent_State', Agent_State);
-formData.append('Agent_Zip', Agent_Zip);
-formData.append('BrokerRecordOfCompany',BrokerRecordOfCompany);
-formData.append('OpenAdvanceswihOther',OpenAdvanceswihOther);
-formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
-console.log(formData);
-fetch('{% url "home:applynow" %}', {
-  method: 'POST',
-  body: formData
-})
-.then(response => response.json())
-.then(data => {
-  console.log('Success:', data);
+// //console.log(name);
+// formData.append('Agent_First_Name', Agent_First_Name);
+// formData.append('Agent_Last_Name', Agent_Last_Name);
+// //formData.append('Agent_Email', Agent_Email);
+// formData.append('Agent_Cell_Phone', Agent_Cell_Phone);
+// formData.append('Agent_Home_address', Agent_Home_address);
+// formData.append('Agent_City', Agent_City);
+// formData.append('Agent_State', Agent_State);
+// formData.append('Agent_Zip', Agent_Zip);
+// formData.append('BrokerRecordOfCompany',BrokerRecordOfCompany);
+// formData.append('OpenAdvanceswihOther',OpenAdvanceswihOther);
+// formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+// console.log(formData);
+// fetch('{% url "home:applynow" %}', {
+//   method: 'POST',
+//   body: formData
+// })
+// .then(response => response.json())
+// .then(data => {
+//   console.log('Success:', data);
  
-  document.getElementById("Agent_Zip").value = "";
-  document.getElementById("output-message").innerText = "Your data has been saved successfully!"
-  setTimeout(function(){ 
-  document.getElementById("output-message").style.display = "none";
-   }, 3000);
-  setTimeout(function(){ 
-  document.getElementById("output-message").style.display = "";
-   }, 1000);
-})
-.catch(error => {
-  console.error('Error:', error);
-  document.getElementById("output-message").innerText = "Sorry! There was an error submitting your data. "
-  setTimeout(function(){ 
-  document.getElementById("output-message").style.display = "none";
-   }, 3000);
-  setTimeout(function(){ 
-  document.getElementById("output-message").style.display = "";
-   }, 1000);
+//   document.getElementById("Agent_Zip").value = "";
+//   document.getElementById("output-message").innerText = "Your data has been saved successfully!"
+//   setTimeout(function(){ 
+//   document.getElementById("output-message").style.display = "none";
+//    }, 3000);
+//   setTimeout(function(){ 
+//   document.getElementById("output-message").style.display = "";
+//    }, 1000);
+// })
+// .catch(error => {
+//   console.error('Error:', error);
+//   document.getElementById("output-message").innerText = "Sorry! There was an error submitting your data. "
+//   setTimeout(function(){ 
+//   document.getElementById("output-message").style.display = "none";
+//    }, 3000);
+//   setTimeout(function(){ 
+//   document.getElementById("output-message").style.display = "";
+//    }, 1000);
 
-});
-});
+// });
+// });
+
+
+$("#SalesInformationForm").on('submit', (function (e) {
+        var BrokerRecordOfCompany = $('#BrokerRecordOfCompany').val();
+        var emaiOpenAdvanceswihOther = $('#OpenAdvanceswihOther').val();
+            e.preventDefault();
+            $.ajax({
+                url: "{% url 'home:applynow' %}",
+                type: "POST",
+                data: $("#SalesInformationForm").serialize(),
+                // contentType: false,
+                // cache: false,
+                // processData: false,
+                success: function (data) {
+                    // alert(data);
+                    // var output = jQuery.parseJSON(data);
+                    if(data == 'DONE') {
+                        $('#successmsg').show();
+                        $('#successmsg').html("Wll Done, New Join...");
+                        $("#successmsg").fadeOut(3000,setTimeout(function(){ location.reload(); }, 1000));
+                    }
+                }
+            });
+        
+    }));
 </script>
     
   
