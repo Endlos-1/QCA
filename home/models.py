@@ -1,5 +1,6 @@
 from curses.ascii import NUL
 from django.db import models
+import datetime
 from django import forms
 from accounts.models import User
 from localflavor.us.models import USStateField
@@ -10,7 +11,7 @@ from django.utils.timezone import now
 # Create your models here.
 class AmountRequest(models.Model):
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
-    mail = models.EmailField()
+    mail = models.EmailField(null=True)
     amount = models.CharField(max_length=5)
 
 class Agent(models.Model):
@@ -24,9 +25,25 @@ class Agent(models.Model):
     Agent_State = USStateField(blank=True)
     Agent_Zip = USZipCodeField(blank=True)
 
+
+class Application(models.Model):
+    count = models.AutoField(primary_key=True, default=1)
+    application_id = models.CharField(max_length=15)
+    created_on = models.DateField(default=now)
+    completed_on = models.DateField(default=now)
+    
+    @property
+    def application_id():
+        strr = "QCA"
+        dt_object = str(datetime.strptime('%y/%m/%d'))
+        no = str(1000 + self.count)
+        return '{}{}-{}'.format(strr, dt_object, no)
+    
+
+
 class Property(models.Model):
     Property_Address = models.CharField(max_length=50)
-    Property_City = models.CharField(max_length=15)
+    Property_City = models.CharField(max_length=15) 
     Property_State = USStateField(blank=True)
     Property_Zip = USZipCodeField(blank=True)
     Property_Seller_Name = models.CharField(max_length=15)

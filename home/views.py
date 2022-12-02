@@ -1,12 +1,14 @@
 from re import template
 from accounts.models import User
+import datetime
 from django.shortcuts import render,redirect
 from home.models import AmountRequest,RemainingFormRecords,Agent,Property,Broker,AgentBankDetails
-from home.models import ContactUs,SalesInformation_AgentDetail,ClosingCompanyDetails,Documents
+from home.models import ContactUs,SalesInformation_AgentDetail,ClosingCompanyDetails,Documents,Application
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.http import HttpResponse
 import json
+from django.utils.timezone import now
 
 # Create your views here.
 
@@ -20,13 +22,18 @@ def agent_Faq(request):
 def broker_Faq(request):
     return render(request, 'home/brokerFaq.html')
 
+
+@login_required(login_url='accounts:signin')
 def applynow(request):
     is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
-    if request.method== "POST":
+    if request.method== "POST" and "HomeFormButton":
         amount =request.POST.get('amount')
         email = request.POST.get('email')
         #amount=amount.replace('$', '')
        # amount= int(amount.replace('$', '   '))
+        ins1 = Application(created_on=datetime.now())
+        ins1.save()
+
         ins = AmountRequest(amount=amount,mail=email)
         ins.save()
         print(amount )
@@ -55,9 +62,12 @@ def applynow(request):
         #     Property_Buyer_Name=Property_Buyer_Name
         #    )
         ins.save()
+        
+        return render(request, 'home/applynow.html')
+    return render(request, 'home/applynow.html')
         # ins1.save()
         # return render(request, 'home/applynow.html')
-    return render(request, 'home/applynow.html')
+    
 
 
 # @login_required(login_url='accounts:signin')
