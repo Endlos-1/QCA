@@ -74,7 +74,7 @@
   </style>
   <style>
     .colSix {
-      text-align: right; 
+      text-align: right;
       padding: 0;
     }
   </style>
@@ -87,9 +87,11 @@
     .currency-wrap {
       position: relative;
     }
+
     .p-4 {
       padding-bottom: 500px;
     }
+
     .currency-code {
       position: absolute;
       left: 20px;
@@ -106,23 +108,27 @@
       border: solid;
       border-color: #003399;
     }
-  .row {
-    padding: 1px 0;
-  }
+
+    .row {
+      padding: 1px 0;
+    }
 
     label {
       display: inline-block;
-     
+
     }
-    b{
+
+    b {
       color: black;
     }
+
     .heder {
       background-color: #ccc;
       padding: 20px 0 1px 5px;
-      margin: 25px -30px ;
-      
+      margin: 25px -30px;
+
     }
+
     .heder h5 {
       font-size: 16px;
     }
@@ -132,849 +138,915 @@
       text-align: left;
       font-size: 18px;
     }
+
     .ddd input {
       height: 80px;
       font-size: 18px;
       margin: 20px;
     }
+
     .demoSize {
-    margin-bottom: -10px;
+      margin-bottom: -10px;
     }
+
     #errorMsg {
       color: red;
     }
-
   </style>
   <!--Form 1 Basic details-->
-<section class="pt-5 pb-5">
-  <div class="container col-8 p-1" style="background-color:#003399">
-    <h5 class="text-white text-left" style="font-size: 16px; padding: 0; margin: 15px 0 2px 5px;">CONFIRM AMOUNT REQUESTED </h5>
-  </div>
-  <div class="container cnt col-8 p-4 brd">
-    <form class="g-3 justify-content-center" method="POST" >
-      {% csrf_token %}
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="row">
-              <div class="col-md-6 colSix" style="align-content: center;align-self: center;">
-                <label for="amount" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Amount Requested</b></label>
-              </div>
-              <div class="col-md-3">
-                <input type="text" onkeypress="CheckNumeric(event);"
-                  class="form-control" name="amount" id="amount" style="text-align:right; ">
+  <section id="ClientInformation" class="pt-5 pb-5">
+    <div class="container col-8 p-1" style="background-color:#003399">
+      <h5 class="text-white text-left" style="font-size: 16px; padding: 0; margin: 15px 0 2px 5px;">CONFIRM AMOUNT
+        REQUESTED </h5>
+    </div>
+    <div class="container cnt col-8 p-4 brd">
+      <form class="g-3 justify-content-center" id="contactForm" method="POST">
+        {% csrf_token %}
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-6 colSix" style="padding-top: 5px;">
+                  <label for="amount" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Amount
+                      Requested</b></label>
+                </div>
+                <div class="col-md-3" style="padding-left:4px;">
+                  <input type="text" onkeypress="CheckNumeric(event);" class="form-control" name="amount" id="amount"
+                    style="text-align:right; padding-bottom: 0;
+                  color: black;">
                   <p id="errorMsg">Value must be in between $4000 to $15000 </p>
+                </div>
+                <div class="col-md-3"></div>
               </div>
-              <div class="col-md-3"></div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="container-fluid">
-        <div class="heder">
+        <div class="container-fluid">
+          <div class="heder">
             <h5 class="text-left"><b>CLIENT INFORMATION</b></h5>
+          </div>
         </div>
-      </div>
-      <div class="container">
+        <div class="container">
 
-      <div class="row">
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>First name:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" onkeypress="return (event.charCode > 64 && 
-              event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" id="Agent_First_Name"
-              name="Agent_First_Name" placeholder="First name" required>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Agent_Last_Name" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Last name:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" onkeypress="return (event.charCode > 64 && 
-              event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" id="Agent_Last_Name"
-              name="Agent_Last_Name" placeholder="Last name" required>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="email" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Email:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="email" class="form-control" id="email"
-              name="email" placeholder="email" required>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Agent_Cell_Phone" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Cell
-                Phone:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" onkeypress="CheckNumeric(event);"
-              id="Agent_Cell_Phone" name="Agent_Cell_Phone" placeholder="Phone number" required>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Agent_Home_address" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Home Address:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="Agent_Home_address" name="Agent_Home_address"
-              placeholder="Address" required>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Agent_City" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>City:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" onkeypress="return (event.charCode > 64 && 
-              event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" id="Agent_City"
-              name="Agent_City" placeholder="City" required>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Agent_State" class="col-form-label" style="font-size: 18px; text-align: right; padding-top: 15px;"><b>State:</b></label>
-            </div>
-            <div class="col-md-6">
-             
-              <select class="form-select" id="Agent_State" style="font-size: 14px;" name="Agent_State" required>
-                <option value="" selected> Choose</option>
-
-                <option value="AZ">Arizona</option>
-                <option value="CA">California</option>
-                <option value="CO">Colorado</option>
-                <option value="LA">Louisiana</option>
-                <option value="NV">Nevada</option>
-                <option value="PA">Pennsylvania</option>
-                <option value="TX">Texas</option>
-                <option value="UT">Utah</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Agent_Zip" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Zip Code:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" onkeypress="CheckNumeric(event);" id="Agent_Zip" name="Agent_Zip" placeholder="Zip Code"
-              required>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-      <div class="container">
-
-        <div class="text-center mt-3">
-          <button class="btn mt-4 btn-primary" type="submit" id="ContactButton"
-            style="background-color:#23a1d3;">CONTINUE</button>
-        </div>
-
-      </div>
-    </form>
-
-  </div>
-</section>
-
-<section id="SeleInformation" class="pt-5 pb-5">
-  <div class="container col-8 p-1" style="background-color:#003399">
-    <h5 class="text-white text-left" style="padding-top: 5px;">SALE INFORMATION</h5>
-  </div>
-  <div class="container cnt col-8 p-4 brd">
-    <form class="g-3 justify-content-center" method="POST" action="#">
-      {% csrf_token %}
-      <div class="container">
-
-      <div class="row">
-        <div class="col-md-12 demoSize">
           <div class="row">
-            <div class="col-md-6 colSix">
-              <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Are you the
-                Broker of record of your coampany ?</b></label>
-            </div>
-            <div class="col-md-3">
-              <select id="BrokerRecordOfCompany"  style="font-size: 14px;" name="BrokerRecordOfCompany">
-                <option selected></option>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
-            </div>
-            <div class="col-md-3"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12 demoSize">
-          <div class="row">
-            <div class="col-md-6 colSix">
-              <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Do you currently
-                have any open advances with other
-                commission
-                advance comapnies ?</b></label>
-            </div>
-            <div class="col-md-3" style="padding-top: 10px;">
-              <select id=""  style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
-                <option selected></option>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
-            </div>
-            <div class="col-md-3"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-      <div class="container-fluid">
-        <div class="heder">
-            <h5 class="text-left"><b>PROPERTY DETAILS</b></h5>
-        </div>
-      </div>
-
-      <div class="container">
-      <div class="row">
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Property_Addres" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Address:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="Property_Addres" id="Property_Addres"
-              placeholder="Address" required>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Property_City" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>City:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" onkeypress="return (event.charCode > 64 && 
-              event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" name="Property_City"
-                id="Property_City" placeholder="City" required>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Property_State" class="col-form-label" style="font-size: 18px; text-align: right;"><b>State:</b></label>
-            </div>
-            <div class="col-md-6">
-             
-              <select class="form-select" id="Property_State" style="font-size: 14px;" name="Property_State" required>
-                <option selected> Choose</option>
-
-                <option value="AZ">Arizona</option>
-                <option value="CA">California</option>
-                <option value="CO">Colorado</option>
-                <option value="LA">Louisiana</option>
-                <option value="NV">Nevada</option>
-                <option value="PA">Pennsylvania</option>
-                <option value="TX">Texas</option>
-                <option value="UT">Utah</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Property_Zip" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Zip Code:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" onkeypress="CheckNumeric(event);" id="Property_Zip" name="Property_Zip" placeholder="Zip Code"
-              required>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
             <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Property_Seller_Name" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Seller name:</b></label>
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Agent_First_Name" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>First name:</b></label>
+                </div>
+                <div class="col-md-6" style="padding-left: 4px;">
+                  <input type="text" class="form-control" onkeypress="return (event.charCode > 64 && 
+              event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" id="Agent_First_Name"
+                    style="padding-bottom: 0; color: black; padding-left: 5px;" name="Agent_First_Name"
+                    placeholder="First name">
+                </div>
+              </div>
             </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="Property_Seller_Name" name="Property_Seller_Name"
-              placeholder="Seller name" required>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Property_Buyer_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Buyer
-                name:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="Property_Buyer_Name" name="Property_Buyer_Name"
-              placeholder="Buyer name" required>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Property_Final_Price" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Final Sales Price:</b></label>
-            </div>
-            <div class="col-md-6">
-              <span class="currency-code" style="padding: 4px 0 0 0 ; font-size: 14px;">$</span>
-              <input type="number" style="padding-left: 33px;" class="form-control"
-                id="Property_Final_Price" name="Property_Final_Price" required>
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Agent_Last_Name" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Last name:</b></label>
+                </div>
+                <div class="col-md-6" style="padding-left: 4px;">
+                  <input type="text" class="form-control" onkeypress="return (event.charCode > 64 && 
+              event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" id="Agent_Last_Name"
+                    style="padding-bottom: 0; color: black; padding-left: 5px;" name="Agent_Last_Name"
+                    placeholder="Last name">
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6 demoSize">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Property_Closing_Date" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Closing Date:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="date" class="form-control" onkeydown="return false" id="Property_Closing_Date"
-              name="Property_Closing_Date" placeholder="MM/DD/YYY" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 demoSize">
           <div class="row">
-            <div class="col-md-6 colSix">
-              <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Is This A Short Sale?:</b></label>
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="email" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Email:</b></label>
+                </div>
+                <div class="col-md-6" style="padding-left: 4px;">
+                  <input type="email" class="form-control" id="email"
+                    style="padding-bottom: 0; color: black; padding-left: 5px;" name="email" placeholder="email">
+                </div>
+              </div>
             </div>
-            <div class="col-md-3">
-              <select id="  style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
-                <option selected></option>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Agent_Cell_Phone" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Cell
+                      Phone:</b></label>
+                </div>
+                <div class="col-md-6" style="padding-left: 4px;">
+                  <input type="text" class="form-control" onkeypress="CheckNumeric(event);"
+                    style="padding-bottom: 0; color: black; padding-left: 5px;" id="Agent_Cell_Phone"
+                    name="Agent_Cell_Phone" placeholder="Phone number">
+                </div>
+              </div>
             </div>
-            <div class="col-md-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Agent_Home_address" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Home Address:</b></label>
+                </div>
+                <div class="col-md-6" style="padding-left: 4px;">
+                  <input type="text" class="form-control" id="Agent_Home_address" name="Agent_Home_address"
+                    style="padding-bottom: 0; color: black; padding-left: 5px;" placeholder="Address">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Agent_City" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>City:</b></label>
+                </div>
+                <div class="col-md-6" style="padding-left: 4px;">
+                  <input type="text" class="form-control" onkeypress="return (event.charCode > 64 && 
+              event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" id="Agent_City"
+                    style="padding-bottom: 0; color: black; padding-left: 5px;" name="Agent_City" placeholder="City">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Agent_State" class="col-form-label"
+                    style="font-size: 18px; text-align: right; padding-top: 15px;"><b>State:</b></label>
+                </div>
+                <div class="col-md-6" style="padding-left: 4px;">
+
+                  <select class="form-select" id="Agent_State"
+                    style=" font-size: 14px; padding-bottom: 0; color: black; padding-left: 5px;" name="Agent_State">
+                    <option value="" selected> Choose</option>
+
+                    <option value="AZ">Arizona</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="NV">Nevada</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Agent_Zip" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Zip
+                      Code:</b></label>
+                </div>
+                <div class="col-md-6" style="padding-left: 4px;">
+                  <input type="text" class="form-control" onkeypress="CheckNumeric(event);" id="Agent_Zip"
+                    name="Agent_Zip" placeholder="Zip Code" style="padding-bottom: 0; color: black; padding-left: 5px;">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+        <div class="container">
+          <div class="text-center mt-3">
+            <button class="btn mt-4 btn-primary" type="submit" id="ContactButton"
+              style="background-color:#23a1d3;">CONTINUE</button>
+          </div>
+
+        </div>
+      </form>
+
     </div>
-    <div class="container-fluid">
-      <div class="heder">
-          <h5 class="text-left"><b>AGENT DETAILS</b></h5>
-      </div>
+  </section>
+
+  <section id="SeleInformation" class="pt-5 pb-5">
+    <div class="container col-8 p-1" style="background-color:#003399">
+      <h5 class="text-white text-left" style="padding-top: 5px;">SALE INFORMATION</h5>
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 demoSize">
+    <div class="container cnt col-8 p-4 brd">
+      <form class="g-3 justify-content-center" method="POST" action="#">
+        {% csrf_token %}
+        <div class="container">
+
           <div class="row">
-            <div class="col-md-6 colSix">
-              <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Net Commission (After Any Broker Split):</b></label>
+            <div class="col-md-12 demoSize">
+              <div class="row">
+                <div class="col-md-6 colSix">
+                  <label for="Agent_First_Name" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Are you the
+                      Broker of record of your coampany ?</b></label>
+                </div>
+                <div class="col-md-3">
+                  <select id="BrokerRecordOfCompany" style="font-size: 14px;" name="BrokerRecordOfCompany">
+                    <option selected></option>
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </div>
+                <div class="col-md-3"></div>
+              </div>
             </div>
-            <div class="col-md-3">
-              <span class="currency-code" style="padding: 4px 0 0 0 ; font-size: 14px;">$</span>
-              <input type="number" style="padding-left: 33px;" class="form-control"
-                id="Property_Final_Price" name="Property_Final_Price" required>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 demoSize">
+              <div class="row">
+                <div class="col-md-6 colSix">
+                  <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Do
+                      you currently
+                      have any open advances with other
+                      commission
+                      advance comapnies ?</b></label>
+                </div>
+                <div class="col-md-3" style="padding-top: 10px;">
+                  <select id="BrokerRecordOfCompany" style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
+                    <option selected></option>
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </div>
+                <div class="col-md-3"></div>
+              </div>
             </div>
-            <div class="col-md-3"></div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 demoSize">
-          <div class="row">
-            <div class="col-md-6 colSix">
-              <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Are You The Listing Or Selling Agent?:</b></label>
-            </div>
-            <div class="col-md-3">
-              <select id=""  style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
-                <option selected></option>
-                <option>Listing</option>
-                <option>Selling</option>
-              </select>
-            </div>
-            <div class="col-md-3"></div>
+        <div class="container-fluid">
+          <div class="heder">
+            <h5 class="text-left"><b>PROPERTY DETAILS</b></h5>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 demoSize">
+
+        <div class="container">
           <div class="row">
-            <div class="col-md-6 colSix">
-              <label for="Transaction_completein_12months" class="col-form-label" style="font-size: 18px; text-align: right;"><b>How Many Transactions Have You Completed In The Past 12 Months?:</b></label>
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Property_Addres" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Address:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" name="Property_Addres" id="Property_Addres"
+                    placeholder="Address" required>
+                </div>
+              </div>
             </div>
-            <div class="col-md-3" style="padding-top: 10px;">
-              <input type="number" class="form-control" id="Transaction_completein_12months"
-            name="Transaction_completein_12months" required>
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Property_City" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>City:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" onkeypress="return (event.charCode > 64 && 
+              event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" name="Property_City"
+                    id="Property_City" placeholder="City" required>
+                </div>
+              </div>
             </div>
-            <div class="col-md-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Property_State" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>State:</b></label>
+                </div>
+                <div class="col-md-6">
+
+                  <select class="form-select" id="Property_State" style="font-size: 14px;" name="Property_State"
+                    required>
+                    <option selected> Choose</option>
+
+                    <option value="AZ">Arizona</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="NV">Nevada</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Property_Zip" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Zip
+                      Code:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" onkeypress="CheckNumeric(event);" id="Property_Zip"
+                    name="Property_Zip" placeholder="Zip Code" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Property_Seller_Name" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Seller name:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="Property_Seller_Name" name="Property_Seller_Name"
+                    placeholder="Seller name" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Property_Buyer_Name" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Buyer
+                      name:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="Property_Buyer_Name" name="Property_Buyer_Name"
+                    placeholder="Buyer name" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Property_Final_Price" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Final Sales Price:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <span class="currency-code" style="padding: 4px 0 0 0 ; font-size: 14px;">$</span>
+                  <input type="number" style="padding-left: 33px;" class="form-control" id="Property_Final_Price"
+                    name="Property_Final_Price" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Property_Closing_Date" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Closing Date:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="date" class="form-control" onkeydown="return false" id="Property_Closing_Date"
+                    name="Property_Closing_Date" placeholder="MM/DD/YYY" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 demoSize">
+              <div class="row">
+                <div class="col-md-6 colSix">
+                  <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Is
+                      This A Short Sale?:</b></label>
+                </div>
+                <div class="col-md-3">
+                  <select id="BrokerRecordOfCompany" style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
+                    <option selected></option>
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 demoSize">
-          <div class="row">
-            <div class="col-md-6 colSix">
-              <label for="Pedning_Transaction" class="col-form-label" style="font-size: 18px; text-align: right;"><b>How Many Pending Transactions Do You Currently Have?:</b></label>
-            </div>
-            <div class="col-md-3">
-              <input type="number" class="form-control" id="Pedning_Transaction" name="Pedning_Transaction"
-              required>
-            </div>
-            <div class="col-md-3"></div>
+        <div class="container-fluid">
+          <div class="heder">
+            <h5 class="text-left"><b>AGENT DETAILS</b></h5>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 demoSize">
+        <div class="container">
           <div class="row">
-            <div class="col-md-6 colSix">
-              <label for="Non_pending_Transaction" class="col-form-label" style="font-size: 18px; text-align: right;"><b>How Many Non-Pending Listings Do You Currently Have?:</b></label>
+            <div class="col-md-12 demoSize">
+              <div class="row">
+                <div class="col-md-6 colSix">
+                  <label for="Agent_First_Name" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Net Commission (After Any Broker Split):</b></label>
+                </div>
+                <div class="col-md-3">
+                  <span class="currency-code" style="padding: 4px 0 0 0 ; font-size: 14px;">$</span>
+                  <input type="number" style="padding-left: 33px;" class="form-control" id="Property_Final_Price"
+                    name="Property_Final_Price" required>
+                </div>
+                <div class="col-md-3"></div>
+              </div>
             </div>
-            <div class="col-md-3">
-              <input type="number" class="form-control" id="Non_pending_Transaction"
-              name="Non_pending_Transaction" required>
+          </div>
+          <div class="row">
+            <div class="col-md-12 demoSize">
+              <div class="row">
+                <div class="col-md-6 colSix">
+                  <label for="Agent_First_Name" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Are You The Listing Or Selling Agent?:</b></label>
+                </div>
+                <div class="col-md-3">
+                  <select id="BrokerRecordOfCompany" style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
+                    <option selected></option>
+                    <option>Listing</option>
+                    <option>Selling</option>
+                  </select>
+                </div>
+                <div class="col-md-3"></div>
+              </div>
             </div>
-            <div class="col-md-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 demoSize">
+              <div class="row">
+                <div class="col-md-6 colSix">
+                  <label for="Transaction_completein_12months" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>How Many Transactions Have You Completed In The Past
+                      12 Months?:</b></label>
+                </div>
+                <div class="col-md-3" style="padding-top: 10px;">
+                  <input type="number" class="form-control" id="Transaction_completein_12months"
+                    name="Transaction_completein_12months" required>
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 demoSize">
+              <div class="row">
+                <div class="col-md-6 colSix">
+                  <label for="Pedning_Transaction" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>How Many Pending Transactions Do You Currently
+                      Have?:</b></label>
+                </div>
+                <div class="col-md-3">
+                  <input type="number" class="form-control" id="Pedning_Transaction" name="Pedning_Transaction"
+                    required>
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 demoSize">
+              <div class="row">
+                <div class="col-md-6 colSix">
+                  <label for="Non_pending_Transaction" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>How Many Non-Pending Listings Do You Currently
+                      Have?:</b></label>
+                </div>
+                <div class="col-md-3">
+                  <input type="number" class="form-control" id="Non_pending_Transaction" name="Non_pending_Transaction"
+                    required>
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="container-fluid">
-      <div class="heder">
-          <h5 class="text-left"><b>CLOSING COMPANY DETAILS</b></h5>
-      </div>
-      <p style="text-align: left;">PLEASE NOTE: YOUR SALES FILE MUST BE ESCROWED WITH THE CLOSING COMPANY IN ORDER TO APPROVE YOUR ADVANCE</p>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Closing_Company" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Closing Company:</b></label>
+        <div class="container-fluid">
+          <div class="heder">
+            <h5 class="text-left"><b>CLOSING COMPANY DETAILS</b></h5>
+          </div>
+          <p style="text-align: left;">PLEASE NOTE: YOUR SALES FILE MUST BE ESCROWED WITH THE CLOSING COMPANY IN ORDER
+            TO APPROVE YOUR ADVANCE</p>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Closing_Company" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Closing Company:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="Closing_Company" name="Closing_Company" required>
+                </div>
+              </div>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control"
-              id="Closing_Company" name="Closing_Company" required>
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Escrow" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Escrow
+                      Number:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" onkeypress="return (event.charCode > 64 && 
+              event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control" id="Escrow"
+                    name="Escrow">
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Escrow" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Escrow Number:</b></label>
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="ClosingCompany_address" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Address:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="ClosingCompany_address" name="ClosingCompany_address"
+                    placeholder="Address" required>
+                </div>
+              </div>
             </div>
             <div class="col-md-6">
-              <input type="text" onkeypress="return (event.charCode > 64 && 
-              event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control"
-                id="Escrow" name="Escrow">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="ClosingCompany_address" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Address:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="ClosingCompany_address" name="ClosingCompany_address"
-              placeholder="Address" required>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="ClosingCompany_city" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>City:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" onkeypress="return (event.charCode > 64 && 
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="ClosingCompany_city" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>City:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" onkeypress="return (event.charCode > 64 && 
           event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control"
-            id="ClosingCompany_city" name="ClosingCompany_city" placeholder="City" required>
+                    id="ClosingCompany_city" name="ClosingCompany_city" placeholder="City" required>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="ClosingCompany_State" class="col-form-label" style="font-size: 18px; text-align: right;"><b>State:</b></label>
-            </div>
-            <div class="col-md-6">
-             
-              <select class="form-select" id="ClosingCompany_State" style="font-size: 14px;" name="ClosingCompany_State" required>
-                <option selected> Choose</option>
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="ClosingCompany_State" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>State:</b></label>
+                </div>
+                <div class="col-md-6">
 
-                <option value="AZ">Arizona</option>
-                <option value="CA">California</option>
-                <option value="CO">Colorado</option>
-                <option value="LA">Louisiana</option>
-                <option value="NV">Nevada</option>
-                <option value="PA">Pennsylvania</option>
-                <option value="TX">Texas</option>
-                <option value="UT">Utah</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="ClosingCompany_Zip" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Zip Code:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" onkeypress="CheckNumeric(event);" id="ClosingCompany_Zip" name="ClosingCompany_Zip" placeholder="Zip Code"
-              required>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="ClosingCompany_Contact" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Contact Name:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="ClosingCompany_Contact" name="ClosingCompany_Contact"
-            required>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="ClosingCompany_Cell_Phone" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Phone:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="ClosingCompany_Cell_Phone"
-            name="ClosingCompany_Cell_Phone" required>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="ClosingCompany_Email" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Email:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="email" class="form-control" id="ClosingCompany_Email" name="ClosingCompany_Email">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-      <div class="container">
+                  <select class="form-select" id="ClosingCompany_State" style="font-size: 14px;"
+                    name="ClosingCompany_State" required>
+                    <option selected> Choose</option>
 
-        <div class="text-center mt-3">
-         
+                    <option value="AZ">Arizona</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="NV">Nevada</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="ClosingCompany_Zip" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Zip Code:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" onkeypress="CheckNumeric(event);" id="ClosingCompany_Zip"
+                    name="ClosingCompany_Zip" placeholder="Zip Code" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="ClosingCompany_Contact" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Contact Name:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="ClosingCompany_Contact" name="ClosingCompany_Contact"
+                    required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="ClosingCompany_Cell_Phone" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Phone:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="ClosingCompany_Cell_Phone"
+                    name="ClosingCompany_Cell_Phone" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="ClosingCompany_Email" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Email:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="email" class="form-control" id="ClosingCompany_Email" name="ClosingCompany_Email">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+
+          <div class="text-center mt-3">
+
             <button class="btn mt-4 btn-primary" type="submit" style="background-color:#23a1d3;">PREVIOUS PAGE</button>
             <button class="btn mt-4 btn-primary" type="submit" style="background-color:#23a1d3;"
               id="SalesButton">CONTINUE</button>
-        </div>
+          </div>
 
-      </div>
-    </form>
-
-  </div>
-</section>
-
-<section id="BrokerInformation" class="pt-5 pb-5">
-  <div class="container col-8 p-1" style="background-color:#003399">
-    <h5 class="text-white text-left" style="padding-top: 5px;">BROKER INFORMATION</h5>
-  </div>
-  <div class="container cnt col-8 p-4 brd">
-    <form class="g-3 justify-content-center" method="POST" action="#">
-      {% csrf_token %}
-
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="row g-3 align-items-center">
-              <div class="col-md-6 colSix">
-                <label for="Broker_CompanyName" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Broker Company Name:</b></label>
-              </div>
-              <div class="col-md-6">
-                <input type="text"  class="form-control" id="Broker_CompanyName" name="Broker_CompanyName"
-                            placeholder="Company Name" required>
-              </div>
-            </div>
-          </div>
-          
         </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Broker_address" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Address:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="Broker_address" name="Broker_address" placeholder="Address"
-              required>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Broker_City" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>City:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" onkeypress="return (event.charCode > 64 && 
-              event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  class="form-control" id="Broker_City" name="Broker_City" placeholder="City" required>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Broker_State" class="col-form-label" style="font-size: 18px; text-align: right;"><b>State:</b></label>
-            </div>
-            <div class="col-md-6">
-             
-              <select class="form-select" id="Broker_State" style="font-size: 14px;" name="Broker_State" required>
-                <option selected> Choose</option>
-
-                <option value="AZ">Arizona</option>
-                <option value="CA">California</option>
-                <option value="CO">Colorado</option>
-                <option value="LA">Louisiana</option>
-                <option value="NV">Nevada</option>
-                <option value="PA">Pennsylvania</option>
-                <option value="TX">Texas</option>
-                <option value="UT">Utah</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Broker_Zip" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Zip Code:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="Broker_Zip" name="Broker_Zip" placeholder="Zip Code"
-                                required>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Company_Cell_Phone" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Phone:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="Company_Cell_Phone" name="Company_Cell_Phone"
-                                placeholder="Phone number" required>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Broker_Email" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Email:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="email" class="form-control" id="Broker_Email" name="Broker_Email" placeholder="Email" required>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-            <div class="col-md-6">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="BrokerFirst_Name" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Broker First Name:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" onkeypress="return (event.charCode > 64 && 
-              event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  class="form-control" id="BrokerFirst_Name" name="BrokerFirst_Name"
-                  placeholder="First name" required>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 ">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Broker_Last_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Broker Last Name:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" onkeypress="return (event.charCode > 64 && 
-                            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  class="form-control" id="Broker_Last_Name" name="Broker_Last_Name"
-                                placeholder="Last name" required>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Company_Cell_Phone" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Broker Cell Phone:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="Company_Cell_Phone" name="Company_Cell_Phone"
-                                placeholder="Phone number" required>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-6 colSix">
-              <label for="Broker_Email" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Broker Email:</b></label>
-            </div>
-            <div class="col-md-6">
-              <input type="email" class="form-control" id="Broker_Email" name="Broker_Email" placeholder="Email" required>
-            </div>
-          </div>
-        </div>
-      </div>
+      </form>
 
     </div>
- 
-      <div class="container">
+  </section>
 
-        <div class="text-center mt-3">
-         
+  <section id="BrokerInformation" class="pt-5 pb-5">
+    <div class="container col-8 p-1" style="background-color:#003399">
+      <h5 class="text-white text-left" style="padding-top: 5px;">BROKER INFORMATION</h5>
+    </div>
+    <div class="container cnt col-8 p-4 brd">
+      <form class="g-3 justify-content-center" method="POST" action="#">
+        {% csrf_token %}
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Broker_CompanyName" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Broker Company Name:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="Broker_CompanyName" name="Broker_CompanyName"
+                    placeholder="Company Name" required>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Broker_address" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Address:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="Broker_address" name="Broker_address"
+                    placeholder="Address" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Broker_City" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>City:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" onkeypress="return (event.charCode > 64 && 
+              event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control"
+                    id="Broker_City" name="Broker_City" placeholder="City" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Broker_State" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>State:</b></label>
+                </div>
+                <div class="col-md-6">
+
+                  <select class="form-select" id="Broker_State" style="font-size: 14px;" name="Broker_State" required>
+                    <option selected> Choose</option>
+
+                    <option value="AZ">Arizona</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="NV">Nevada</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Broker_Zip" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Zip
+                      Code:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="Broker_Zip" name="Broker_Zip" placeholder="Zip Code"
+                    required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Company_Cell_Phone" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Phone:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="Company_Cell_Phone" name="Company_Cell_Phone"
+                    placeholder="Phone number" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Broker_Email" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Email:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="email" class="form-control" id="Broker_Email" name="Broker_Email" placeholder="Email"
+                    required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="BrokerFirst_Name" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Broker First Name:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" onkeypress="return (event.charCode > 64 && 
+              event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control"
+                    id="BrokerFirst_Name" name="BrokerFirst_Name" placeholder="First name" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 ">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Broker_Last_Name" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Broker Last Name:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" onkeypress="return (event.charCode > 64 && 
+                            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control"
+                    id="Broker_Last_Name" name="Broker_Last_Name" placeholder="Last name" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Company_Cell_Phone" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Broker Cell Phone:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="Company_Cell_Phone" name="Company_Cell_Phone"
+                    placeholder="Phone number" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Broker_Email" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Broker
+                      Email:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="email" class="form-control" id="Broker_Email" name="Broker_Email" placeholder="Email"
+                    required>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="container">
+
+          <div class="text-center mt-3">
+
             <button class="btn mt-4 btn-primary" type="submit" style="background-color:#23a1d3;">PREVIOUS PAGE</button>
             <button class="btn mt-4 btn-primary" type="submit" style="background-color:#23a1d3;"
               id="SalesButton">CONTINUE</button>
-        </div>
+          </div>
 
-      </div>
-    </form>
+        </div>
+      </form>
 
-  </div>
-</section>
+    </div>
+  </section>
 
-<section id="BankingInformation" class="pt-5 pb-5">
-  <div class="container col-8 p-1" style="background-color:#003399;">
-    <h5 class="text-white text-left" style="padding-top: 5px;">BANKING INFORMATION</h5>
-  </div>
-  <div class="container cnt col-8 p-4 brd">
-    <form class="g-3 justify-content-center" method="POST" action="#">
-      {% csrf_token %}
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 ">
-            <div class="row g-3 align-items-center">
-              <div class="col-md-6 colSix">
-                <label for="Agent_Bank_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Bank Name:</b></label>
+  <section id="BankingInformation" class="pt-5 pb-5">
+    <div class="container col-8 p-1" style="background-color:#003399;">
+      <h5 class="text-white text-left" style="padding-top: 5px;">BANKING INFORMATION</h5>
+    </div>
+    <div class="container cnt col-8 p-4 brd">
+      <form class="g-3 justify-content-center" method="POST" action="#">
+        {% csrf_token %}
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Agent_Bank_Name" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Bank Name:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="Agent_Bank_Name" name="Agent_Bank_Name" required>
+                </div>
               </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" id="Agent_Bank_Name" name="Agent_Bank_Name"
-                required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Account_Holder_Name" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Name of Account
+                      holder:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="Account_Holder_Name" name="Account_Holder_Name"
+                    placeholder="First name" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Agent_Account_type" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Account Type:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <select class="form-select" id="Agent_Account_type" style="font-size: 14px;" name="Agent_Account_type"
+                    required>
+                    <option selected> Choose</option>
+
+                    <option value="Saving">Saving</option>
+                    <option value="Current">Current</option>
+                    <option value="Other">Other</option>
+
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Routing" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Routing
+                      #:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" onkeypress="return (event.charCode > 64 && 
+                event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control"
+                    id="Routing" name="Routing" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="Account_number" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Account
+                      #:</b></label>
+                </div>
+                <div class="col-md-6">
+                  <input type="number" class="form-control" id="Account_number" name="Account_number"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onclick="validateForm()" required>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 ">
-            <div class="row g-3 align-items-center">
-              <div class="col-md-6 colSix">
-                <label for="Account_Holder_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Name of Account
-                  holder:</b></label>
-              </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" id="Account_Holder_Name"
-                            name="Account_Holder_Name" placeholder="First name" required>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="row g-3 align-items-center">
-              <div class="col-md-6 colSix">
-                <label for="Agent_Account_type" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Account Type:</b></label>
-              </div>
-              <div class="col-md-6">
-                <select class="form-select" id="Agent_Account_type" style="font-size: 14px;" name="Agent_Account_type" required>
-                  <option selected> Choose</option>
-  
-                  <option value="Saving">Saving</option>
-                  <option value="Current">Current</option>
-                  <option value="Other">Other</option>
-                
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 ">
-            <div class="row g-3 align-items-center">
-              <div class="col-md-6 colSix">
-                <label for="Routing" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Routing #:</b></label>
-              </div>
-              <div class="col-md-6">
-                <input type="text" onkeypress="return (event.charCode > 64 && 
-                event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"
-                    class="form-control" id="Routing" name="Routing" required>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="row g-3 align-items-center">
-              <div class="col-md-6 colSix">
-                <label for="Account_number" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Account
-                  #:</b></label>
-              </div>
-              <div class="col-md-6">
-                <input type="number" class="form-control" id="Account_number" name="Account_number"
-                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onclick="validateForm()" required>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
         <div class="container-fluid">
-            <h1 class="text-left"><b>STATEMENT ADDRESS</b></h1>
-           
+          <h1 class="text-left"><b>STATEMENT ADDRESS</b></h1>
+
         </div>
         <div class="container">
           <div class="row">
             <div class="col-md-12">
               <div class="row g-3 align-items-center">
                 <div class="col-md-12" style="padding: 20px 0; ">
-                  <input type="checkbox" class="form-check-input" style="position: relative;" id="Agent_Bank_Name" name="Agent_Bank_Name"
-                  required>
-                  <label for="Agent_Bank_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>My home address is the address that appears on account statement.</b></label>
+                  <input type="checkbox" class="form-check-input" style="position: relative;" id="Agent_Bank_Name"
+                    name="Agent_Bank_Name" required>
+                  <label for="Agent_Bank_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>My
+                      home address is the address that appears on account statement.</b></label>
                 </div>
               </div>
             </div>
@@ -983,23 +1055,25 @@
             <div class="col-md-6 ">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
-                  <label for="Agent_Statement_Address" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Statement Address:</b></label>
+                  <label for="Agent_Statement_Address" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Statement Address:</b></label>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" id="Agent_Statement_Address"
-                  name="Agent_Statement_Address" placeholder="Address" >
+                  <input type="text" class="form-control" id="Agent_Statement_Address" name="Agent_Statement_Address"
+                    placeholder="Address">
                 </div>
               </div>
             </div>
             <div class="col-md-6">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
-                  <label for="Agent_Statement_City" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>City:</b></label>
+                  <label for="Agent_Statement_City" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>City:</b></label>
                 </div>
                 <div class="col-md-6">
                   <input type="text" onkeypress="return (event.charCode > 64 && 
                   event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control"
-                          id="Agent_Statement_City" name="Agent_Statement_City" placeholder="City" >
+                    id="Agent_Statement_City" name="Agent_Statement_City" placeholder="City">
                 </div>
               </div>
             </div>
@@ -1008,10 +1082,12 @@
             <div class="col-md-6 ">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
-                  <label for="Agent_Statement_State" class="col-form-label" style="font-size: 18px; text-align: right;"><b>State:</b></label>
+                  <label for="Agent_Statement_State" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>State:</b></label>
                 </div>
                 <div class="col-md-6">
-                  <select class="form-select" id="Agent_Statement_State" style="font-size: 14px;" name="Agent_Statement_State" required>
+                  <select class="form-select" id="Agent_Statement_State" style="font-size: 14px;"
+                    name="Agent_Statement_State" required>
                     <option> Choose</option>
 
                     <option value="AZ">Arizona</option>
@@ -1022,7 +1098,7 @@
                     <option value="PA">Pennsylvania</option>
                     <option value="TX">Texas</option>
                     <option value="UT">Utah</option>
-                  
+
                   </select>
                 </div>
               </div>
@@ -1030,20 +1106,20 @@
             <div class="col-md-6">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
-                  <label for="Agent_Statement_Zip" class="col-form-label"  style="font-size: 18px; text-align: right;"><b>Zip
-                    Code:</b></label>
+                  <label for="Agent_Statement_Zip" class="col-form-label"
+                    style="font-size: 18px; text-align: right;"><b>Zip
+                      Code:</b></label>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" id="Agent_Statement_Zip"
-                  name="Agent_Statement_Zip" placeholder="Zip Code" >
+                  <input type="text" class="form-control" id="Agent_Statement_Zip" name="Agent_Statement_Zip"
+                    placeholder="Zip Code">
                 </div>
               </div>
             </div>
           </div>
-          </div>
-            <div class="container themesflat-headings style-1 clearfix text-justify" class=""
-            style=" color: black;">
-            <p class="sub-heading clearfix justify-content"
+        </div>
+        <div class="container themesflat-headings style-1 clearfix text-justify" class="" style=" color: black;">
+          <p class="sub-heading clearfix justify-content"
             style="color:black;  font-family: Montserrat; font-size: 15px; letter-spacing: 1px; ">
             By clicking 'Complete Application,' I declare under penalty of perjury that each of the
             representations and acknowledgments contained in this application were and will remain during the
@@ -1063,119 +1139,124 @@
             application is not approved, the lien(s) will be promptly released.
             <br>
             <br>
-        </p>
+          </p>
         </div>
         <div class="container">
 
           <div class="text-center mt-3">
-           
-              <button class="btn mt-4 btn-primary" type="submit" style="background-color:#23a1d3;">PREVIOUS PAGE</button>
-              <button class="btn mt-4 btn-primary" type="submit" style="background-color:#23a1d3;"
-                id="SalesButton">CONTINUE</button>
+
+            <button class="btn mt-4 btn-primary" type="submit" style="background-color:#23a1d3;">PREVIOUS PAGE</button>
+            <button class="btn mt-4 btn-primary" type="submit" style="background-color:#23a1d3;"
+              id="SalesButton">CONTINUE</button>
           </div>
-  
+
         </div>
-        </div>
+    </div>
 
     </form>
-  </div>
- </section>
+    </div>
+  </section>
 
-<section id="LastForm" class="pt-5 pb-5">
-  <div class="container col-8 p-1" style="background-color:#003399;">
-    <h5 class="text-white text-left" style="padding-top: 5px;">DO YOU WANT TO SPEED UP YOUR APPLICATION?  UPLOAD THE FOLLOWING:</h5>
-  </div>
-  <div class="container cnt col-8 p-4 brd">
-    <form class="g-3 justify-content-center" method="POST" action="#">
-      {% csrf_token %}
+  <section id="LastForm" class="pt-5 pb-5">
+    <div class="container col-8 p-1" style="background-color:#003399;">
+      <h5 class="text-white text-left" style="padding-top: 5px;">DO YOU WANT TO SPEED UP YOUR APPLICATION? UPLOAD THE
+        FOLLOWING:</h5>
+    </div>
+    <div class="container cnt col-8 p-4 brd">
+      <form class="g-3 justify-content-center" method="POST" action="#">
+        {% csrf_token %}
 
-      <div class="container ddd">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="row">
-              <label for="formFile" class="form-label"><b>1. Purchase Agreement (RPA)</b></label>
-            </div>
-              <div class="row col-md-8">
-              <input type="file" class="form-control" id="purchase_greement" name="purchase_greement">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="row">
-              <label for="formFile" class="form-label"><b>2. Broker of Record and Escrow Contact Information </b></label>
-            </div>
-              <div class="row col-md-8">
-              <input type="file" class="form-control" id="purchase_greement" name="purchase_greement">
-            </div>
-          </div>
-      </div>
-      <div class="row pt-5">
-        <div class="col-md-6">
+        <div class="container ddd">
           <div class="row">
-            <label for="formFile" class="form-label"><b>3. Last Month's Bank Statement or Void Check</b></label>
+            <div class="col-md-6">
+              <div class="row">
+                <label for="formFile" class="form-label"><b>1. Purchase Agreement (RPA)</b></label>
+              </div>
+              <div class="row col-md-8">
+                <input type="file" class="form-control" id="purchase_greement" name="purchase_greement">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label for="formFile" class="form-label"><b>2. Broker of Record and Escrow Contact Information
+                  </b></label>
+              </div>
+              <div class="row col-md-8">
+                <input type="file" class="form-control" id="purchase_greement" name="purchase_greement">
+              </div>
+            </div>
           </div>
-            <div class="row col-md-8">
-            <input type="file" class="form-control" id="purchase_greement" name="purchase_greement">
+          <div class="row pt-5">
+            <div class="col-md-6">
+              <div class="row">
+                <label for="formFile" class="form-label"><b>3. Last Month's Bank Statement or Void Check</b></label>
+              </div>
+              <div class="row col-md-8">
+                <input type="file" class="form-control" id="purchase_greement" name="purchase_greement">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label for="formFile" class="form-label"><b>4. Color Copy of Drivers License</b></label>
+              </div>
+              <div class="row col-md-8">
+                <input type="file" class="form-control" id="purchase_greement" name="purchase_greement">
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
+          <div class="row pt-5">
+            <div class="col-md-6">
+              <div class="row">
+                <label for="formFile" class="form-label"><b>5. Last 24 Months MLS Production History</b></label>
+              </div>
+              <div class="row col-md-8">
+                <input type="file" class="form-control" id="purchase_greement" name="purchase_greement">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label for="formFile" class="form-label"><b>6. Anything Else You Might Think Would Be
+                    Helpful</b></label>
+              </div>
+              <div class="row col-md-8">
+                <input type="file" class="form-control" id="purchase_greement" name="purchase_greement">
+              </div>
+            </div>
+          </div>
           <div class="row">
-            <label for="formFile" class="form-label"><b>4. Color Copy of Drivers License</b></label>
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-4 colSix">
+                  <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>I
+                      agree to the Privacy Policy:</b></label>
+                </div>
+                <div class="col-md-4">
+                  <select id="BrokerRecordOfCompany" style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
+                    <option selected></option>
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </div>
+                <div class="col-md-4"></div>
+              </div>
+            </div>
           </div>
-            <div class="row col-md-8">
-            <input type="file" class="form-control" id="purchase_greement" name="purchase_greement">
+        </div>
+
+
+        <div class="container">
+          <div class="text-center mt-3">
+            <button class="btn mt-4 btn-primary text-center" type="submit"
+              style="background-color:rgb(76, 236, 76);"><b>SEND
+                APPLICATION</b></button>
+
           </div>
-        </div>
-    </div>
-    <div class="row pt-5">
-      <div class="col-md-6">
-        <div class="row">
-          <label for="formFile" class="form-label"><b>5. Last 24 Months MLS Production History</b></label>
-        </div>
-          <div class="row col-md-8">
-          <input type="file" class="form-control" id="purchase_greement" name="purchase_greement">
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="row">
-          <label for="formFile" class="form-label"><b>6. Anything Else You Might Think Would Be Helpful</b></label>
-        </div>
-          <div class="row col-md-8">
-          <input type="file" class="form-control" id="purchase_greement" name="purchase_greement">
-        </div>
-      </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-4 colSix">
-          <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>I agree to the Privacy Policy:</b></label>
-        </div>
-        <div class="col-md-4">
-          <select id=""  style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
-            <option selected></option>
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-        </div>
-        <div class="col-md-4"></div>
-      </div>
-    </div>
-  </div>
-    </div>
 
- 
-      <div class="container">
-        <div class="text-center mt-3">
-          <button class="btn mt-4 btn-primary text-center" type="submit" style="background-color:rgb(76, 236, 76);"><b>SEND
-            APPLICATION</b></button>
-          
         </div>
+      </form>
 
-      </div>
-    </form>
-
-  </div>
-</section>
+    </div>
+  </section>
 
 
   <br><br>
@@ -1194,6 +1275,16 @@
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
 
   <script>
+    let fname = 0;
+    let lname = 0;
+    let email = 0;
+    let phone = 0;
+    let address = 0;
+    let city = 0;
+    let state = 0;
+    let zip = 0;
+    let mony = 0;
+
     function CheckNumeric(e) {
       if (window.event) // IE
       {
@@ -1210,107 +1301,143 @@
       }
     }
     function validateEmail($email) {
-        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-        return emailReg.test($email);
+      var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+      return emailReg.test($email);
     }
     function alerts(events) {
       let a = $(events).val();
-      if(a == "" ) {
+      let b = 0;
+      if (a == "") {
         $(events).css("border", "2px solid red");
+        b = 0;
       } else {
         $(events).css("border", "2px solid green");
+        b = 1;
       }
+      return b;
+    }
+    function Agent_Zips(event) {
+      let a = $(event).val();
+      let b = 0;
+      if (a.length == 5 || a.length == 10) {
+        $(event).css("border", "2px solid green");
+        b = 1;
+      }
+      else {
+        $(event).css("border", "2px solid red");
+        b = 0;
+      }
+      return b;
+    }
+    function Agent_emails(event) {
+      let a = $(event).val();
+      let b = 0;
+      if (validateEmail(a) && a != "") {
+        $(event).css("border", "2px solid green");
+        b = 1;
+      }
+      else {
+        $(event).css("border", "2px solid red");
+      }
+      return b;
+    }
+    function alertAll(events) {
+      let a = "#" + events;
+      if (a == "#Agent_First_Name") {
+        fname = alerts(a);
+
+      } else if (a == "#Agent_Last_Name") {
+        lname = alerts(a);
+      } else if (a == "#email") {
+        email = Agent_emails(a);
+      } else if (a == "#Agent_Cell_Phone") {
+        let b = $(a).val();
+        if (b.length == 12) {
+          $(a).css("border", "2px solid green");
+          phone = 1;
+        } else {
+          $(a).css("border", "2px solid red");
+          phone = 0;
+        }
+      } else if (a == "#Agent_Home_address") {
+        address = alerts(a);
+      } else if (a == "#Agent_City") {
+        city = alerts(a);
+      } else if (a == "#Agent_Zip") {
+        zip = Agent_Zips(a);
+      } else if (a == "#amount") {
+        let c = $(a).val();
+        let b = c.replace(',', '');
+        b = b.replace('$', '');
+        if (b >= 4000 && b <= 15000) {
+          $("#errorMsg").hide();
+          $('#amount').css("border", "2px solid green");
+          mony = 1;
+        } else {
+          $("#errorMsg").show();
+          $('#amount').css("border", "2px solid red");
+          mony = 0;
+        }
+      }
+
     }
 
     $(document).ready(function () {
-      
+
       $('#errorMsg').hide();
       $('#SeleInformation > .brd').hide();
       $('#BrokerInformation > .brd').hide();
       $('#BankingInformation > .brd').hide();
       $('#LastForm > .brd').hide();
 
-      $('#Agent_First_Name').focusout(function () {
-        alerts(this);
-    });
-    $('#Agent_Last_Name').focusout(function () {
-        alerts(this);
-    });
-    $('#Agent_Home_address').focusout(function () {
-        alerts(this);
-    });
-    $('#Agent_City').focusout(function () {
-        alerts(this);
-    });
+      $('input').focus(function () {
+        let z = $(this).attr("id");
+        $(this).css("border", "2px solid #00abc9");
+      });
+      $("#Agent_State").change(function () {
+        state = alerts("#Agent_State");
+        if (lname == 1 && fname == 1 && email == 1 && phone == 1 && address == 1 && city == 1 && state == 1 && zip == 1 && mony == 1) {
+          $('#ContactButton').css("background-color", "rgb(76, 236, 76)");
+        } else {
+          $('#ContactButton').css("background-color", "#23a1d3");
+        }
+      });
+      $('input').focusout(function () {
+        let z = $(this).attr("id");
+        alertAll(z);
+        if (lname == 1 && fname == 1 && email == 1 && phone == 1 && address == 1 && city == 1 && state == 1 && zip == 1 && mony == 1) {
+          $('#ContactButton').css("background-color", "rgb(76, 236, 76)");
 
-
-    $('input[type="text"]').focus(function () {
-      let z= $(this).attr("id");
-      console.warn(z);
-      alerts(z);
-      $(this).css("border", "2px solid #00abc9");
-     });
-     $('input[type="email"]').focus(function () {
-      $(this).css("border", "2px solid #00abc9");
-     });
-
-     $("#email").focusout(function () {
-            let a = $("#email").val();
-            if (validateEmail(a) && a != "") {
-                $('#email').css("border", "2px solid green");
-            } else {
-                $('#email').css("border", "2px solid red");
-            }
-        });
-
-    $("#Agent_State").change(function(){
-     let a =  $("#Agent_State").val();
-     if(a== "") {
-      $('#Agent_State').css("border", "2px solid red");
-     } else {
-      $('#Agent_State').css("border", "2px solid green");
-     }
-});
+        } else {
+          $('#ContactButton').css("background-color", "#23a1d3");
+        }
+      });
 
       $('#Agent_Cell_Phone').keypress(function () {
         let a = $("#Agent_Cell_Phone").val();
-          if(a.length == 3 || a.length == 7) {
-            c= a+"-";
-            $("#Agent_Cell_Phone").val(c);
-          }
-          if(a.length == 12) {
-           c =  a.slice(0, -1);
-           $("#Agent_Cell_Phone").val(c);
-          }
+        if (a.length == 3 || a.length == 7) {
+          c = a + "-";
+          $("#Agent_Cell_Phone").val(c);
+        }
+        if (a.length == 12) {
+          c = a.slice(0, -1);
+          $("#Agent_Cell_Phone").val(c);
+        }
       });
-    
 
-    $('#Agent_Zip').keypress(function () {
+      $('#Agent_Zip').keypress(function () {
         let a = $("#Agent_Zip").val();
-          if(a.length == 5) {
-            c = [a.slice(0, 5), "-", a.slice(5)].join('');
-            $("#Agent_Zip").val(c);
-          }
-          if(a.length == 10) {
-           c =  a.slice(0, -1);
-           $("#Agent_Zip").val(c);
-          }
-       
+        if (a.length == 5) {
+          c = [a.slice(0, 5), "-", a.slice(5)].join('');
+          $("#Agent_Zip").val(c);
+        }
+        if (a.length == 10) {
+          c = a.slice(0, -1);
+          $("#Agent_Zip").val(c);
+        }
       });
-      $("#amount").focusout(function () {
-            let a = $("#amount").val();
-            let b = a.replace(',', '');
-            b = b.replace('$', '');
-            if (b >= 4000 && b <= 15000) {
-                $("#errorMsg").hide();
-                $('#amount').css("border", "2px solid green");
-            } else {
-                $("#errorMsg").show();
-                $('#amount').css("border", "2px solid red");
-            }
-        });
 
-        $('#amount').keyup(function () {
+      $('#amount').keyup(function () {
         let a = $("#amount").val();
         let c = a.replace("$", "");
         c = c.replace(",", "");
@@ -1321,30 +1448,62 @@
         let b = a.replace(',', '');
         b = b.replace('$', '');
         if (b >= 4000 && b <= 15000) {
-            $("#errorMsg").hide();
-            $('#amount').css("border", "2px solid green");
+          $("#errorMsg").hide();
+          $('#amount').css("border", "2px solid green");
         }
-        });
-
-      $('#Agent_Cell_Phone').focusout(function () {
-        let a = $("#Agent_Cell_Phone").val();
-        if(a.length == 12) {
-          $('#Agent_Cell_Phone').css("border", "2px solid green");
-          } 
-          else {
-            $('#Agent_Cell_Phone').css("border", "2px solid red");
-          }
       });
 
-      $('#Agent_Zip').focusout(function () {
-        let a = $("#Agent_Zip").val();
-        if(a.length == 5 || a.length == 10) {
-            $('#Agent_Zip').css("border", "2px solid green");
-          } 
-          else {
-            $('#Agent_Zip').css("border", "2px solid red");
-          }
-      });
+
+
+
+      $("#contactForm").on('submit', (function (e) {
+        e.preventDefault();
+        var amount = $('#amount').val();
+        var Agent_First_Name = $('#Agent_First_Name').val();
+        var Agent_Last_Name = $('#Agent_Last_Name').val();
+        var email = $('#email').val();
+        var Agent_Cell_Phone = $('#Agent_Cell_Phone').val();
+        var Agent_Home_address = $('#Agent_Home_address').val();
+        var Agent_City = $('#Agent_City').val();
+        var Agent_State = $('#Agent_State').val();
+        var Agent_Zip = $('#Agent_Zip').val();
+        let c = amount.replace("$", "");
+        c = parseInt(c.replace(",", ""));
+
+        if (!(c >= 4000 && c <= 15000)) {
+          $("#errorMsg").show();
+          $('#amount').css("border", "2px solid red");
+        } else if (Agent_First_Name == "") {
+          $('#Agent_First_Name').css("border", "2px solid red");
+        } else if (Agent_Last_Name == "") {
+          $('#Agent_Last_Name').css("border", "2px solid red");
+        } else if (!(validateEmail(email) && email != "")) {
+          $('#email').css("border", "2px solid red");
+        } else if (!(Agent_Cell_Phone.length == 12)) {
+          $('#Agent_Cell_Phone').css("border", "2px solid red");
+        } else if (Agent_Home_address == "") {
+          $('#Agent_Home_address').css("border", "2px solid red");
+        } else if (Agent_City == "") {
+          $('#Agent_City').css("border", "2px solid red");
+        } else if (Agent_State == "") {
+          $('#Agent_State').css("border", "2px solid red");
+        } else if (!(Agent_Zip.length == 10 || Agent_Zip.length == 5) ) {
+          $('#Agent_Zip').css("border", "2px solid red");
+        } else {
+                     
+          $.ajax({
+                url: "{% url 'home:applynow' %}",
+                type: "POST",
+                data: $("#contactForm").serialize(),
+                success: function (data) {
+                 
+                    // $('#SeleInformation > .brd').show();
+                }
+            });
+            $('#SeleInformation > .brd').show();
+        }
+      }));
+
     });
 
   </script>

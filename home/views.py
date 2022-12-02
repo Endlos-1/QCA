@@ -22,6 +22,8 @@ def agent_Faq(request):
 def broker_Faq(request):
     return render(request, 'home/brokerFaq.html')
 
+def demo(request):
+    return render(request, 'home/applynow.html')
 
 @login_required(login_url='accounts:signin')
 def applynow(request):

@@ -16,6 +16,7 @@ urlpatterns = [
     path('aboutUs', views.aboutUs, name='aboutUs'),
     path('howitworks', views.howit, name="howitworks"),
     path('whycommissionadvance', views.whyadvance, name="whyadvance"),
+    path('demo', views.demo, name="demo"),
    
     path('bankinfo', views.BrokerInfoForm, name="BankInfo"),
     path('brokerinfo', views.BrokerInfoForm, name="BrokerInfoForm"),

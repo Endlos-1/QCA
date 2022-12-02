@@ -1048,12 +1048,12 @@
                 success: function (data) {
                     // alert(data);
                     // var output = jQuery.parseJSON(data);
-                    window.location.href("{% url 'home:applynow' %}");
-                    if (data == 'DONE') {
-                        $('#successmsg').show();
-                        $('#successmsg').html("Wll Done, New Join...");
-                        $("#successmsg").fadeOut(3000, setTimeout(function () { location.reload(); }, 1000));
-                    }
+                    window.location.href="{% url 'home:demo' %}";
+                    // if (data == 'DONE') {
+                    //     $('#successmsg').show();
+                    //     $('#successmsg').html("Wll Done, New Join...");
+                    //     $("#successmsg").fadeOut(3000, setTimeout(function () { location.reload(); }, 1000));
+                    // }
                 }
             });
         }
