@@ -3,7 +3,7 @@
     {
       "name": "Quick-Advance",
       "script": "manage.py",
-      "args": ["runserver", "0.0.0.0:8000"],
+      "args": ["runserver", "0.0.0.0"],
       "exec_mode": "fork",
       "instances": "1",
       "wait_ready": true,
