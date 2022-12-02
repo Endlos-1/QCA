@@ -150,6 +150,7 @@ EMAIL_HOST_PASSWORD = "mbuxwckpnzjccvsw"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+RUN_SERVER_PORT = "146.190.44.40"
 
 
 # EMAIL_HOST = 'smtp.sendgrid.net'

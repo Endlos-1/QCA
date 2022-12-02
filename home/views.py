@@ -31,8 +31,8 @@ def applynow(request):
         email = request.POST.get('email')
         #amount=amount.replace('$', '')
        # amount= int(amount.replace('$', '   '))
-        ins1 = Application(created_on=datetime.now())
-        ins1.save()
+        # ins1 = Application(created_on=datetime.now())
+        # ins1.save()
 
         ins = AmountRequest(amount=amount,mail=email)
         ins.save()
@@ -61,7 +61,7 @@ def applynow(request):
         #     Property_Closing_Date=Property_Closing_Date,
         #     Property_Buyer_Name=Property_Buyer_Name
         #    )
-        ins.save()
+        #
         
         return render(request, 'home/applynow.html')
     return render(request, 'home/applynow.html')
