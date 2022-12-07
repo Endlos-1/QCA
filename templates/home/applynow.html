@@ -71,14 +71,67 @@
     input[type=number] {
       -moz-appearance: textfield;
     }
-  </style>
-  <style>
+
+    .drop-zone {
+      max-width: auto;
+      height: auto;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      cursor: pointer;
+      color: black;
+      border: 2px solid black;
+      background-color: #ccecff;
+    }
+
+    /* .drop-zone input {
+      display: none;
+    } */
+
+    /* .drop-zone--over {
+      border-style: solid;
+    } */
+
+    .drop-zone__input {
+      opacity: 1;
+      width: 0;
+      display: none;
+
+    }
+
+    .drop-zone__thumb {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #cccccc;
+      background-size: cover;
+      position: relative;
+    }
+
+    .drop-zone__thumb::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 5px 0;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.75);
+      font-size: 14px;
+      text-align: center;
+    }
+
     .colSix {
       text-align: right;
       padding: 0;
     }
-  </style>
-  <style>
+
     .form-container {
       display: flex;
 
@@ -136,17 +189,23 @@
 
     .ddd {
       text-align: left;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     .ddd input {
       height: 80px;
-      font-size: 18px;
+      font-size: 16px;
       margin: 20px;
+      border: 2px solid black;
+      background-color: #ccecff;
     }
 
     .demoSize {
       margin-bottom: -10px;
+    }
+
+    .demoSize label {
+      padding-bottom: 10px;
     }
 
     #errorMsg {
@@ -156,8 +215,7 @@
   <!--Form 1 Basic details-->
   <section id="ClientInformation" class="pt-5 pb-5">
     <div class="container col-8 p-1" style="background-color:#003399">
-      <h5 class="text-white text-left" style="font-size: 16px; padding: 0; margin: 15px 0 2px 5px;">CONFIRM AMOUNT
-        REQUESTED </h5>
+      <h5 class="text-white text-left" style="font-size: 16px; font-weight: 600; padding: 0; margin: 15px 0 2px 5px;">CONFIRM AMOUNT REQUESTED</h5>
     </div>
     <div class="container cnt col-8 p-4 brd">
       <form class="g-3 justify-content-center" id="contactForm" method="POST">
@@ -167,12 +225,12 @@
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-6 colSix" style="padding-top: 5px;">
-                  <label for="amount" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Amount
-                      Requested</b></label>
+                  <label for="amount" class="col-form-label" style="font-size: 16px; text-align: right;"><b>Amount
+                      Requested:</b></label>
                 </div>
                 <div class="col-md-3" style="padding-left:4px;">
                   <input type="text" onkeypress="CheckNumeric(event);" class="form-control" name="amount" id="amount"
-                    style="text-align:right; padding-bottom: 0;
+                    style="padding-bottom: 0; font-size: 16px; padding-left: 4px;
                   color: black;">
                   <p id="errorMsg">Value must be in between $4000 to $15000 </p>
                 </div>
@@ -193,12 +251,12 @@
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Agent_First_Name" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>First name:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>First Name:</b></label>
                 </div>
                 <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" onkeypress="return (event.charCode > 64 && 
               event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" id="Agent_First_Name"
-                    style="padding-bottom: 0; color: black; padding-left: 5px;" name="Agent_First_Name"
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" name="Agent_First_Name"
                     placeholder="First name">
                 </div>
               </div>
@@ -207,12 +265,12 @@
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Agent_Last_Name" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Last name:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Last Name:</b></label>
                 </div>
                 <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" onkeypress="return (event.charCode > 64 && 
               event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" id="Agent_Last_Name"
-                    style="padding-bottom: 0; color: black; padding-left: 5px;" name="Agent_Last_Name"
+                    style="padding-bottom: 0; font-size: 16px; color: black; padding-left: 5px;" name="Agent_Last_Name"
                     placeholder="Last name">
                 </div>
               </div>
@@ -223,11 +281,11 @@
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="email" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Email:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Email:</b></label>
                 </div>
                 <div class="col-md-6" style="padding-left: 4px;">
                   <input type="email" class="form-control" id="email"
-                    style="padding-bottom: 0; color: black; padding-left: 5px;" name="email" placeholder="email">
+                    style="padding-bottom: 0; font-size: 16px; color: black; padding-left: 5px;" name="email" placeholder="email">
                 </div>
               </div>
             </div>
@@ -235,12 +293,12 @@
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Agent_Cell_Phone" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Cell
+                    style="font-size: 16px; text-align: right;"><b>Cell
                       Phone:</b></label>
                 </div>
                 <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" onkeypress="CheckNumeric(event);"
-                    style="padding-bottom: 0; color: black; padding-left: 5px;" id="Agent_Cell_Phone"
+                    style="padding-bottom: 0; font-size: 16px; color: black; padding-left: 5px;" id="Agent_Cell_Phone"
                     name="Agent_Cell_Phone" placeholder="Phone number">
                 </div>
               </div>
@@ -251,11 +309,11 @@
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Agent_Home_address" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Home Address:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Home Address:</b></label>
                 </div>
                 <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" id="Agent_Home_address" name="Agent_Home_address"
-                    style="padding-bottom: 0; color: black; padding-left: 5px;" placeholder="Address">
+                    style="padding-bottom: 0; font-size: 16px; color: black; padding-left: 5px;" placeholder="Address">
                 </div>
               </div>
             </div>
@@ -263,12 +321,12 @@
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Agent_City" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>City:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>City:</b></label>
                 </div>
                 <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" onkeypress="return (event.charCode > 64 && 
               event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" id="Agent_City"
-                    style="padding-bottom: 0; color: black; padding-left: 5px;" name="Agent_City" placeholder="City">
+                    style="padding-bottom: 0; font-size: 16px; color: black; padding-left: 5px;" name="Agent_City" placeholder="City">
                 </div>
               </div>
             </div>
@@ -278,12 +336,12 @@
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Agent_State" class="col-form-label"
-                    style="font-size: 18px; text-align: right; padding-top: 15px;"><b>State:</b></label>
+                    style="font-size: 16px; text-align: right; padding-bottom: 0;"><b>State:</b></label>
                 </div>
                 <div class="col-md-6" style="padding-left: 4px;">
 
                   <select class="form-select" id="Agent_State"
-                    style=" font-size: 14px; padding-bottom: 0; color: black; padding-left: 5px;" name="Agent_State">
+                    style=" font-size: 16px; padding-bottom: 0; color: black; padding-left: 5px;" name="Agent_State">
                     <option value="" selected> Choose</option>
 
                     <option value="AZ">Arizona</option>
@@ -301,12 +359,12 @@
             <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
-                  <label for="Agent_Zip" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Zip
+                  <label for="Agent_Zip" class="col-form-label" style="font-size: 16px; text-align: right;"><b>Zip
                       Code:</b></label>
                 </div>
                 <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" onkeypress="CheckNumeric(event);" id="Agent_Zip"
-                    name="Agent_Zip" placeholder="Zip Code" style="padding-bottom: 0; color: black; padding-left: 5px;">
+                    name="Agent_Zip" placeholder="Zip Code" style="padding-bottom: 0; font-size: 16px; color: black; padding-left: 5px;">
                 </div>
               </div>
             </div>
@@ -326,7 +384,7 @@
 
   <section id="SeleInformation" class="pt-5 pb-5">
     <div class="container col-8 p-1" style="background-color:#003399">
-      <h5 class="text-white text-left" style="padding-top: 5px;">SALE INFORMATION</h5>
+      <h5 class="text-white text-left" style="font-size: 16px; font-weight: 600; padding: 0; margin: 15px 0 2px 5px;">SALE INFORMATION</h5>
     </div>
     <div class="container cnt col-8 p-4 brd">
       <form class="g-3 justify-content-center" method="POST" action="#">
@@ -338,12 +396,14 @@
               <div class="row">
                 <div class="col-md-6 colSix">
                   <label for="Agent_First_Name" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Are you the
-                      Broker of record of your coampany ?</b></label>
+                    style="font-size: 16px; text-align: right; padding-top: 10px;"><b>Are you the
+                      Broker of record of your company ?</b></label>
                 </div>
-                <div class="col-md-3">
-                  <select id="BrokerRecordOfCompany" style="font-size: 14px;" name="BrokerRecordOfCompany">
-                    <option selected></option>
+                <div class="col-md-3" style="padding-left: 4px;">
+                  <select id="BrokerRecordOfCompany"
+                    style="padding-bottom: 0; font-size: 16px; color: black; padding-left: 5px;font-size: 14px;"
+                    name="BrokerRecordOfCompany">
+                    <option value="" selected></option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
@@ -357,15 +417,18 @@
             <div class="col-md-12 demoSize">
               <div class="row">
                 <div class="col-md-6 colSix">
-                  <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Do
-                      you currently
-                      have any open advances with other
-                      commission
-                      advance comapnies ?</b></label>
+                  <label for="Agent_First_Name" class="col-form-label"
+                    style="font-size: 16px; text-align: right; padding-top: 10px;"><b>Do
+                      You Currently
+                      Have Any Open Advances With <br> Other
+                      Commission
+                      Advance Companies?</b></label>
                 </div>
-                <div class="col-md-3" style="padding-top: 10px;">
-                  <select id="BrokerRecordOfCompany" style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
-                    <option selected></option>
+                <div class="col-md-3" style="padding-top: 10px; padding-left: 4px;">
+                  <select id="BrokerRecordOfCompany3"
+                    style="height: 50px; padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;font-size: 14px;"
+                    name="OpenAdvanceswihOther">
+                    <option value="" selected></option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
@@ -387,11 +450,11 @@
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Property_Addres" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Address:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Address:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" name="Property_Addres" id="Property_Addres"
-                    placeholder="Address" required>
+                    style="padding-bottom: 0; font-size: 16px; color: black; padding-left: 5px;" placeholder="Address" required>
                 </div>
               </div>
             </div>
@@ -399,12 +462,13 @@
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Property_City" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>City:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>City:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" onkeypress="return (event.charCode > 64 && 
               event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" name="Property_City"
-                    id="Property_City" placeholder="City" required>
+                    style="padding-bottom: 0; font-size: 16px; color: black; padding-left: 5px;" id="Property_City" placeholder="City"
+                    required>
                 </div>
               </div>
             </div>
@@ -414,13 +478,13 @@
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Property_State" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>State:</b></label>
+                    style="font-size: 16px; text-align: right; padding-bottom: 0;"><b>State:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
 
-                  <select class="form-select" id="Property_State" style="font-size: 14px;" name="Property_State"
-                    required>
-                    <option selected> Choose</option>
+                  <select class="form-select" id="Property_State" name="Property_State"
+                    style="font-size: 16px; padding-bottom: 0; color: black; padding-left: 5px;" required>
+                    <option value="" selected> Choose</option>
 
                     <option value="AZ">Arizona</option>
                     <option value="CA">California</option>
@@ -437,12 +501,13 @@
             <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
-                  <label for="Property_Zip" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Zip
+                  <label for="Property_Zip" class="col-form-label" style="font-size: 16px; text-align: right;"><b>Zip
                       Code:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" onkeypress="CheckNumeric(event);" id="Property_Zip"
-                    name="Property_Zip" placeholder="Zip Code" required>
+                    style="padding-bottom: 0; font-size: 16px; color: black; padding-left: 5px;" name="Property_Zip"
+                    placeholder="Zip Code" required>
                 </div>
               </div>
             </div>
@@ -452,11 +517,11 @@
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Property_Seller_Name" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Seller name:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Seller name:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" id="Property_Seller_Name" name="Property_Seller_Name"
-                    placeholder="Seller name" required>
+                    style="padding-bottom: 0; font-size: 16px; color: black; padding-left: 5px;" placeholder="Seller name" required>
                 </div>
               </div>
             </div>
@@ -464,12 +529,12 @@
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Property_Buyer_Name" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Buyer
+                    style="font-size: 16px; text-align: right;"><b>Buyer
                       name:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" id="Property_Buyer_Name" name="Property_Buyer_Name"
-                    placeholder="Buyer name" required>
+                    style="padding-bottom: 0; font-size: 16px; color: black; padding-left: 5px;" placeholder="Buyer name" required>
                 </div>
               </div>
             </div>
@@ -479,12 +544,12 @@
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Property_Final_Price" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Final Sales Price:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Final Sales Price:</b></label>
                 </div>
-                <div class="col-md-6">
-                  <span class="currency-code" style="padding: 4px 0 0 0 ; font-size: 14px;">$</span>
-                  <input type="number" style="padding-left: 33px;" class="form-control" id="Property_Final_Price"
-                    name="Property_Final_Price" required>
+                <div class="col-md-6" style="padding-left: 4px;">
+                  <span class="currency-code" style="padding: 4px 0 0 0 ; font-size: 14px; color: black;">$</span>
+                  <input type="number" class="form-control" id="Property_Final_Price"
+                    style="padding-bottom: 0; font-size: 16px; color: black; padding-left: 23px;" name="Property_Final_Price" required>
                 </div>
               </div>
             </div>
@@ -492,11 +557,12 @@
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Property_Closing_Date" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Closing Date:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Closing Date:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="date" class="form-control" onkeydown="return false" id="Property_Closing_Date"
-                    name="Property_Closing_Date" placeholder="MM/DD/YYY" />
+                    style="height: 35px; padding-bottom: 0; font-size: 16px; color: black; padding-left: 5px;"
+                    name="Property_Closing_Date" placeholder="MM/DD/YYY" data-date-format="YYYY MMMM DD" />
                 </div>
               </div>
             </div>
@@ -505,12 +571,14 @@
             <div class="col-md-12 demoSize">
               <div class="row">
                 <div class="col-md-6 colSix">
-                  <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Is
+                  <label for="Agent_First_Name" class="col-form-label"
+                    style="font-size: 16px; text-align: right; padding-top: 10px;"><b>Is
                       This A Short Sale?:</b></label>
                 </div>
-                <div class="col-md-3">
-                  <select id="BrokerRecordOfCompany" style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
-                    <option selected></option>
+                <div class="col-md-3" style="padding-left: 4px;">
+                  <select id="BrokerRecordOfCompany4" name="OpenAdvanceswihOther"
+                    style="font-size: 16px; padding-bottom: 0; color: black; padding-left: 5px;">
+                    <option value="" selected></option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
@@ -531,11 +599,13 @@
               <div class="row">
                 <div class="col-md-6 colSix">
                   <label for="Agent_First_Name" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Net Commission (After Any Broker Split):</b></label>
+                    style="font-size: 16px; text-align: right;padding-top: 10px;"><b>Net Commission (After Any Broker
+                      Split):</b></label>
                 </div>
-                <div class="col-md-3">
-                  <span class="currency-code" style="padding: 4px 0 0 0 ; font-size: 14px;">$</span>
-                  <input type="number" style="padding-left: 33px;" class="form-control" id="Property_Final_Price"
+                <div class="col-md-3" style="padding-left: 4px;">
+                  <span class="currency-code" style="padding: 4px 0 0 0 ; font-size: 14px; color: black;">$</span>
+                  <input type="number" class="form-control" id="Property_Final_Price"
+                    style="padding-left: 13px; font-size: 16px; padding-bottom: 0; color: black; padding-left: 23px;"
                     name="Property_Final_Price" required>
                 </div>
                 <div class="col-md-3"></div>
@@ -547,13 +617,16 @@
               <div class="row">
                 <div class="col-md-6 colSix">
                   <label for="Agent_First_Name" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Are You The Listing Or Selling Agent?:</b></label>
+                    style="font-size: 16px; text-align: right;padding-top: 10px;"><b>Are You The Listing Or Selling
+                      Agent?:</b></label>
                 </div>
-                <div class="col-md-3">
-                  <select id="BrokerRecordOfCompany" style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
-                    <option selected></option>
-                    <option>Listing</option>
-                    <option>Selling</option>
+                <div class="col-md-3" style="padding-left: 4px;">
+                  <select id="BrokerRecordOfCompany5" name="OpenAdvanceswihOther"
+                    style="font-size: 16px; padding-bottom: 0; color: black; padding-left: 4px;">
+                    <option value="" selected></option>
+                    <option>Listing Agent</option>
+                    <option>Selling Agent</option>
+                    <option>Both</option>
                   </select>
                 </div>
                 <div class="col-md-3"></div>
@@ -562,14 +635,16 @@
           </div>
           <div class="row">
             <div class="col-md-12 demoSize">
-              <div class="row">
+              <div class="row" style="padding-top: 10px;">
                 <div class="col-md-6 colSix">
                   <label for="Transaction_completein_12months" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>How Many Transactions Have You Completed In The Past
+                    style="font-size: 16px; text-align: right; padding-top: 10px;"><b>How Many Transactions Have You
+                      Completed In The Past
                       12 Months?:</b></label>
                 </div>
-                <div class="col-md-3" style="padding-top: 10px;">
+                <div class="col-md-3" style="padding-left: 4px;">
                   <input type="number" class="form-control" id="Transaction_completein_12months"
+                    style="font-size: 16px; padding-bottom: 0; color: black; padding-left: 4px;"
                     name="Transaction_completein_12months" required>
                 </div>
                 <div class="col-md-3"></div>
@@ -581,12 +656,13 @@
               <div class="row">
                 <div class="col-md-6 colSix">
                   <label for="Pedning_Transaction" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>How Many Pending Transactions Do You Currently
+                    style="font-size: 16px; text-align: right; padding-top: 10px;"><b>How Many Pending Transactions Do
+                      You Currently
                       Have?:</b></label>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3" style="padding-left: 4px;">
                   <input type="number" class="form-control" id="Pedning_Transaction" name="Pedning_Transaction"
-                    required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 4px;" required>
                 </div>
                 <div class="col-md-3"></div>
               </div>
@@ -597,12 +673,13 @@
               <div class="row">
                 <div class="col-md-6 colSix">
                   <label for="Non_pending_Transaction" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>How Many Non-Pending Listings Do You Currently
+                    style="font-size: 16px; text-align: right; padding-top: 10px;"><b>How Many Non-Pending Listings Do
+                      You Currently
                       Have?:</b></label>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3" style="padding-left: 4px;">
                   <input type="number" class="form-control" id="Non_pending_Transaction" name="Non_pending_Transaction"
-                    required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 4px;" required>
                 </div>
                 <div class="col-md-3"></div>
               </div>
@@ -613,75 +690,77 @@
           <div class="heder">
             <h5 class="text-left"><b>CLOSING COMPANY DETAILS</b></h5>
           </div>
-          <p style="text-align: left;">PLEASE NOTE: YOUR SALES FILE MUST BE ESCROWED WITH THE CLOSING COMPANY IN ORDER
-            TO APPROVE YOUR ADVANCE</p>
+          <p style="text-align: left; font-size: 12px;">Please note: Your sales file must be escrowed with the closing company in order to approve this advance.</p>
         </div>
         <div class="container">
           <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Closing_Company" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Closing Company:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Closing Company:</b></label>
                 </div>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" id="Closing_Company" name="Closing_Company" required>
+                <div class="col-md-6" style="padding-left: 4px;">
+                  <input type="text" class="form-control" id="Closing_Company" name="Closing_Company"
+                    style="padding-bottom: 0; font-size: 16px;color: black; padding-left: 4px;" required>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
-                  <label for="Escrow" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Escrow
+                  <label for="Escrow" class="col-form-label" style="font-size: 16px; text-align: right;"><b>Escrow
                       Number:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" onkeypress="return (event.charCode > 64 && 
               event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control" id="Escrow"
-                    name="Escrow">
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 4px;" name="Escrow">
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="ClosingCompany_address" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Address:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Address:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" id="ClosingCompany_address" name="ClosingCompany_address"
-                    placeholder="Address" required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 4px;" placeholder="Address" required>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="ClosingCompany_city" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>City:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>City:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" onkeypress="return (event.charCode > 64 && 
           event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control"
-                    id="ClosingCompany_city" name="ClosingCompany_city" placeholder="City" required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 4px;" id="ClosingCompany_city"
+                    name="ClosingCompany_city" placeholder="City" required>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="ClosingCompany_State" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>State:</b></label>
+                    style="font-size: 16px; text-align: right; padding-bottom: 0;"><b>State:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
 
-                  <select class="form-select" id="ClosingCompany_State" style="font-size: 14px;"
+                  <select class="form-select" id="ClosingCompany_State"
+                    style="font-size: 16px; padding-bottom: 0; color: black; padding-left: 4px;"
                     name="ClosingCompany_State" required>
-                    <option selected> Choose</option>
+                    <option value="" selected> Choose</option>
 
                     <option value="AZ">Arizona</option>
                     <option value="CA">California</option>
@@ -695,54 +774,57 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="ClosingCompany_Zip" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Zip Code:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Zip Code:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" onkeypress="CheckNumeric(event);" id="ClosingCompany_Zip"
-                    name="ClosingCompany_Zip" placeholder="Zip Code" required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 4px;" name="ClosingCompany_Zip"
+                    placeholder="Zip Code" required>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="ClosingCompany_Contact" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Contact Name:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Contact Name:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" id="ClosingCompany_Contact" name="ClosingCompany_Contact"
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 4px;" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 demoSize">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6 colSix">
+                  <label for="ClosingCompany_Cell_Phone" class="col-form-label"
+                    style="font-size: 16px; text-align: right;"><b>Phone:</b></label>
+                </div>
+                <div class="col-md-6" style="padding-left: 4px;">
+                  <input type="text" class="form-control" id="ClosingCompany_Cell_Phone"
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 4px;" name="ClosingCompany_Cell_Phone"
                     required>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 ">
-              <div class="row g-3 align-items-center">
-                <div class="col-md-6 colSix">
-                  <label for="ClosingCompany_Cell_Phone" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Phone:</b></label>
-                </div>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" id="ClosingCompany_Cell_Phone"
-                    name="ClosingCompany_Cell_Phone" required>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="ClosingCompany_Email" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Email:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Email:</b></label>
                 </div>
-                <div class="col-md-6">
-                  <input type="email" class="form-control" id="ClosingCompany_Email" name="ClosingCompany_Email">
+                <div class="col-md-6" style="padding-left: 4px;">
+                  <input type="email" class="form-control" id="ClosingCompany_Email" name="ClosingCompany_Email"
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 4px;">
                 </div>
               </div>
             </div>
@@ -765,7 +847,7 @@
 
   <section id="BrokerInformation" class="pt-5 pb-5">
     <div class="container col-8 p-1" style="background-color:#003399">
-      <h5 class="text-white text-left" style="padding-top: 5px;">BROKER INFORMATION</h5>
+      <h5 class="text-white text-left" style="font-size: 16px; font-weight: 600; padding: 0; margin: 15px 0 2px 5px;">BROKER INFORMATION</h5>
     </div>
     <div class="container cnt col-8 p-4 brd">
       <form class="g-3 justify-content-center" method="POST" action="#">
@@ -773,58 +855,61 @@
 
         <div class="container">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Broker_CompanyName" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Broker Company Name:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Broker Company Name:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" id="Broker_CompanyName" name="Broker_CompanyName"
-                    placeholder="Company Name" required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" placeholder="Company Name" required>
                 </div>
               </div>
             </div>
 
           </div>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Broker_address" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Address:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Address:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" id="Broker_address" name="Broker_address"
-                    placeholder="Address" required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" placeholder="Address" required>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Broker_City" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>City:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>City:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" onkeypress="return (event.charCode > 64 && 
               event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control"
-                    id="Broker_City" name="Broker_City" placeholder="City" required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" id="Broker_City" name="Broker_City"
+                    placeholder="City" required>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Broker_State" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>State:</b></label>
+                    style="font-size: 16px; text-align: right; padding-bottom: 0;"><b>State:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
 
-                  <select class="form-select" id="Broker_State" style="font-size: 14px;" name="Broker_State" required>
-                    <option selected> Choose</option>
+                  <select class="form-select" id="Broker_State"
+                    style="padding-bottom: 0; color: black; padding-left: 5px; font-size: 16px;" name="Broker_State"
+                    required>
+                    <option value="" selected> Choose</option>
 
                     <option value="AZ">Arizona</option>
                     <option value="CA">California</option>
@@ -838,95 +923,97 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
-                  <label for="Broker_Zip" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Zip
+                  <label for="Broker_Zip" class="col-form-label" style="font-size: 16px; text-align: right;"><b>Zip
                       Code:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" id="Broker_Zip" name="Broker_Zip" placeholder="Zip Code"
-                    required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" required>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Company_Cell_Phone" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Phone:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Phone:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" id="Company_Cell_Phone" name="Company_Cell_Phone"
-                    placeholder="Phone number" required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" placeholder="Phone number" required>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Broker_Email" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Email:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Email:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="email" class="form-control" id="Broker_Email" name="Broker_Email" placeholder="Email"
-                    required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" required>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="BrokerFirst_Name" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Broker First Name:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Broker First Name:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" onkeypress="return (event.charCode > 64 && 
               event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control"
-                    id="BrokerFirst_Name" name="BrokerFirst_Name" placeholder="First name" required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" id="BrokerFirst_Name"
+                    name="BrokerFirst_Name" placeholder="First name" required>
                 </div>
               </div>
             </div>
-            <div class="col-md-6 ">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Broker_Last_Name" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Broker Last Name:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Broker Last Name:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" onkeypress="return (event.charCode > 64 && 
                             event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control"
-                    id="Broker_Last_Name" name="Broker_Last_Name" placeholder="Last name" required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" id="Broker_Last_Name"
+                    name="Broker_Last_Name" placeholder="Last name" required>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Company_Cell_Phone" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Broker Cell Phone:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Broker Cell Phone:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" id="Company_Cell_Phone" name="Company_Cell_Phone"
-                    placeholder="Phone number" required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" placeholder="Phone number" required>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
-                  <label for="Broker_Email" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Broker
+                  <label for="Broker_Email" class="col-form-label" style="font-size: 16px; text-align: right;"><b>Broker
                       Email:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="email" class="form-control" id="Broker_Email" name="Broker_Email" placeholder="Email"
-                    required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" required>
                 </div>
               </div>
             </div>
@@ -950,50 +1037,51 @@
   </section>
 
   <section id="BankingInformation" class="pt-5 pb-5">
-    <div class="container col-8 p-1" style="background-color:#003399;">
-      <h5 class="text-white text-left" style="padding-top: 5px;">BANKING INFORMATION</h5>
+    <div class="container col-8 p-1" style="background-color:#003399">
+      <h5 class="text-white text-left" style="font-size: 16px; font-weight: 600; padding: 0; margin: 15px 0 2px 5px;">BANKING INFORMATION</h5>
     </div>
     <div class="container cnt col-8 p-4 brd">
       <form class="g-3 justify-content-center" method="POST" action="#">
         {% csrf_token %}
         <div class="container">
           <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Agent_Bank_Name" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Bank Name:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Bank Name:</b></label>
                 </div>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" id="Agent_Bank_Name" name="Agent_Bank_Name" required>
+                <div class="col-md-6" style="padding-left: 4px;">
+                  <input type="text" class="form-control" id="Agent_Bank_Name" name="Agent_Bank_Name"
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" required>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Account_Holder_Name" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Name of Account
-                      holder:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Name of Account
+                      Holder:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" id="Account_Holder_Name" name="Account_Holder_Name"
-                    placeholder="First name" required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" placeholder="First name" required>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Agent_Account_type" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Account Type:</b></label>
+                    style="font-size: 16px; text-align: right; padding-bottom: 0;"><b>Account Type:</b></label>
                 </div>
-                <div class="col-md-6">
-                  <select class="form-select" id="Agent_Account_type" style="font-size: 14px;" name="Agent_Account_type"
-                    required>
-                    <option selected> Choose</option>
+                <div class="col-md-6" style="padding-left: 4px;">
+                  <select class="form-select" id="Agent_Account_type" name="Agent_Account_type"
+                    style="font-size: 16px; padding-bottom: 0; color: black; padding-left: 5px;" required>
+                    <option value="" selected> Choose</option>
 
                     <option value="Saving">Saving</option>
                     <option value="Current">Current</option>
@@ -1005,36 +1093,35 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
-                  <label for="Routing" class="col-form-label" style="font-size: 18px; text-align: right;"><b>Routing
-                      #:</b></label>
+                  <label for="Routing" class="col-form-label" style="font-size: 16px; text-align: right;"><b>Routing Number:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" onkeypress="return (event.charCode > 64 && 
                 event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control"
-                    id="Routing" name="Routing" required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" id="Routing" name="Routing" required>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Account_number" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Account
-                      #:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Account Number:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="number" class="form-control" id="Account_number" name="Account_number"
-                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onclick="validateForm()" required>
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    onclick="validateForm()" required>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="container-fluid">
+        <div class="container-fluid" style="padding-top: 35px;">
           <h1 class="text-left"><b>STATEMENT ADDRESS</b></h1>
 
         </div>
@@ -1045,50 +1132,53 @@
                 <div class="col-md-12" style="padding: 20px 0; ">
                   <input type="checkbox" class="form-check-input" style="position: relative;" id="Agent_Bank_Name"
                     name="Agent_Bank_Name" required>
-                  <label for="Agent_Bank_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>My
+                  <label for="Agent_Bank_Name" class="col-form-label" style="font-size: 16px; text-align: right;"><b>My
                       home address is the address that appears on account statement.</b></label>
+                      <p style="font-size: 12px;">if not, please provide address on record at the financial institution</p>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Agent_Statement_Address" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Statement Address:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>Statement Address:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" id="Agent_Statement_Address" name="Agent_Statement_Address"
-                    placeholder="Address">
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" placeholder="Address">
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Agent_Statement_City" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>City:</b></label>
+                    style="font-size: 16px; text-align: right;"><b>City:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" onkeypress="return (event.charCode > 64 && 
                   event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control"
-                    id="Agent_Statement_City" name="Agent_Statement_City" placeholder="City">
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" id="Agent_Statement_City"
+                    name="Agent_Statement_City" placeholder="City">
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Agent_Statement_State" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>State:</b></label>
+                    style="font-size: 16px; text-align: right; padding-bottom: 0;"><b>State:</b></label>
                 </div>
-                <div class="col-md-6">
-                  <select class="form-select" id="Agent_Statement_State" style="font-size: 14px;"
+                <div class="col-md-6" style="padding-left: 4px;">
+                  <select class="form-select" id="Agent_Statement_State"
+                    style="font-size: 16px; padding-bottom: 0; color: black; padding-left: 5px;"
                     name="Agent_Statement_State" required>
-                    <option> Choose</option>
+                    <option value="" selected> Choose</option>
 
                     <option value="AZ">Arizona</option>
                     <option value="CA">California</option>
@@ -1103,16 +1193,16 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 demoSize">
               <div class="row g-3 align-items-center">
                 <div class="col-md-6 colSix">
                   <label for="Agent_Statement_Zip" class="col-form-label"
-                    style="font-size: 18px; text-align: right;"><b>Zip
+                    style="font-size: 16px; text-align: right;"><b>Zip
                       Code:</b></label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 4px;">
                   <input type="text" class="form-control" id="Agent_Statement_Zip" name="Agent_Statement_Zip"
-                    placeholder="Zip Code">
+                    style="padding-bottom: 0;font-size: 16px; color: black; padding-left: 5px;" placeholder="Zip Code">
                 </div>
               </div>
             </div>
@@ -1128,7 +1218,7 @@
             may result in civil liability and/or criminal penalties and liability for monetary damages to Quick
             Commission Advance, its agents, successors and assigns, and any other person who may suffer any loss
             due to reliance upon any misrepresentation which I have made in this application. Upon submission of
-            this application, I authorize Quick Commission Advance to contact the referenced closing company and
+            this application, I authorize Quick Commission Advance to contact the referenced settlement company and
             broker for verification purposes. The above statements are true and accurate to the best of my
             knowledge and belief as an officer of the company. I understand that the foregoing information will
             be relied upon by Quick Commission Advance. My application be relied upon by any concerned party as
@@ -1158,8 +1248,8 @@
   </section>
 
   <section id="LastForm" class="pt-5 pb-5">
-    <div class="container col-8 p-1" style="background-color:#003399;">
-      <h5 class="text-white text-left" style="padding-top: 5px;">DO YOU WANT TO SPEED UP YOUR APPLICATION? UPLOAD THE
+    <div class="container col-8 p-1" style="background-color:#003399">
+      <h5 class="text-white text-left" style="font-size: 16px; font-weight: 600; padding: 0; margin: 15px 0 2px 5px;">DO YOU WANT TO SPEED UP YOUR APPLICATION? UPLOAD THE
         FOLLOWING:</h5>
     </div>
     <div class="container cnt col-8 p-4 brd">
@@ -1174,6 +1264,14 @@
               </div>
               <div class="row col-md-8">
                 <input type="file" class="form-control" id="purchase_greement" name="purchase_greement">
+                <!-- <div class="drop-zone">
+                  <span class="drop-zone__prompt">
+                    <p>Drag and Drop </p>
+                    <p>Or</p>
+                    <p>Browse To File</p>
+                  </span>
+                  <input type="file" name="myFile" class="drop-zone__input">
+                </div> -->
               </div>
             </div>
             <div class="col-md-6">
@@ -1192,7 +1290,7 @@
                 <label for="formFile" class="form-label"><b>3. Last Month's Bank Statement or Void Check</b></label>
               </div>
               <div class="row col-md-8">
-                <input type="file" class="form-control" id="purchase_greement" name="purchase_greement">
+                <input type="file" style="color: black; font-size: 16px;" class="form-control" id="purchase_greement" name="purchase_greement">
               </div>
             </div>
             <div class="col-md-6">
@@ -1227,12 +1325,15 @@
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-4 colSix">
-                  <label for="Agent_First_Name" class="col-form-label" style="font-size: 18px; text-align: right;"><b>I
+                  <label for="Agent_First_Name" class="col-form-label"
+                    style="font-size: 16px; text-align: right; padding-bottom: 0;"><b>I
                       agree to the Privacy Policy:</b></label>
                 </div>
-                <div class="col-md-4">
-                  <select id="BrokerRecordOfCompany" style="font-size: 14px;" class="" name="OpenAdvanceswihOther">
-                    <option selected></option>
+                <div class="col-md-4" style="padding-left: 4px;">
+                  <select id="BrokerRecordOfCompany6"
+                    style="font-size: 16px; padding-bottom: 0; color: black; padding-left: 5px;" class=""
+                    name="OpenAdvanceswihOther">
+                    <option value="" selected></option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
@@ -1247,8 +1348,8 @@
         <div class="container">
           <div class="text-center mt-3">
             <button class="btn mt-4 btn-primary text-center" type="submit"
-              style="background-color:rgb(76, 236, 76);"><b>SEND
-                APPLICATION</b></button>
+              style="background-color:rgb(76, 236, 76);"><b>Complete Application
+                </b></button>
 
           </div>
 
@@ -1273,7 +1374,80 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+  <script>
+    document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+      const dropZoneElement = inputElement.closest(".drop-zone");
 
+      dropZoneElement.addEventListener("click", (e) => {
+        inputElement.click();
+      });
+
+      inputElement.addEventListener("change", (e) => {
+        if (inputElement.files.length) {
+          updateThumbnail(dropZoneElement, inputElement.files[0]);
+        }
+      });
+
+      dropZoneElement.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZoneElement.classList.add("drop-zone--over");
+      });
+
+      ["dragleave", "dragend"].forEach((type) => {
+        dropZoneElement.addEventListener(type, (e) => {
+          dropZoneElement.classList.remove("drop-zone--over");
+        });
+      });
+
+      dropZoneElement.addEventListener("drop", (e) => {
+        e.preventDefault();
+
+        if (e.dataTransfer.files.length) {
+          inputElement.files = e.dataTransfer.files;
+          updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+        }
+
+        dropZoneElement.classList.remove("drop-zone--over");
+      });
+    });
+
+    /**
+     * Updates the thumbnail on a drop zone element.
+     *
+     * @param {HTMLElement} dropZoneElement
+     * @param {File} file
+     */
+    function updateThumbnail(dropZoneElement, file) {
+      let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+
+      // First time - remove the prompt
+      if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+        dropZoneElement.querySelector(".drop-zone__prompt").remove();
+      }
+
+      // First time - there is no thumbnail element, so lets create it
+      if (!thumbnailElement) {
+        thumbnailElement = document.createElement("div");
+        thumbnailElement.classList.add("drop-zone__thumb");
+        dropZoneElement.appendChild(thumbnailElement);
+      }
+
+      thumbnailElement.dataset.label = file.name;
+
+      // Show thumbnail for image files
+      if (file.type.startsWith("image/")) {
+        const reader = new FileReader();
+
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+        };
+      } else {
+        thumbnailElement.style.backgroundImage = null;
+      }
+    }
+
+  </script>
   <script>
     let fname = 0;
     let lname = 0;
@@ -1385,15 +1559,16 @@
     $(document).ready(function () {
 
       $('#errorMsg').hide();
-      $('#SeleInformation > .brd').hide();
-      $('#BrokerInformation > .brd').hide();
-      $('#BankingInformation > .brd').hide();
-      $('#LastForm > .brd').hide();
+      // $('#SeleInformation > .brd').hide();
+      // $('#BrokerInformation > .brd').hide();
+      // $('#BankingInformation > .brd').hide();
+      // $('#LastForm > .brd').hide();
 
       $('input').focus(function () {
         let z = $(this).attr("id");
         $(this).css("border", "2px solid #00abc9");
       });
+
       $("#Agent_State").change(function () {
         state = alerts("#Agent_State");
         if (lname == 1 && fname == 1 && email == 1 && phone == 1 && address == 1 && city == 1 && state == 1 && zip == 1 && mony == 1) {
@@ -1401,6 +1576,11 @@
         } else {
           $('#ContactButton').css("background-color", "#23a1d3");
         }
+      });
+      $("select").change(function () {
+        let z = $(this).attr("id");
+        let a = "#" + z;
+        alerts(a);
       });
       $('input').focusout(function () {
         let z = $(this).attr("id");
@@ -1454,8 +1634,6 @@
       });
 
 
-
-
       $("#contactForm").on('submit', (function (e) {
         e.preventDefault();
         var amount = $('#amount').val();
@@ -1473,37 +1651,36 @@
         if (!(c >= 4000 && c <= 15000)) {
           $("#errorMsg").show();
           $('#amount').css("border", "2px solid red");
-        } else if (Agent_First_Name == "") {
-          $('#Agent_First_Name').css("border", "2px solid red");
-        } else if (Agent_Last_Name == "") {
-          $('#Agent_Last_Name').css("border", "2px solid red");
-        } else if (!(validateEmail(email) && email != "")) {
-          $('#email').css("border", "2px solid red");
-        } else if (!(Agent_Cell_Phone.length == 12)) {
-          $('#Agent_Cell_Phone').css("border", "2px solid red");
-        } else if (Agent_Home_address == "") {
-          $('#Agent_Home_address').css("border", "2px solid red");
-        } else if (Agent_City == "") {
-          $('#Agent_City').css("border", "2px solid red");
-        } else if (Agent_State == "") {
-          $('#Agent_State').css("border", "2px solid red");
-        } else if (!(Agent_Zip.length == 10 || Agent_Zip.length == 5) ) {
-          $('#Agent_Zip').css("border", "2px solid red");
+          // } else if (Agent_First_Name == "") {
+          //   $('#Agent_First_Name').css("border", "2px solid red");
+          // } else if (Agent_Last_Name == "") {
+          //   $('#Agent_Last_Name').css("border", "2px solid red");
+          // } else if (!(validateEmail(email) && email != "")) {
+          //   $('#email').css("border", "2px solid red");
+          // } else if (!(Agent_Cell_Phone.length == 12)) {
+          //   $('#Agent_Cell_Phone').css("border", "2px solid red");
+          // } else if (Agent_Home_address == "") {
+          //   $('#Agent_Home_address').css("border", "2px solid red");
+          // } else if (Agent_City == "") {
+          //   $('#Agent_City').css("border", "2px solid red");
+          // } else if (Agent_State == "") {
+          //   $('#Agent_State').css("border", "2px solid red");
+          // } else if (!(Agent_Zip.length == 10 || Agent_Zip.length == 5) ) {
+          //   $('#Agent_Zip').css("border", "2px solid red");
         } else {
-                     
+
           $.ajax({
-                url: "{% url 'home:applynow' %}",
-                type: "POST",
-                data: $("#contactForm").serialize(),
-                success: function (data) {
-                 
-                    // $('#SeleInformation > .brd').show();
-                }
-            });
-            $('#SeleInformation > .brd').show();
+            url: "{% url 'home:applynow' %}",
+            type: "POST",
+            data: $("#contactForm").serialize(),
+            success: function (data) {
+
+              // $('#SeleInformation > .brd').show();
+            }
+          });
+          $('#SeleInformation > .brd').show();
         }
       }));
-      
 
     });
 

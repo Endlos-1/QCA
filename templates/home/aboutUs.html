@@ -6,12 +6,20 @@
 
 {% block body %}
 <section>
-    <div class="container-fluid " style="background-color:#f7f7f7; padding-top: 200px; padding-bottom: 10px; ">
+    <section>
+        <div class="container-fluid" style="background-color:#f7f7f7; padding-top: 190px; padding-bottom: 0px;">
+            <div class="container">
+                <h3 class="text-left" style="color: #737373; font-size: 25.71px;">WHY US
+                </h3>
+            </div>
+        </div>
+    </section>
+    <!-- <div class="container-fluid " style="background-color:#f7f7f7; padding-top: 200px; padding-bottom: 10px; ">
         <div class="container">
             <h3 class="text-left" style="color: #737373;  ">WHY US</h3>
         </div>
-    </div>
-</section>
+    </div> -->
+   
 
 
 <div class="row-services">
@@ -38,6 +46,7 @@
                     border-radius: 3px;
                     box-shadow: 4px 4px 4px #0a78aa;
                     cursor: pointer;
+                    z-index: 100;
                 }
 
                 .fixed-btn p {
@@ -73,7 +82,6 @@
             <div class="themesflat-spacer clearfix" data-desktop="50" data-mobi="40" data-smobi="40"></div>
         </div><!-- /.col-md-12 -->
     </div>
-
 
 
 
@@ -195,15 +203,15 @@
     <div class="container demo">
         <img src="{% static 'home/img/aboutUs1.jpg' %}" alt="Image" class="abc-img">
         <div class="abc-demo">
-            <p class="demo-title"><b>Quick Decisions & Fast Funding, <br> Simple Rate Structure</b></p><br>
+            <p class="demo-title"><b>Quick Decisions & Fast Funding, <br> Simple Rate Structure</b></p>
             <p class="demo-body">A Commission Advance is a financial transaction where a real estate agent sells
                 a
-                portion of their pending commission at a discount, in exchange for immediate cash.</p>
+                portion of their pending commission at a discount, in exchange for immediate cash</p>
             <p class="demo-body">It is not a loan, but a service that allows agents to monetize a transaction
                 without
-                waiting until closing.</p>
+                waiting until closing</p>
 
-            <p class="demo-body">Why wait to get paid.</p>
+            <p class="demo-body">Why wait to get paid</p>
         </div>
     </div>
     <section>
@@ -217,7 +225,7 @@
     <div class="container demo">
         <img src="{% static 'home/img/aboutUs2.jpeg' %}" alt="Image" class="abc-img">
         <div class="abc-demo2">
-            <p class="demo-title"><b>We understand every realtor and every transaction is different</b></p>
+            <p class="demo-title"><b>We understand every Realtor and every transaction is different</b></p>
             <p class="demo-title"><b>We use a risk based pricing plan to review each commission advance request
                     based
                     on:</b></p>
@@ -291,7 +299,7 @@
 
         .abc-demo {
             position: absolute;
-            top: 100px;
+            top: 30px;
             left: 45px;
             text-align: left;
             font-size: 20px;
@@ -383,7 +391,7 @@
         </div><!-- /.col-md-12 -->
     </div><!-- /.row -->
 </div><!-- /.container -->
-</div>
-<!-- END SERVICES IMAGEBOXS -->
+
+</section><!-- END SERVICES IMAGEBOXS -->
 
 {% endblock %}

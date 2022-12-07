@@ -30,7 +30,7 @@
 {% block body %}
 
 <section>
-  <section>
+  <section class="header" id="header">
     <div class="container-fluid" style="background-color:#f7f7f7; padding-top: 190px; padding-bottom: 0px;">
       <div class="container">
         <h3 class="text-left" style="color: #737373;">WHY A COMMISSION ADVANCE </h3>
@@ -41,10 +41,10 @@
 
       <p class="sub-heading clearfix text-justify " style="color:black">
 
-      <p align="left" style="color:black"> <b>Should I apply for a Commission Advance?</b><BR>
+      <p align="left" style="color:black"> <b>Should I apply for a commission advance?</b><BR>
         Why delay your pay until closing, receive your commission sooner. We will purchase your commission for<br>a
-        resonable discount turning your har work into cash quicker.
-        Quick Commission Advance converts<br>your receiveables to cash sooner so you can manage business and meet your
+        reasonable discount turning your hard work into cash quicker.
+        Quick Commission Advance converts<br>your receivables to cash sooner so you can manage your business and meet your
         commitments.
       </p>
 
@@ -53,20 +53,20 @@
         experiencing cash-flow challenges. We do this without running credit checks.
       </p>
 
-      <p align="left" style="color:black"> <b>Who is eligible for commission Advances?</b><BR>
+      <p align="left" style="color:black"> <b>Who is eligible for commission advances?</b><BR>
         Quick Commission Advance serves licensed residential real estate agents who are affiliated with leading<br>real
-        estate companies across Texas.
+        estate companies.
       </p>
 
       <p align="left" style="color:black"> <b>There are significant benifits to receiving an advance on your
           commission:</b><BR>
         Get paid for your receivables quicker instead of waiting until closing.<br>
-        Quick Commission Advance is a more feasible alternatives than credit card advances or loans which may <br>be more
+        Quick Commission Advance is a more feasible alternative than credit card advances or loans which may <br>be more
         costly and have a cumbersome process.<br>
         Manage business expenses.<br>
         Realize opportuinities by boosting marketing and advertising.<br>
-        Access fund to invest in your business prior to closing.<br>
-        Increase income predictability by load level your revenue.<br>
+        Access funds to invest in your business prior to closing.<br>
+        Increase income predictability by load leveling your revenue.<br>
         Manage overhead and tax commitments.<br>
         Receive your commission advanced at low cost and within 24 hours from Quick Commission Advance.
 
@@ -77,7 +77,7 @@
           <li><a class="page-numbers" href="{% url 'home:agent_Faq'%}">1</a></li>
           <li><a class="page-numbers" href="{% url 'home:broker_Faq'%}">2</a></li>
           <li><a class="page-numbers current " href="{% url 'home:whyadvance'%}">3</a></li>
-          <li><a class="next page-numbers" href="#"><span class=" finance-icon-cheveron-right"></span></a></li>
+          <!-- <li><a class="next page-numbers" href="#"><span class=" finance-icon-cheveron-right"></span></a></li> -->
         </ul>
         <br>
       </div>
@@ -114,7 +114,34 @@
     .fixed-btn:active {
       box-shadow: 0 0;
     }
-  </style>
+    .sticky {
+        position: fixed;
+        top: 0;
+        margin-top: -50px;
+        width: 100%;
+    }
 
+    .sticky+.content {
+        padding-top: 300px;
+    }
+
+    .header {
+        z-index: 100;
+    }
+  </style>
+<script>
+  window.onscroll = function () { myFunction() };
+
+  var header = document.getElementById("header");
+  var sticky = header.offsetTop;
+
+  function myFunction() {
+      if (window.pageYOffset > sticky) {
+          header.classList.add("sticky");
+      } else {
+          header.classList.remove("sticky");
+      }
+  }
+</script>
 
   {% endblock %}
