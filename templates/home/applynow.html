@@ -1569,6 +1569,15 @@
         $(this).css("border", "2px solid #00abc9");
       });
 
+      $("input[type=file]").change(function () {
+        let z = $(this).val();
+        if(z == "") {
+          $(this).css("border", "2px solid red");
+        } else {
+          $(this).css("border", "2px solid green");
+        }
+      });
+
       $("#Agent_State").change(function () {
         state = alerts("#Agent_State");
         if (lname == 1 && fname == 1 && email == 1 && phone == 1 && address == 1 && city == 1 && state == 1 && zip == 1 && mony == 1) {
